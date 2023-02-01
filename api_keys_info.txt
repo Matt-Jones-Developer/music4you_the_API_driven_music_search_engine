@@ -37,7 +37,7 @@ track - smells like teen spirit
 example?
 https://api.discogs.com/database/search?q={nirvana}&apiKey=XornnKLzrTLsliVVmcdzNQMWoHiDBdjrYmgTAoRx
 
-fetch attempts: THIS WORKS
+fetch attempts: THIS WORKS (artist name)
 
 fetch("https://api.discogs.com/database/search?q=Nirvana&key=SUabynzSHsiRIoQDRiOv&secret=YVLXccThJwokGpRwpgaQzkvUJKSlkhun")
 .then(response => response.json())
@@ -54,6 +54,18 @@ fetch("https://api.discogs.com/database/search?q=Nirvana&{?release,nevermind,roc
 .then(response => response.json())
 .then(data => console.log(data))
 
+Found via data dot notation:
+
+temp1.results[0]
+temp1.results[0].title (nirvana)
+temp1.results[0].cover_image (bio image)
+bio image:
+https://i.discogs.com/BS3W-WDYXuQMwoS8pwYBAvXIxT1mNKeLeg7W0A9l5sk/rs:fit/g:sm/q:90/h:450/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTEyNTI0/Ni0xNTI5MTk4Mjg4/LTY0MzAuanBlZw.jpeg
+
+
+// finding more info 
+https://api.discogs.com/artists/{ARTIST_ID}/releases
+
 --------------------
 
 
@@ -69,3 +81,13 @@ https://www.last.fm/api//2.0/?method=album.getinfo&api_key=a87d07d178f9511fa2e22
 fetch("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=a87d07d178f9511fa2e22a54dbe7f678&artist=Cher&album=Believe&format=json")
 .then(response => response.json())
 .then(data => console.log(data))
+
+
+temp1.album
+{artist: 'Cher', mbid: '03c91c40-49a6-44a7-90e7-a700edf97a62', tags: {…}, playcount: '4495165', image: Array(6), …}
+temp1.artist
+undefined
+temp1.album.artist
+'Cher'
+temp1.album.image[3].#text
+VM922:1 Uncaught SyntaxError: Private field '#text' must be declared in an enclosing class
