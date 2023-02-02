@@ -1,0 +1,137 @@
+/* music app CSS styling - todo just a basic template */
+
+:root {
+  --darker: #333333;
+  --dark: #555555;
+  --light: #fff;
+  --hover-span: rgb(0, 255, 30);
+  --box-shadow: rgba(0, 0, 0, 0.8);
+  --gradient: linear-gradient(45deg,
+          rgba(54, 54, 54, 0.8) 0%,
+          rgba(125, 125, 125, 0.7) 100%);
+  --gradient-light: linear-gradient(45deg,
+          rgba(158, 158, 158, 0.8) 0%,
+          rgba(255, 255, 255, 0.7) 100%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  /* border: 1px dashed red; */
+}
+
+body {
+  color: var(--light);
+  line-height: 1.5;
+  padding: 0;
+  margin: 0;
+
+}
+
+button {
+  width: 100%;
+  border: none;
+  margin: 1rem;
+}
+
+ul {
+  padding-top: 1rem;
+  padding-left: 1.5rem;
+}
+
+ul>li {
+  list-style-type: none;
+  display: inline-flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin-right: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--light);
+}
+
+a:hover {
+  color: var(--highlight);
+}
+
+input[type=text] {
+  text-transform: capitalize;
+  width: 17rem;
+}
+
+.btn {
+  width: 17rem;
+}
+
+/* flex container */
+
+.container {
+  margin: 0 auto;
+}
+
+/* header */
+
+.header {
+  text-align: center;
+  background-color: var(--gradient);
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-title {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* main */
+
+.main {
+  margin: 0 auto;
+  padding: 2rem;
+
+}
+
+.main .container {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+/* section container */
+
+.artist-info {
+  margin: 0 auto;
+  padding: 2rem;
+
+}
+
+.artist-info .container {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+/* footer container */
+
+.footer {
+  margin: 0 auto;
+  padding: 2rem;
+
+}
+
+.footer .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}

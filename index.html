@@ -1,12 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music4You - Tha API driven music search tool</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <title>Music4You - Tha API driven music search tool</title>
 </head>
+
 <body>
-    <header class="header"></header>
+  <header class="header">
+    <div class="container">
+      <div class="header-title">
+        <h1>Music4You - The Artist Search App</h1>
+      </div>
+      <!-- header content here -->
+    </div>
+  </header>
+  <main class="main">
+    <div class="container">
+      <div class="main-title">
+        <h1>Music App - main </h1>
+      </div>
+      <!-- search section -->
+      <!-- aside search bar and searched artist history buttons -->
+      <aside>
+        <!-- input label -->
+        <input class="form-input music-search" type="text" id="search-input" placeholder="Artist"
+          aria-labelledby="form-heading" aria-controls="music-search" onfocus="this.value=''">
+        <!-- search button -->
+        <button type="submit" class="btn search-button btn-primary" id="search-button" aria-label="submit search">
+          Search Artist
+        </button>
+      </aside>
+      <section class="artist-info">
+        <!-- these will eventually be bootstrap cards (for each artist searched) -->
+        <!-- grid ? -->
+        <!-- area to show the API info -->
+        <div class="container">
+          <!-- add fetched data here -->
+          <div class="artist-name"></div>
+          <div class="album-name"></div>
+          <div class="genre"></div>
+          <div class="album-art"></div>
+          <!-- img src generated here -->
+          <div class="artist-bio"></div>
+          <!-- link to artists last.fm page -->
+          <!-- user can access track playlists, all albums etc -->
+          <div class="artist-page-link"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="container">
+      <!-- footer content here -->
+    </div>
+  </footer>
+  <!-- scripts -->
+  <!-- <script src="./assets/scripts/main.js"></script> -->
+  <script src="./assets/scripts/api_drafting.js"></script>
 </body>
+
 </html>
