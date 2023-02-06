@@ -1,4 +1,4 @@
-let data = fetch('https://app.ticketmaster.com/discovery/v2/attractions.json?apikey=GbIS7ZHqNdNaR8p53t0s3R87G5IbJWSB')
+let data = fetch(`https://app.ticketmaster.com/discovery/v2/attractions.json?apikey=${ticketMasterAPIKey}`)
   .then(res => res.json())
 
   // simply adding the {} allows you to access the data!
