@@ -1,15 +1,6 @@
 // an initial build development from initial testing scripts
 // will be split into data.js render.js and main.js 
 
-// all API keys and secrets
-
-// lastFM keys
-const apiKeyLast = "a87d07d178f9511fa2e22a54dbe7f678"
-
-// discogs key and secret
-const apiKeyCogs = "SUabynzSHsiRIoQDRiOv"
-const secret = "YVLXccThJwokGpRwpgaQzkvUJKSlkhun"
-
 // search elements
 const searchBtn = document.querySelector(".search-button")
 const userSearch = document.querySelector("#search-input")
