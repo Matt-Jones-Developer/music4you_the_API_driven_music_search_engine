@@ -4,18 +4,18 @@
 
 // last.fm vs discogs
 
+// lastFM keys
+const apiKeyLast = "a87d07d178f9511fa2e22a54dbe7f678"
+
+// discogs key and secret
+const apiKeyCogs = "SUabynzSHsiRIoQDRiOv"
+const secret = "YVLXccThJwokGpRwpgaQzkvUJKSlkhun"
+
 // search elemnts
 
 const searchBtn = document.querySelector('.search-button')
 // const albumSearchBtn = document.querySelector('.album-search-button')
 const userSearch = document.querySelector('#search-input')
-
-// lastFM keys
-const apiKeyLast = 'a87d07d178f9511fa2e22a54dbe7f678'
-
-// discogs key and secret
-const apiKeyCogs = 'SUabynzSHsiRIoQDRiOv'
-const secret = 'YVLXccThJwokGpRwpgaQzkvUJKSlkhun'
 
 // musixmatch api
 
