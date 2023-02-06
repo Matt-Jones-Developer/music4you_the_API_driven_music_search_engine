@@ -1,0 +1,17 @@
+
+// We need 2 API's (I'm suggesting Last.fm and Discogs)
+
+-> Last.fm
+    // grab data including name (artist/band), description, bio, artwork etc
+    // track recommendations: recommend tracks based on their search history
+
+-> Discogs - seems a little bit OTT (see the fetch data it returns)
+    // discography fetching (have an entire album art grid of the artists complete discography)
+
+
+-> alternatives|
+
+    -> fetch lyrics ?
+    -> fetch tour dates or concerts via ticketmaster API?
+    -> ticketmaster ? (Micheal has API key)
+

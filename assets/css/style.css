@@ -1,17 +1,23 @@
 /* music app CSS styling - todo just a basic template */
 
 :root {
+  --darkest: #303030;
   --darker: #333333;
   --dark: #555555;
   --light: #fff;
+  --purps: rgb(85, 12, 193);
+  --warning: #D65745;
+  --light-purps: rgb(132, 89, 197);
   --hover-span: rgb(0, 255, 30);
-  --box-shadow: rgba(0, 0, 0, 0.8);
+  --box-shadow: 5px 7px rgba(0, 0, 0, 0.2);
   --gradient: linear-gradient(45deg,
-          rgba(54, 54, 54, 0.8) 0%,
-          rgba(125, 125, 125, 0.7) 100%);
+      rgba(54, 54, 54, 0.8) 0%,
+      rgba(125, 125, 125, 0.7) 100%);
   --gradient-light: linear-gradient(45deg,
-          rgba(158, 158, 158, 0.8) 0%,
-          rgba(255, 255, 255, 0.7) 100%);
+      rgba(158, 158, 158, 0.8) 0%,
+      rgba(255, 255, 255, 0.7) 100%);
+  --btn-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2),
+    0 7px 10px 0 rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -19,10 +25,12 @@
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
-  /* border: 1px dashed red; */
+  /* border: 1px dashed lightgreen; */
 }
 
 body {
+  background-color: var(--dark);
+  font-family: 'Poppins', sans-serif;
   color: var(--light);
   line-height: 1.5;
   padding: 0;
@@ -30,10 +38,23 @@ body {
 
 }
 
-button {
-  width: 100%;
-  border: none;
-  margin: 1rem;
+h1 {
+  font-family: 'tagsxtremeregular', sans-serif;
+  font-size: 120px;
+  font-weight: bolder;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+p {
+  font-weight: 700
 }
 
 ul {
@@ -60,12 +81,46 @@ a:hover {
 }
 
 input[type=text] {
-  text-transform: capitalize;
-  width: 17rem;
+  text-transform: capitalize; 
+  padding-left: .7rem;
+  border-radius: .5rem;
+  border: none;
+  width: 12rem;
+  height: 2rem;
+}
+
+hr {
+  border: 2px solid var(--dark);
+  width: 75%;
+  margin: 0 auto;
 }
 
 .btn {
-  width: 17rem;
+  background: var(--purps);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: .2rem;
+  margin: 1rem;
+  color: var(--light);
+  /* looks tacky */
+  /* box-shadow: var(--btn-shadow); */
+}
+
+.btn-warning {
+  background-color: var(--warning);
+  border: none;
+}
+
+.btn:hover {
+  background: var(--light) !important;
+  color: black !important;
+}
+
+/* HOME PAGE - LIBRARY */
+
+.search-button {
+  width: 12rem;
 }
 
 /* flex container */
@@ -77,55 +132,169 @@ input[type=text] {
 /* header */
 
 .header {
-  text-align: center;
-  background-color: var(--gradient);
+  background-color: var(--darkest);
+  padding: 2rem;
+  margin-bottom: 0;
+  /* border: 1px solid red; */
 }
 
 .header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
+}
+
+.header-image img {
+  width: 200px;
 }
 
 .header-title {
-  display: inline-flex;
-  justify-content: flex-start;
+  margin-top: 2rem;
+}
+
+/* sticky nav search */
+
+.custom-nav {
+  z-index: 99;
+  background: var(--darker);
+  margin: 0;
+  margin-bottom: 2rem;
+  margin-top: -1rem;
+}
+
+
+#search-area .container {
+  display: flex;
+  justify-content: center;
   align-items: center;
+  padding: 1rem;
+  width: 100vw;
+  /* border: 1px solid red; */
+
+}
+
+.search-bar {
+  margin-left: 1rem;
+}
+
+.search-title {
+  margin-top: 1rem;
 }
 
 /* main */
 
 .main {
-  margin: 0 auto;
-  padding: 2rem;
+  /* margin: 0 auto; */
+  padding: 1rem;
+  padding-top: 0;
+  max-width: 2400px;
+  height: 100vh;
+  /* border: 1px solid red; */
 
 }
 
-.main .container {
-  display: flex;
-  justify-content: space-between;
+/* grid container that holds the grid items (cards) */
 
+.grid-container {
+  display: grid;
+  grid-template-columns: 4;
+  grid-template-rows: auto;
+  grid-auto-flow: row;
+}
+
+/* main container-2 stops 0 auto to go full width */
+.main .container-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  margin-top: 0;
+  /* border: 1px solid red; */
+}
+
+/*  aside / search area */
+
+.main-title {
+  padding-top: .3rem;
+  /* margin-left: 4rem; */
 }
 
 /* section container */
 
+.grid {
+  display: grid;
+  /* border: 1px solid red; */
+}
+
+/* card section */
+
+.card-section {
+  padding: 1rem;
+  margin: 0;
+  width: 100vw;
+  border: 1px dashed yellow;
+
+}
+
+.card-container {
+  width: 450px;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 1px dashed lightgreen;
+}
+
+
+.card .card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  margin: 1rem;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  /* tacky? need card pos sorting by a few pixels */
+  /* box-shadow: var(--box-shadow); */
+}
+
+/* .card .btn {
+  margin-top: 2rem;
+} */
+
 .artist-info {
+  text-align: center;
   margin: 0 auto;
   padding: 2rem;
 
 }
+
+.genre .style {
+  display: inline-flex;
+}
+
+/* .album-art img {
+  width: 300px;
+  height: 300px;
+
+} */
 
 .artist-info .container {
   display: flex;
   justify-content: space-between;
-  
+
 }
 
 /* footer container */
 
-.footer {
-  margin: 0 auto;
+/* .footer {
+  margin: 2rem auto;
+  padding-top: 2rem;
+  height: 7rem;
   padding: 2rem;
+  background-color: var(--darkest);
 
 }
 
@@ -133,5 +302,107 @@ input[type=text] {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
+} */
+
+/* ARTIST PAGE - BIO and MORE */
+
+/* header-alt */
+
+.alt-header {
+  background-color: var(--darkest);
+  padding: 2rem;
+  margin-bottom: 0;
+}
+
+.alt-header .alt-container {
+  display: flex;
+  justify-content: center;
+  /* no vertical align */
+}
+
+.back-header-block {
+  display: block;
+}
+
+.vinyl-image {
+  width: 200px;
+  height: 200px;
+}
+
+.artist-bio-image {
+  width: 200px;
+  height: 200px;
+}
+
+/* bio intro section */
+
+.artist-main {
+  margin: 0;
+}
+
+.artist-main .alt-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bio-top {
+  margin: 2rem auto;
+  /* border: 1px solid red; */
+}
+
+.bio-top .container {
+  display: flex;
+  justify-content: center;
+}
+
+.bio-section-title {
+  text-align: left;
+}
+
+.artist-large {
+  width: 600px;
+  height: 600px;
+}
+
+.bio-card {
+  width: 35vw;
+  height: 55vh;
+
+}
+
+.summary h2 {
+  margin-bottom: 2rem;
+}
+
+/* disgography section */
+
+.discography {
+  margin: 2rem auto;
+  padding-top: 2rem;
+}
+
+.discography .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cta-buttons {
+  margin-top: 2rem;
+}
+
+.link-card {
+  margin: 0 auto;
+}
+
+.disc-grid-container {
+  margin: 0;
+  float: left;
+}
+
+.discog-grid img {
+  width: 320px;
+  height: 320px;
 }
