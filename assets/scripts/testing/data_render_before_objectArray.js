@@ -62,31 +62,31 @@ const genreList = [
 
 // option 1
 
-// // on-load handler - grab items and grid cards from local
-// window.onload = function () {
-//   // if local has save history 
-//   if (localStorage.getItem("savedArtists")) {
-//     // grab it
-//     searchHistory = JSON.parse(localStorage.getItem("savedArtists"));
-//     console.log('saved locations found:', searchHistory) // ok
+// on-load handler - grab items and grid cards from local
+window.onload = function () {
+  // if local has save history 
+  if (localStorage.getItem("savedArtists")) {
+    // grab it
+    searchHistory = JSON.parse(localStorage.getItem("savedArtists"));
+    console.log('saved locations found:', searchHistory) // ok
 
-//     searchRequest = searchHistory[0];
+    searchRequest = searchHistory[0];
 
-//     // loop through each saved artist in searchHistory
-//     searchHistory.forEach(artist => {
-//       // set artistName to current artist
-//       artistName = artist;
-//       // fetch data for each saved artist
-//       // somehow generating a CORS error in the response via this method
-//       // looks like the object storage will have to be implemented...
-//       fetchData(searchRequest)
-//       console.log(searchRequest) // undefined
-//       // generate the card(s) for the saved artist
-//       // called after fetchData... (within fetchData!)
-//       // renderCard(cogData, cogsName, artwork, artworkBio, lastData, artistArray, artistName, genre, genrePlaylist, artistPage)
-//     });
-//   }
-// }
+    // loop through each saved artist in searchHistory
+    searchHistory.forEach(artist => {
+      // set artistName to current artist
+      artistName = artist;
+      // fetch data for each saved artist
+      // somehow generating a CORS error in the response via this method
+      // looks like the object storage will have to be implemented...
+      fetchData(searchRequest)
+      console.log(searchRequest) // undefined
+      // generate the card(s) for the saved artist
+      // called after fetchData... (within fetchData!)
+      // renderCard(cogData, cogsName, artwork, artworkBio, lastData, artistArray, artistName, genre, genrePlaylist, artistPage)
+    });
+  }
+}
 
 // // option 2
 
@@ -161,8 +161,8 @@ searchBtn.addEventListener("click", function (event) {
 
     searchHistory.push(searchRequest)
     console.log("new search item added to array: ", searchHistory)
-    // save to local - we use OBJECT ARRAY NOW! !! Else uncomment !!
-    // localStorage.setItem('savedArtists', JSON.stringify(searchHistory));
+    // save to local 
+    localStorage.setItem('savedArtists', JSON.stringify(searchHistory));
 
     // // try catch here to handle site errors
     // try {
@@ -230,14 +230,14 @@ async function fetchData(searchRequest) {
     return data;
 
   } else {
-    // all these arror catches will need replacing searchHistory to artistObject
     // pop it off the array 
     searchHistory.pop(searchRequest)
     console.log('bad entry popped!', searchHistory)
-    // !! UNCOMMENT IF NOT USING OBJECTARRAY !! 
+    // remove it from local - this sets it blank - no!
+    // localStorage.setItem('search-history', JSON.stringify(''));
     // from stack overflow (one-liner) https://stackoverflow.com/questions/63351263/how-to-remove-last-value-localstorage
-    // localStorage.savedArtists = JSON.stringify(JSON.parse(localStorage.savedArtists ?? "[]").slice(0, -1))
-    // console.log('bad value was removed from array and local:', searchHistory, localStorage)
+    localStorage.savedArtists = JSON.stringify(JSON.parse(localStorage.savedArtists ?? "[]").slice(0, -1))
+    console.log('bad value was removed from array and local:', searchHistory, localStorage)
     unknownModal()
   }
 }
@@ -366,20 +366,9 @@ function getArtist(data) {
   let artistPage = artistArray.url;
   console.log('artists URL page for lastfm: ', artistPage)
 
-
-  // helper: instead of having a huge list of inputs; how can we condense this to a single input called 'artistData' ?
-
-
   // correct call from WITHIN the function we want to add the args to!
   renderCard(
-    cogData, artwork, artworkBio, lastData, artistArray, artistName, genre, genrePlaylist, artistPage)
-
-  // I think I want to call the generateArrayObject function here:
-  // once the data is collected and defined per artist; it is saved as an arrayObject
-  // this will need to be ON-LOAD ONLY - outside of this function - else it will be called again by mistake when getArtist() is called!
-
-  // it has to be called at the time of initial card creation; as well as upon refresh via an on-load function (happens once to grab saved cards)
-  generateArrayObject(artistName, genre, artworkBio)
+    cogData, cogsName, artwork, artworkBio, lastData, artistArray, artistName, genre, genrePlaylist, artistPage)
 
 }
 // finally, we need to access these variables again within renderCard
@@ -391,10 +380,10 @@ function getArtist(data) {
 
 function renderCard(
 
-  cogData, artwork, artworkBio, lastData, artistArray, artistName, genre, genrePlaylist, artistPage) {
+  cogData, cogsName, artwork, artworkBio, lastData, artistArray, artistName, genre, genrePlaylist, artistPage) {
 
   // success!! Learning at last!
-  console.log(cogData, lastData, artwork, artistArray, artistName)
+  console.log(cogData, lastData, name, artwork, artistArray, artistName)
 
   // for each new artist - create a new card container
   const cardContainer = document.createElement("div")
@@ -540,88 +529,6 @@ function renderCard(
     card.remove();
   });
 
-}
-
-// the new generateArrayObject function -
-// gathers name, genre and image into an object
-// allows the on-load to 'recreate' the artist cards without causing a CORS error
-function generateArrayObject(artistName, genre, artworkBio) {
-
-  // create the template object
-  let artistObject = [
-    { artistName: artistName },
-    { genre: genre },
-    { artwork: artworkBio }
-  ];
-  console.log('new artist object created:', artistObject)
-
-  // helper: we need to append a new index each artist object created
-  // i.e artistObject-1, artistObject-2 etc so they aren't overwritten
-
-  // Get any stored objects
-  let storedArtistObject = localStorage.getItem('artistObject');
-  let parsedArtistObject = storedArtistObject ? JSON.parse(storedArtistObject) : null;
-
-  // ISSUE: where we need to have a loop that adds 1 to the artistObject each time (to gather multiple objects, not OVERWRItE)
-  // If the object is not in local storage, store it
-  if (!parsedArtistObject) {
-    localStorage.setItem('artistObject', JSON.stringify(artistObject));
-  } else {
-    // Otherwise, update the stored object with the current value of artistObject
-    parsedArtistObject = artistObject;
-    localStorage.setItem('artistObject', JSON.stringify(parsedArtistObject));
-  }
-
-  console.log(JSON.parse(localStorage.getItem('artistObject')));
-
-  // finally, return the object for re-accessing OR call the next function that needs it WITHIN here
-  displayArtistObject(artistObject);
-}
-
-// display the saved objects on-load? this is not doing that?
-// I'm not sure what this function is doing or why its neccessary??
-// something about the cards being created 3 times?! I forget
-// we created the objectArray above, why are we putting the objects into another array??
-
-// The original artistObjects are LOCAL - we need to add a new array that indexes them properly 
-// allowing access from other functions via do notation! call array 'artistData'
-
-function displayArtistObject(artistArray) {
-  // define OUTSIDE the loop
-  let artistData = {};
-
-  for (let i = 0; i < artistArray.length; i++) {
-    console.log(artistArray[i]);
-
-    // define each item and give it an index
-    let currentItem = artistArray[i];
-
-    if (currentItem.hasOwnProperty('artistName')) {
-      artistData.artistName = currentItem.artistName;
-      console.log(artistData.artistName);
-    }
-
-    if (currentItem.hasOwnProperty('genre')) {
-      artistData.genre = currentItem.genre;
-      console.log(artistData.genre);
-    }
-
-    if (currentItem.hasOwnProperty('artwork')) {
-      artistData.artwork = currentItem.artwork;
-      console.log(artistData.artwork);
-    }
-
-  }
-
-  // now do something with the variables - outside the for loop?
-  // cannot access here though, since it's now out of scope!!
-
-  // BECAUSE we put the new array INSIDE the loop!! Obvs 
-
-  // the card is being rendered here upon initial card creation !!
-  // we want it to generate ON-LOAD only, IF the artist is in the objectArray
-
-  // renderCard(artistData);
 }
 
 // error modal handling
@@ -839,15 +746,4 @@ function hideModal() {
   errorModalEl.classList.remove('show');
   errorModalEl.style.display = 'none';
 }
-
-// last on-load 
-// function renderSavedCards(artistData) {
-//   renderCard(artistData);
-// }
-
-// everything is either null or undefined - so it won't render the data
-window.onload = function (artistData) {
-  renderCard(artistData);
-}
-
 

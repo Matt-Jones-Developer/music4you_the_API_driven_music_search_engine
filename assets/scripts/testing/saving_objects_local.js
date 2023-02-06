@@ -57,6 +57,8 @@ let artworkData = 'https://i.discogs.com/hI43yrM9q3JZHI4LATi26oB-SZ_Sp-BkCs0YRtE
 // so these are being overwritten each time we change them - so a function needs to be created 
 // that stores a new object EACH TIME the user searches an artist 
 
+// an object array must be created for each artist saved 
+
 // set a global for grid rendering 
 const gridContainer = document.querySelector("#grid-container")
 
