@@ -1,0 +1,42 @@
+// Current BUGLIST and issues/fixes [TODOS]
+
+// card removal:
+
+card will remove (OK)
+array will remove say second item, of 3 cards, correctly
+// BUT! if then remove the first, it keeps the name of the first, instead of the third?
+// its a poor index solution that isn't quite doing what I think it does
+// if we make the artistObject object store instead, hopefully it will solve this??
+
+// or double check the index code - what is it doing??
+
+
+// if garbage entered, it stays in the Array
+
+// the garbage collector only catches 'typos/garbage'
+/TODO/ if user types in a "correct name" (but NOT an artist) - error will return 
+  // 'name' not found or something (its a different bug to fix)
+
+!! major !!
+// retrieve local storage - causes issues with logic regarding card removal
+  // also we had to make searchRequest global, cannot call on the API to re-render the data or cards 
+
+!! major !!
+// when refresh - cards disappear
+/DONE/ array and local are correct 
+  // must re-call API, tap into the saved artists - pull up their data,
+  // arrange it via correct data-index and then regenerate cards  !!
+
+// if genre NOT IN genreArray = ['pop', 'rock', grunge', 'dubstep']
+  // quite an array length to solve the 'amazing' or 'micheal jackson' error in genre!
+    // but if not, use the discogs genre data as an alternative genre label
+
+// hidden easter egg! search 'mel gibson' or 'tom hanks' hahahahah
+
+!! important !!
+// if artist name.length > 13: reduce font-size! 
+
+// type 'christina' will show C Aguilera, but type 'katy' will blank art and some rando steely dan album??
+
+// some icons would be nice - ticket/info/list/music etc 
+

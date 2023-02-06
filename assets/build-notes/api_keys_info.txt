@@ -1,0 +1,93 @@
+// discogs API
+
+token: Current token: XornnKLzrTLsliVVmcdzNQMWoHiDBdjrYmgTAoRx
+
+// URL
+
+https://api.discogs.com
+
+
+Consumer Key	SUabynzSHsiRIoQDRiOv
+Consumer Secret	YVLXccThJwokGpRwpgaQzkvUJKSlkhun
+Request Token URL	https://api.discogs.com/oauth/request_token
+Authorize URL	https://www.discogs.com/oauth/authorize
+Access Token URL	https://api.discogs.com/oauth/access_token
+
+// fetching
+
+https://api.discogs.com/artists/{108713}
+
+/database/search?q={query}&{?type,title,release_title,credit,artist,anv,label,genre,style,country,year,format,catno,barcode,track,submitter,contributor}
+
+query - nirvana
+type - release/master/artist/label 
+title - nirvana - nevermind 
+release_title - nevermind 
+credit - kurt 
+artist - nirvana
+label - dgc 
+genre - rock
+style - grunge 
+country 
+year
+format - album 
+catno - CGCD-24425
+track - smells like teen spirit
+
+example?
+https://api.discogs.com/database/search?q={nirvana}&apiKey=XornnKLzrTLsliVVmcdzNQMWoHiDBdjrYmgTAoRx
+
+fetch attempts: THIS WORKS (artist name)
+
+fetch("https://api.discogs.com/database/search?q=Nirvana&key=SUabynzSHsiRIoQDRiOv&secret=YVLXccThJwokGpRwpgaQzkvUJKSlkhun")
+.then(response => response.json())
+.then(data => console.log(data))
+
+// use key and secret 
+"https://api.discogs.com/database/search?q=Nirvana&key=SUabynzSHsiRIoQDRiOv&secret=YVLXccThJwokGpRwpgaQzkvUJKSlkhun"
+
+
+// adding more results (refined)
+&{?release,nevermind,rock,grunge,album}
+
+fetch("https://api.discogs.com/database/search?q=Nirvana&{?release,nevermind,rock,grunge,album}&key=SUabynzSHsiRIoQDRiOv&secret=YVLXccThJwokGpRwpgaQzkvUJKSlkhun")
+.then(response => response.json())
+.then(data => console.log(data))
+
+Found via data dot notation:
+
+temp1.results[0]
+temp1.results[0].title (nirvana)
+temp1.results[0].cover_image (bio image)
+bio image:
+https://i.discogs.com/BS3W-WDYXuQMwoS8pwYBAvXIxT1mNKeLeg7W0A9l5sk/rs:fit/g:sm/q:90/h:450/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTEyNTI0/Ni0xNTI5MTk4Mjg4/LTY0MzAuanBlZw.jpeg
+
+
+// finding more info 
+https://api.discogs.com/artists/{ARTIST_ID}/releases
+
+--------------------
+
+
+// last.fm keys and queryURL
+
+let apiKey = 'a87d07d178f9511fa2e22a54dbe7f678';
+
+let queryURL = ' http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=YOUR_API_KEY&artist=Cher&album=Believe&format=json'
+
+https://www.last.fm/api//2.0/?method=album.getinfo&api_key=a87d07d178f9511fa2e22a54dbe7f678_KEY&artist=Cher&album=Believe&format=json
+
+
+fetch("http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=a87d07d178f9511fa2e22a54dbe7f678&artist=Cher&album=Believe&format=json")
+.then(response => response.json())
+.then(data => console.log(data))
+
+
+temp1.album
+{artist: 'Cher', mbid: '03c91c40-49a6-44a7-90e7-a700edf97a62', tags: {…}, playcount: '4495165', image: Array(6), …}
+temp1.artist
+undefined
+temp1.album.artist
+'Cher'
+temp1.album.image[3].#text
+VM922:1 Uncaught SyntaxError: Private field '#text' must be declared in an enclosing class
