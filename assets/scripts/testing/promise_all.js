@@ -1,10 +1,4 @@
 // a neat way of fetching rom multiple APIs using fetch all
-// lastFM keys
-const apiKeyLast = 'a87d07d178f9511fa2e22a54dbe7f678'
-
-// discogs key and secret
-const apiKeyCogs = 'SUabynzSHsiRIoQDRiOv'
-const secret = 'YVLXccThJwokGpRwpgaQzkvUJKSlkhun'
 
 // search elemnts
 

@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="./assets/images/favicon.ico">
+  <link rel="stylesheet" href="assets/css/webfontkit-tagsExtreme/stylesheet.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,800,900">
   <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="./assets/css/style.css">
   <title>Music4You - Tha API driven music search tool</title>
@@ -13,55 +16,69 @@
 <body>
   <header class="header">
     <div class="container">
-      <div class="header-title">
-        <h1>Music4You - The Artist Search App</h1>
+      <div class="header-image">
+        <img src="./assets/images/vinyl_crystal.png" alt="vinyl-record">
       </div>
-      <!-- header content here -->
+      <div class="header-title">
+        <h1>Music4You</h1>
+        <h2>Artist & Ticket Booking Search Engine</h2>
+      </div>
+      <div class="header-image">
+        <img src="./assets/images/vinyl-record.png" alt="vinyl-record">
+      </div>
     </div>
   </header>
-  <main class="main">
+  <!-- search bar and search artist button -->
+  <!-- sticky nav -->
+  <nav class="navbar navbar-expand-lg sticky-top custom-nav" id="search-area">
     <div class="container">
-      <div class="main-title">
-        <h1>Music App - main </h1>
+      <div class="search-title">
+        <p>Build and store a collection of favourite artists...</p>
       </div>
-      <!-- search section -->
-      <!-- aside search bar and searched artist history buttons -->
-      <aside>
+      <div class="music-search">
         <!-- input label -->
-        <input class="form-input music-search" type="text" id="search-input" placeholder="Artist"
-          aria-labelledby="form-heading" aria-controls="music-search" onfocus="this.value=''">
+        <input class="form-input search-bar" type="text" id="search-input" placeholder="search artist"
+          aria-labelledby="music-search" aria-controls="music-search" onfocus="this.value=''">
         <!-- search button -->
-        <button type="submit" class="btn search-button btn-primary" id="search-button" aria-label="submit search">
-          Search Artist
+        <button type="submit" class="btn search-button" id="search-button" aria-label="submit search"
+          data-bs-toggle="modal" data-bs-target="#errorModalEl">
+          <b>Search</b>
         </button>
-      </aside>
-      <section class="artist-info">
-        <!-- these will eventually be bootstrap cards (for each artist searched) -->
-        <!-- grid ? -->
-        <!-- area to show the API info -->
-        <div class="container">
-          <!-- add fetched data here -->
-          <div class="artist-name"></div>
-          <div class="album-name"></div>
-          <div class="genre"></div>
-          <div class="album-art"></div>
-          <!-- img src generated here -->
-          <div class="artist-bio"></div>
-          <!-- link to artists last.fm page -->
-          <!-- user can access track playlists, all albums etc -->
-          <div class="artist-page-link"></div>
-        </div>
-      </section>
+      </div>
+      <div class="search-title">
+        <p>find tickets to shows, access tour dates and more!</p>
+      </div>
+    </div>
+  </nav>
+  <main class="main">
+    <div class="container-2">
+      <!-- 'your searches' title & grid layout -->
+      <!-- grid section -->
+      <div class="row" id="grid-container"></div>
     </div>
   </main>
+  <!-- Modals required -->
+  <div class="modal fade" id="errorModalEl" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true"></div>
+  <!-- end modal -->
   <footer class="footer">
     <div class="container">
       <!-- footer content here -->
     </div>
   </footer>
   <!-- scripts -->
+  <script src="./assets/scripts/config.js"></script>
   <!-- <script src="./assets/scripts/main.js"></script> -->
-  <script src="./assets/scripts/testing/api_drafting.js"></script>
+  <script src="./assets/scripts/data_render.js"></script>
+  <!-- testing -->
+  <!-- <script src="./assets/scripts/testing/api_drafting.js"></script> -->
+  <!-- <script src="./assets/scripts/testing/discogs_images.js"></script> -->
+  <!-- <script src="./assets/scripts/testing/promise_all.js"></script> -->
+  <!-- <script src="./assets/scripts/testing/returning_accessing.js"></script> -->
+  <!-- <script src="./assets/scripts/testing/ticketmaster_test.js"></script> -->
+  <!-- <script src="./assets/scripts/testing/grid_gen.js"></script> -->
+  <!-- <script src="./assets/scripts/testing/passing_variables.js"></script> -->
+  <!-- <script src="./assets/scripts/testing/saving_objects_local.js"></script> -->
+  <!-- <script src="./assets/scripts/testing/remove_correct_item.js"></script> -->
 </body>
 
 </html>
