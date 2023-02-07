@@ -91,3 +91,20 @@ temp1.album.artist
 'Cher'
 temp1.album.image[3].#text
 VM922:1 Uncaught SyntaxError: Private field '#text' must be declared in an enclosing class
+
+
+
+
+Discovery (Tickemaster)
+  
+let apiikey= GbIS7ZHqNdNaR8p53t0s3R87G5IbJWSB
+
+
+let queryURL = "https://app.ticketmaster.com/discovery/v2/events?&keyword=coldplay&apikey=GbIS7ZHqNdNaR8p53t0s3R87G5IbJWSB&locale=*"
+
+fetch("https://app.ticketmaster.com/discovery/v2/events?&keyword=coldplay &apikey=GbIS7ZHqNdNaR8p53t0s3R87G5IbJWSB&locale=*")
+.then(response => response.json())
+.then(data => console.log(data))
+
+temp1.events. ---- Lists upcoming events (Array)
+
