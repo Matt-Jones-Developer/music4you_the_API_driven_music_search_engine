@@ -4,33 +4,6 @@ let apiKey = "&apikey=GbIS7ZHqNdNaR8p53t0s3R87G5IbJWSB"
 let attractionFullUrl = "https://app.ticketmaster.com/discovery/v2/attractions.json?&keyword=" + artistName + apiKey
 
 
-const searchBtn = document.querySelector('search-button')
-// // const searchInput=document.querySelector()
-// // define the request
-// const searchRequest = userSearch.value
-// console.log('user searched for:', searchRequest)
-
-
-
-function getArtist() {
-
-
-
-
-}
-// console.log(data)
-// console.log(data._embedded.attractions[0])
-
-getArtist();
-
-
-
-// searchBtn.addEventListener('click', function (event) {
-//     event.preventDefault()
-
-
-
-
 fetch(attractionFullUrl)
     .then(res => res.json())
     .then(data => {
