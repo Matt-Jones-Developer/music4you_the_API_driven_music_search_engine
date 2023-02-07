@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Music4You - Tha API driven music search tool</title>
+    <link href="/assets/styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Responsive navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container px-5">
+            <a class="navbar-brand" href="#!">Music4You - Tha API driven music search tool</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Page Content-->
+    <div class="container px-4 px-lg-5">
+
+<h1> Events</h1>
+ <div class="music-search">
+        <!-- input label -->
+        <!-- <input class="form-input search-bar" type="text" id="search-input" placeholder="Search artist ..."
+            aria-labelledby="music-search" aria-controls="music-search" onfocus="this.value=''"> -->
+        <input class="form-input search-bar" type="text" id="search-input" placeholder="search artist"
+          aria-labelledby="music-search" aria-controls="music-search" onfocus="this.value=''">
+        <!-- search button -->
+        <!-- modal toggle and target may need to be added dynamically, should user try to search button without entering -->
+        <button type="submit" class="btn search-button" id="search-button" aria-label="submit search"
+          data-bs-toggle="modal" data-bs-target="#errorModalEl">
+          <b>Search</b>
+        </button>
+        <!-- testing array removal ONLY - delete! -->
+        <!-- <button type="submit" class="btn remove-button" id="remove-button">
+          <b>Remove</b>
+        </button> -->
+      </div>
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+        <div class="container px-4 px-lg-5">
+            <p class="m-0 text-center text-white">Copyright &copy;Music4You</p>
+        </div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="./scripts/TicketMaster.js"></script>
+</body>
+
+</html>
