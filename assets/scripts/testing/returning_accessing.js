@@ -60,13 +60,6 @@ function funcFour(data) {
 
 // lets try with requests
 
-// lastFM keys
-const apiKeyLast = 'a87d07d178f9511fa2e22a54dbe7f678'
-
-// discogs key and secret
-const apiKeyCogs = 'SUabynzSHsiRIoQDRiOv'
-const secret = 'YVLXccThJwokGpRwpgaQzkvUJKSlkhun'
-
 const searchRequest = 'Nirvana';
 
 // call the fetch function

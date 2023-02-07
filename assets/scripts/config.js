@@ -2,12 +2,12 @@
 
 // all API keys and secrets
 
+// lastFM keys
+const apiKeyLast = "a87d07d178f9511fa2e22a54dbe7f678"
+
 // discogs key and secret
 const apiKeyCogs = "SUabynzSHsiRIoQDRiOv"
 const secret = "YVLXccThJwokGpRwpgaQzkvUJKSlkhun"
-
-// lastFM keys
-const apiKeyLast = "a87d07d178f9511fa2e22a54dbe7f678"
 
 // musixmatch api
 const apiKeyMusix = '418ba039b53e2d2e88ebda069a30a55e'
@@ -25,6 +25,5 @@ const secretWiki = '9753939a04553de256b898ae5bf07485e01acd94'
 
 // ticketmaster Api key
 const ticketMasterAPIKey = 'GbIS7ZHqNdNaR8p53t0s3R87G5IbJWSB'
-
 
 
