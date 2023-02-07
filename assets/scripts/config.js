@@ -27,21 +27,3 @@ const secretWiki = '9753939a04553de256b898ae5bf07485e01acd94'
 const ticketMasterAPIKey = 'GbIS7ZHqNdNaR8p53t0s3R87G5IbJWSB'
 
 
-
-// API key notes and tokens
-
-// discogs API
-
-// token: Current token: XornnKLzrTLsliVVmcdzNQMWoHiDBdjrYmgTAoRx
-
-// // URL
-
-// https://api.discogs.com
-
-
-// Consumer Key	SUabynzSHsiRIoQDRiOv
-// Consumer Secret	YVLXccThJwokGpRwpgaQzkvUJKSlkhun
-// Request Token URL	https://api.discogs.com/oauth/request_token
-// Authorize URL	https://www.discogs.com/oauth/authorize
-// Access Token URL	https://api.discogs.com/oauth/access_token
-
