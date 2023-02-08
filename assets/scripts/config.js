@@ -24,6 +24,7 @@ const secretWiki = '9753939a04553de256b898ae5bf07485e01acd94'
 
 
 // ticketmaster Api key
-const ticketMasterAPIKey = 'GbIS7ZHqNdNaR8p53t0s3R87G5IbJWSB'
+// causes CORS error lol
+// const ticketMasterAPIKey = 'GbIS7ZHqNdNaR8p53t0s3R87G5IbJWSB'
 
 

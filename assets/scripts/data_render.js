@@ -10,59 +10,42 @@ const errorModalEl = document.querySelector('#errorModalEl')
 
 // render elements
 const gridContainer = document.querySelector("#grid-container")
-const artistNameLabel = document.querySelector(".artist-name")
-const albumNameLabel = document.querySelector(".album-name")
-const albumArtLabel = document.querySelector(".album-art")
-const genreLabel = document.querySelector(".genre")
-const styleLabel = document.querySelector(".style")
-const goButton = document.querySelector(".go-button")
 
 // force global as to access it on refresh
-let searchRequest;
+// let searchRequest;
 
 // array to store history
 let searchHistory = []
 console.log("history array is empty:", searchHistory)
 
-// set a card index - may need to be global here?
-let index = 0;
-
 // genreList - exclude 'funk' to allow for Funkadelic, 
 // 'blues' for The Blues Brothers 
 // punk for daft punk
-// 'jazz', for jazzy jeff
-// metal for metallica (really??) currently yes!! - alt is all caps??
 const genreList = [
   'pop', 'rock', 'country', 'reggae', 'house', 'dubstep', 'disco', 'classical',
   'folk', 'ska', 'dance', 'dub', 'trip hop', 'hip hop', 'hiphop', 'rap',
   'instrumental', 'electronica', 'jive', 'grime', 'zeezy'
 ]
 
-// // on-load handler - grab items and grid cards from local
-// // causing issues - see todos
-// window.onload = function () {
-//   // if local has save history 
-//   if (localStorage.getItem("savedArtists")) {
-//     // grab it
-//     searchHistory = JSON.parse(localStorage.getItem("savedArtists"));
-//     console.log('saved locations found:', searchHistory) // ok
+// on-load handler 
+// display artist data in card format
+window.onload = function () {
+  // define currently stored and get
+  let storedArtistObject = localStorage.getItem("artistObject");
+  // define parsed
+  let parsedArtistObject = storedArtistObject ? JSON.parse(storedArtistObject) : [];
+  // render the saved cards
+  renderSavedCards(parsedArtistObject);
+};
 
-//     // fetch data for each card saved to local storage via artistName
-//     fetchData(searchRequest)
-//     // generate the cards(s) for the saved artists
-//     renderCard()
-//   }
-// }
-
-
-// unknown name error - type dj scotch for example
-
+// [TODO: BUG] unknown name error - type dj scotch for example
 // event listener
 searchBtn.addEventListener("click", function (event) {
   event.preventDefault()
 
   // define the request
-  searchRequest = userSearch.value
+  // this should be const (no need for the global above?)
+  const searchRequest = userSearch.value
   console.log("user searched for:", searchRequest)
 
 
@@ -101,7 +84,7 @@ searchBtn.addEventListener("click", function (event) {
 
   } else {
 
-    // push item to array - else it's not so add it 
+    // push item to array - it's not in the array, so add it 
     // this is fine, however, if user enters garbage - it will add it!
     // we need to make this if else part of the garbage collector...
 
@@ -174,8 +157,7 @@ async function fetchData(searchRequest) {
     // pop it off the array 
     searchHistory.pop(searchRequest)
     console.log('bad entry popped!', searchHistory)
-    // remove it from local - this sets it blank - no!
-    // localStorage.setItem('search-history', JSON.stringify(''));
+
     // from stack overflow (one-liner) https://stackoverflow.com/questions/63351263/how-to-remove-last-value-localstorage
     localStorage.savedArtists = JSON.stringify(JSON.parse(localStorage.savedArtists ?? "[]").slice(0, -1))
     console.log('bad value was removed from array and local:', searchHistory, localStorage)
@@ -206,8 +188,8 @@ function getArtist(data) {
   console.log("alt cogsData array(5):", cogDataAlt)
 
   // access the artist name only
-  let name = cogData.title;
-  console.log("cogsData artist name: ", name) // logs Nirvana!
+  let nameCogs = cogData.title;
+  console.log("cogsData artist name: ", nameCogs) // logs Nirvana!
 
   // access artwork [0] bio pic
   let artworkBio = cogBioData.cover_image;
@@ -251,6 +233,7 @@ function getArtist(data) {
     console.log('bad entry popped!', searchHistory);
     unknownModal();
 
+
   } else {
     artistName = lastData.artist.name;
   }
@@ -285,22 +268,36 @@ function getArtist(data) {
 
   // just keeps breaking the API 
   // let genre = '';
-  // if (typeof genre == 'undefined' && typeof genre.name == 'undefined') {
+  // if (typeof genre !== 'undefined' && typeof genre.name !== 'undefined') {
+
+  //   // genre
+  //   let genre = genreArray.name;
+  //   console.log('genre:', genre)
+
+  // } else {
   //   console.log('genreArray or genreArray.url is undefined');
   //   errorModal()
   // }
+
   // genre
   let genre = genreArray.name;
   console.log('genre:', genre)
 
-  // genre playlist
+
+  // genre playlist - odd 'name' abbrev. error - fixed 
   let genrePlaylist = "";
   // catch bad url for genre
   if (typeof genreArray !== 'undefined' && typeof genreArray.url !== 'undefined') {
     genrePlaylist = genreArray.url;
     console.log(genrePlaylist)
   } else {
+    // else- the item is UNDEFINED - but this is ignored??
+    // originally this caught the error? now it does not run and error displays:
+    // Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'name')
     console.log('genreArray or genreArray.url is undefined');
+    // remove it from local?
+    localStorage.savedArtists = JSON.stringify(JSON.parse(localStorage.savedArtists ?? "[]").slice(0, -1))
+    console.log('bad value was removed from array and local:', searchHistory, localStorage)
   }
 
   // temporary feature until full artist page is built (link to artist page URL)
@@ -309,23 +306,50 @@ function getArtist(data) {
 
   // correct call from WITHIN the function we want to add the args to!
   renderCard(
-    cogData, name, artwork, artworkBio, lastData, artistArray, artistName, genre, genrePlaylist, artistPage)
+    cogData, nameCogs, artwork, artworkBio, lastData, artistArray, artistName, genre, genrePlaylist, artistPage)
+
+  // call the createArtistObject function to re-use and store artist data (outside of fetch)
+  storeArtistObject(artistName, genre, artworkBio)
 
 }
-// finally, we need to access these variables again within renderCard
+
+// Function to store artist data in local storage
+function storeArtistObject(artistName, genre, artworkBio) {
+
+  let storedArtistObject = localStorage.getItem("artistObject");
+  let parsedArtistObject = storedArtistObject ? JSON.parse(storedArtistObject) : [];
+  parsedArtistObject.push({ artistName, genre, artworkBio });
+  localStorage.setItem("artistObject", JSON.stringify(parsedArtistObject));
+
+  console.log('artistObject created:', parsedArtistObject)
+}
 
 // dynamic HTML rendering 
-// function renderCard(data, cogData, lastData) {
-// function renderCard(data, cogData, lastData, name, artwork, artistArray, artistName) {
-// data only? NO! we are done with data at this point; we have the new vars to use!
+
+// add a card counter to track when to scroll!
+let cardCounter = 0;
+let cardCount = 0;
+
+function updateCardCount(add) {
+  cardCount += add ? 1 : -1;
+  console.log('cards on screen:', cardCount)
+  return cardCount;
+}
+
 
 function renderCard(
 
-  cogData, name, artwork, artworkBio, lastData, artistArray, artistName, genre, genrePlaylist, artistPage) {
+  cogData, nameCogs, artwork, artworkBio, lastData, artistArray, artistName, genre, genrePlaylist, artistPage) {
 
+  console.log(cogData, nameCogs, artwork, artworkBio, lastData, artistArray, artistName, genre, genrePlaylist, artistPage)
+  // ++ cardCount
+  // cardCount++;
+  updateCardCount(true);
   // success!! Learning at last!
-  console.log(cogData, lastData, name, artwork, artistArray, artistName)
-
+  // console.log(cogData, lastData, nameCogs, artwork, artistArray, artistName)
+  // create a wrapper to allow a fixed footer with a space for the cards
+  const wrapper = document.createElement("div")
+  wrapper.classList.add("wrapper");
   // for each new artist - create a new card container
   const cardContainer = document.createElement("div")
   // set its class (card-cont?)
@@ -344,12 +368,19 @@ function renderCard(
   // set card attr and styling 
   card.setAttribute("data-name", artistName);
   // console.log(card.getAttribute('data-name'))
-  // card.setAttribute("data-index", ++index);
   // card.style.boxShadow = "var(--btn-shadow)";
   card.style.paddingTop = "3rem";
   // define a card size for pixel perfect
-  card.style.width = "397px";
+  card.style.width = "398px";
   card.style.height = "520px";
+
+  // cardClose 
+  const cardClose = document.createElement("div");
+  cardClose.classList.add("btn-close", "alert-dismissible", "fade", "show");
+  cardClose.setAttribute("data-bs-theme", "dark");
+  cardClose.setAttribute("type", "button");
+  cardClose.style.marginLeft = "auto";
+  cardClose.order = "2";
 
   // create card body
   const cardBody = document.createElement("div");
@@ -361,30 +392,20 @@ function renderCard(
   artistEl.classList.add("card-title");
   artistEl.textContent = `${artistName}`;
   // style here
-  artistEl.style.fontSize = "34px";
   artistEl.style.letterSpacing = ".2rem";
+
+  // if the name is longer than 13 chars
+  if (artistName.length < 13) {
+    artistEl.style.fontSize = "34px";
+  } else {
+    artistEl.style.fontSize = "30px";
+  }
 
   // add a genre label
   const genreEl = document.createElement("h3");
   genreEl.textContent = `${genre}`;
   // styling
   genreEl.style.fontSize = "18px";
-
-  // cogGenre element (to append to genreEl)
-  // const cogGenreEl = document.createElement("h3");
-  // cogGenreEl.textContent = `${cogGenre}`;
-  // // style here
-  // cogGenreEl.style.fontSize = "18px";
-
-  // style (sub genre)
-  // const styleEl = document.createElement("h3")
-  // styleEl.textContent = `${style}`
-  // // style here
-  // styleEl.style.fontSize = "18px"
-  // // clear prior values
-  // styleEl.innerHTML = ""
-  // // // append
-  // styleLabel.appendChild(styleEl)
 
   // add an image
   const albumArtEl = document.createElement("img");
@@ -405,49 +426,78 @@ function renderCard(
   const artistButtonLink = document.createElement("a");
   artistButtonLink.href = `${artistPage}`;
   // href=#templates/artists-page.html
-  // artistButton.setAttribute('<a>', 'href="../templates/artists-page.html"');
-  // how to add the full href to the a tag?
+  // get info btn style
   artistButton.style.height = "2.3rem";
   artistButton.style.color = "#fff";
   artistButton.style.margin = "1rem";
-  artistButton.textContent = "Artist Info";
+  artistButton.textContent = "Playlist";
 
   // new feature added! remove artist!
-  const removeButton = document.createElement("button")
-  removeButton.classList.add("btn", "btn-warning", "remove-card")
-  removeButton.style.height = "2.3rem";
-  removeButton.style.fontSize = '14px';
-  removeButton.style.color = "#fff";
-  removeButton.style.margin = "1rem";
-  removeButton.textContent = "Remove";
+  const ticketButton = document.createElement("button")
+  ticketButton.classList.add("btn", "remove-new-card")
+  ticketButton.style.height = "2.3rem";
+  ticketButton.style.fontSize = '14px';
+  ticketButton.style.backgroundColor = "#07d159";
+  ticketButton.style.color = "#fff";
+  ticketButton.style.margin = "1rem";
+  ticketButton.textContent = "Buy Tickets";
 
-  // merging cogs genre with lastfm genre
-  // let genreMixEl = genre + "/" + cogGenre;
-  // genreLabel.append(genreEl, cogGenreEl);
-
+  // append all
+  wrapper.appendChild(cardContainer)
+  cardContainer.appendChild(card);
   // final card appends
-  card.append(artistEl, genreEl); // genreEl for just lastFM or genreMixEl for both
+  card.appendChild(cardClose);
+  card.append(artistEl, genreEl);
   cardBody.appendChild(albumArtEl);
-  cardBody.append(artistButton, removeButton)
+  cardBody.append(artistButton, ticketButton)
   card.appendChild(cardBody);
   gridContainer.appendChild(card);
+
+  // // auto scroll every 5th card
+
+  // [TODO: BUG] - so, this will only work on the 5th card created -
+  cardCounter++;
+  if (cardCount % 5 === 0) {
+    let nextRow = cardContainer.offsetTop + (Math.floor(cardCount / 5) * card.offsetHeight);
+    window.scrollTo({
+      top: nextRow,
+      behavior: "smooth"
+    });
+  }
 
   // card event handlers
 
   // redirect to URL link (temp artist page)
-  artistButton.addEventListener('click', function (event) {
+  artistButton.addEventListener('click', function () {
 
-    event.preventDefault()
     // Redirect to the artistButtonLink's href
     window.location.href = artistButtonLink.getAttribute("href");
+
+  })
+
+
+  // event listener for tickets button
+  ticketButton.addEventListener('click', function () {
+
+    // retrieve that artists ticketmaster data (if any)
+    console.log("How do I access you??")
+    ticketModal()
+    // if saved artist its - currentArtist.artistName
+    // if newly added its artistName to access the artists name to search TM
+
+    // generate a modal to display the info
+    // could offer more buttons within it to search site, check touring dates etc
+    // if not touring - generate 'generic no tours found' message
 
   })
 
   // remove button (delete card) handler
   // finally we have a winner!!! filter and toLowerCase since some/most were being sent as mixed case!!
 
-  removeButton.addEventListener('click', function (event) {
-    event.preventDefault();
+  // however this needs to work for both 'generated' and re-generated buttons!! arg
+
+  // removeButton.addEventListener('click', function () {
+  cardClose.addEventListener('click', function () {
 
     // grab the card index
     let indexName = card.getAttribute('data-name');
@@ -459,17 +509,281 @@ function renderCard(
     });
     console.log('searchHistory after filter: ', searchHistory);
 
-    // remove the item from local storage using filter
+    // remove the name item from local storage using filter
     let savedArtists = JSON.parse(localStorage.getItem("savedArtists") || "[]");
     savedArtists = savedArtists.filter(function (historyItem) {
       return historyItem.toLowerCase() !== indexName.toLowerCase();
     });
     localStorage.setItem("savedArtists", JSON.stringify(savedArtists));
+    // remove the object array too!
+
+    // remove the artist object from local 
+    removeArtistObject(artistName)
 
     // remove the card
     card.remove();
+
   });
 
+}
+
+// function to remove the object array if remove btn clicked 
+
+function removeArtistObject(artistName) {
+  let storedArtistObject = localStorage.getItem("artistObject");
+  let parsedArtistObject = storedArtistObject ? JSON.parse(storedArtistObject) : [];
+  let index = parsedArtistObject.findIndex(artist => artist.artistName === artistName);
+  parsedArtistObject.splice(index, 1);
+  localStorage.setItem("artistObject", JSON.stringify(parsedArtistObject));
+  console.log('artistObject removed. new array:', parsedArtistObject)
+  // location.reload();
+}
+
+// a re-render saved artist cards function
+// bit un-DRY but it serves a purpose for now.  
+// It completely bypasses the need to fetch data for one, which was causing headaches and errors with API
+
+function renderSavedCards(artistArray) {
+
+  console.log(artistArray)
+
+  // loop through the card array
+  for (let i = 0; i < artistArray.length; i++) {
+    const currentArtist = artistArray[i];
+    console.log(artistArray[i]);
+
+    updateCardCount(true);
+
+    const wrapper = document.createElement("div")
+    wrapper.classList.add("wrapper");
+    // for each new artist - create a new card container
+    const cardContainer = document.createElement("div")
+    // set its classes
+    cardContainer.classList.add("col-lg-3", "col-md-6", "col-sm-12", "d-inline-flex");
+    // add a fixed width and centered margin
+    cardContainer.style = "width: 100%", "margin: 0 auto";
+
+    // create the card element
+    const card = document.createElement("div");
+    card.classList.add("card", "bg-dark", "m-3", "justify-content-center");
+    // also add the cols
+    card.classList.add("col-lg-3", "col-md-6", "col-sm-12");
+    // give each card a data-name tag
+    card.setAttribute("data-name", currentArtist.artistName);
+    // set card styling 
+    card.style.paddingTop = "3rem";
+    card.style.width = "398px";
+    card.style.height = "520px";
+
+    // cardClose 
+    const cardClose = document.createElement("div");
+    cardClose.classList.add("btn-close", "alert-dismissible", "fade", "show");
+    cardClose.setAttribute("data-bs-theme", "dark");
+    cardClose.setAttribute("type", "button");
+    cardClose.style.marginLeft = "auto";
+    cardClose.order = "2";
+
+    // create card body
+    const cardBody = document.createElement("div");
+    cardBody.classList.add("card-body");
+    cardBody.style.textAlign = "center";
+
+    // add title (artist name)
+    const artistEl = document.createElement("h1");
+    artistEl.classList.add("card-title");
+    artistEl.textContent = currentArtist.artistName;
+
+    // style 
+    artistEl.style.letterSpacing = ".2rem";
+    // if the name is longer than 13 chars
+    if (currentArtist.artistName.length < 13) {
+      artistEl.style.fontSize = "34px";
+    } else {
+      artistEl.style.fontSize = "30px";
+    }
+
+    // add a genre label
+    const genreEl = document.createElement("h3");
+    genreEl.textContent = currentArtist.genre;
+    // styling
+    genreEl.style.fontSize = "18px";
+
+    // add an image
+    const albumArtEl = document.createElement("img");
+    // specify src
+    albumArtEl.src = currentArtist.artworkBio;
+    albumArtEl.classList.add("album-img");
+    // set the image size
+    albumArtEl.style.width = "330px";
+    albumArtEl.style.height = "310px";
+    // style image
+    albumArtEl.style.paddingBottom = "1rem";
+    albumArtEl.style.borderRadius = ".3rem";
+
+    // add the buttons
+    // go to playlist button
+    const artistButton = document.createElement("button");
+    artistButton.classList.add("btn");
+    // must include an <a href> to the artist-page el !!
+    const artistButtonLink = document.createElement("a");
+    artistButtonLink.href = currentArtist.artistPage;
+
+    artistButton.style.height = "2.3rem";
+    artistButton.style.color = "#fff";
+    artistButton.style.margin = "1rem";
+    artistButton.textContent = "Playlist";
+
+    // new feature added! remove artist!
+    const ticketsButton = document.createElement("button")
+    ticketsButton.classList.add("btn", "remove-saved-card")
+    ticketsButton.style.height = "2.3rem";
+    ticketsButton.style.fontSize = '14px';
+    ticketsButton.style.backgroundColor = "#07d159";
+    ticketsButton.style.color = "#fff";
+    ticketsButton.style.margin = "1rem";
+    ticketsButton.textContent = "Buy Tickets";
+    // add container to wrapper
+    wrapper.appendChild(cardContainer)
+    // Add the card to the card container
+    cardContainer.appendChild(card);
+    // append elements
+    card.append(cardClose)
+    card.append(artistEl, genreEl);
+    cardBody.appendChild(albumArtEl);
+    cardBody.append(artistButton, ticketsButton)
+    card.appendChild(cardBody);
+    gridContainer.appendChild(card);
+
+    // button event handling 
+    // redirect to URL link (temp artist page)
+    artistButton.addEventListener('click', function () {
+      // Redirect to the artistButtonLink's href
+      window.location.href = artistButtonLink.getAttribute("href");
+
+    })
+
+    // event listener for tickets button
+    ticketsButton.addEventListener('click', function () {
+
+      // retrieve that artists ticketmaster data (if any)
+      console.log("How do I access you??")
+      ticketModal()
+      // if saved artist its - currentArtist.artistName
+      // if newly added its artistName to access the artists name to search TM
+
+      // generate a modal to display the info
+      // could offer more buttons within it to search site, check touring dates etc
+      // if not touring - generate 'generic no tours found' message
+
+    })
+
+    // remove card event 
+
+    cardClose.addEventListener('click', function () {
+
+      // remove card, array and local item 
+      card.remove()
+      // don't update count
+      updateCardCount(false);
+      // update the data-name local storage
+      // grab the card index
+      let indexName = card.getAttribute('data-name');
+      console.log('cardIndex =', indexName);
+
+      // remove the item from the searchHistory array using filter
+      searchHistory = searchHistory.filter(function (historyItem) {
+        return historyItem.toLowerCase() !== indexName.toLowerCase();
+      });
+      console.log('searchHistory after filter: ', searchHistory);
+
+      // remove the name item from local storage using filter
+      let savedArtists = JSON.parse(localStorage.getItem("savedArtists") || "[]");
+      savedArtists = savedArtists.filter(function (historyItem) {
+        return historyItem.toLowerCase() !== indexName.toLowerCase();
+      });
+      localStorage.setItem("savedArtists", JSON.stringify(savedArtists));
+
+      // also remove object array on re-rendered cards
+      removeArtistObject(currentArtist.artistName)
+
+    })
+
+    // count cards
+    cardCounter++
+    if (cardCount % 5 === 0) {
+      let nextRow = cardContainer.offsetTop + (Math.floor(cardCount / 5) * card.offsetHeight);
+      window.scrollTo({
+        top: nextRow,
+        behavior: "smooth"
+      });
+    }
+
+  }
+
+}
+
+// error modal function
+function ticketModal() {
+  console.log('ticketmaster modal called')
+  showModal()
+  // stope more being added! (remove them if exist?)
+  const previousModal = document.querySelector(".modal-dialog");
+  if (previousModal) {
+    previousModal.remove();
+  }
+  // attached to event listener
+  // if user presses whilst value is empty: open modal
+  // somehow attach the modal to the button
+  // create the modal div 
+  const ticketModalDiv = document.createElement("div");
+  ticketModalDiv.classList.add("modal-dialog", "modal-dialog-centered")
+  ticketModalDiv.innerHTML = '';
+  ticketModalDiv.innerHTML = `
+      <div class="modal-content">
+        <div class="modal-header justify-content-center">
+        <h2 class="modalTitle">!! TICKETMASTER INFO !!</h2>
+        </div>
+        <div class="modal-body justify-content-left">
+          <!-- app helper -->
+          <div class="row g-3 align-items-left app-tickets-modal">
+            <div class="col-auto">
+              <span id="appInline" class="form-text">
+                We are trying to grab this data from ticketmaster for you now!
+                <br>
+                When we're ready, you'll be able to:
+              </span>
+              <ul class="list-group list-group-flush" style="list-style-type: circle; text-align:left">
+                <li class="list-group-item active ">
+                Find out if the artist is touring currently
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                Get access to venue information including addresses, cities, postcodes!
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                Buy available tickets for upcoming shows via TicketMaster with one click!
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                Detailed information including gig start times, venue opening/closing hours and more!
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="close-modal" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>`
+  // append the modal to the DOM
+  errorModalEl.appendChild(ticketModalDiv);
+
+  // if close button clicked - hide or close modal? In the same event??
+
+  // if close X clicked - close the modal
+  const closeButton = document.querySelector('#close-modal');
+
+  closeButton.addEventListener('click', function () {
+    hideModal()
+  });
 }
 
 // error modal handling
@@ -691,21 +1005,36 @@ function hideModal() {
 // on-load render saved cards
 
 // on-load handler - grab items and grid cards from local
-window.onload = function () {
-  // if local has save history 
-  if (localStorage.getItem("savedArtists")) {
-    // grab it
-    searchHistory = JSON.parse(localStorage.getItem("savedArtists"));
-    console.log('saved locations found:', searchHistory) // ok
+// window.onload = function () {
+//   // if local has save history 
+//   if (localStorage.getItem("savedArtists")) {
+//     // grab it
+//     searchHistory = JSON.parse(localStorage.getItem("savedArtists"));
+//     console.log('saved locations found:', searchHistory) // ok
 
-    // loop through each saved artist in searchHistory
-    searchHistory.forEach(artist => {
-      // set artistName to current artist
-      artistName = artist;
-      // fetch data for each saved artist
-      fetchData(searchHistory)
-      // generate the card(s) for the saved artist
-      renderCard()
-    });
-  }
-}
+//     // loop through each saved artist in searchHistory
+//     searchHistory.forEach(artist => {
+//       // set artistName to current artist
+//       artistName = artist;
+//       // fetch data for each saved artist
+//       fetchData(searchHistory)
+//       // generate the card(s) for the saved artist
+//       renderCard()
+//     });
+//   }
+// }
+
+// on-load handler - grab items and grid cards from local array
+
+// window.onload = function () {
+
+//   // Get any stored objects
+//   let storedArtistObject = localStorage.getItem('artistObject');
+//   // parse them 
+//   let parsedArtistObject = storedArtistObject ? JSON.parse(storedArtistObject) : null;
+//   // debug string and object
+//   console.log('storedArtistObject found: ', storedArtistObject)
+//   console.log('parsedArtistObject found: ', parsedArtistObject)
+//   // re-render to the card(s)
+//   renderSavedCards(artistData)
+// }

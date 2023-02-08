@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+  <link rel="stylesheet" href="../css/webfontkit-tagsExtreme/stylesheet.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,800,900">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link href="../css/tmstyle.css" rel="stylesheet" />
+  <title>Music4You - Event Ticket Booking Enquiries</title>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header-image">
+        <img src="../images/vinyl_crystal.png" alt="vinyl-record-white-img">
+      </div>
+      <div class="header-title">
+        <h2 style="font-family: 'tagsxtremeregular', sans-serif;">Music4You</h2>
+        <h4>Artist & Ticket Booking Search Engine</h4>
+        <div class="header-main-title">
+          <h1>Events</h1>
+        </div>
+      </div>
+      <div class="header-image">
+        <img src="../images/vinyl-record.png" alt="vinyl-record-img">
+      </div>
+    </div>
+  </header>
+  <!-- Responsive navbar-->
+  <nav class="navbar custom-nav navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <button type="submit" class="btn home-button" id="home-button" aria-label="home return">
+        <a href="../templates/home.html">Home</a>
+      </button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+          class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!-- <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" aria-current="page" href="./home.html">Home</a></li>
+        </ul> -->
+      </div>
+      <!-- Page Content-->
+      <div class="container px-4 px-lg-5">
+        <!-- <h1>Events</h1> -->
+        <div class="ticket-search">
+          <!-- input label -->
+          <!-- <input class="form-input search-bar" type="text" id="search-input" placeholder="Search artist ..."
+            aria-labelledby="music-search" aria-controls="music-search" onfocus="this.value=''"> -->
+          <input class="form-input ticket-search" type="text" id="ticket-input" placeholder="search for artist"
+            aria-labelledby="ticket-search" aria-controls="ticket-search" onfocus="this.value=''">
+          <!-- search button -->
+          <!-- modal toggle and target may need to be added dynamically, should user try to search button without entering -->
+          <button type="submit" class="btn ticket-button" id="ticket-button" aria-label="submit ticket-search"
+            data-bs-toggle="modal" data-bs-target="#errorModalEl">
+            <b>Find Tickets</b>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- main -->
+  <main class="main">
+    <div class="cover-image">
+      <!-- <div class="container"> -->
+        <img src="../images/concert_image.png" alt="large concert rave lights show image">
+      <!-- </div> -->
+    </div>
+  </main>
+
+  <!-- Footer-->
+  <footer class="footer py-5 bg-dark">
+      <div class="container px-4 px-lg-5">
+        <img src="../images/favicon.ico" alt="icon-record">
+        <p class="m-1 text-center text-white">Copyright &copy;2003. Music4You All rights reserved.</p>
+        <img src="../images/favicon.ico" alt="icon-record">
+      </div>
+    </footer>
+  <!-- Core theme JS -->
+  <!-- <script src="../scripts/config.js"></script> -->
+  <script src="../scripts/ticketmaster.js"></script>
+</body>
+
+</html>

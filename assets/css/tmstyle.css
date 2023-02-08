@@ -1,0 +1,211 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  /* border: 1px dashed lightgreen; */
+}
+
+body {
+  /* background-color: #555555; */
+  font-family: 'Poppins', sans-serif;
+  color: var(--light);
+  line-height: 1.5;
+  padding: 0;
+  margin: 0;
+
+}
+
+body::before {
+  content: '';
+  position:sticky;
+  width: 100vw;
+  height: 50vh;
+  margin: 0;
+  background-image: var(--gradient),
+    url("../images/concert_image.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+}
+
+h1 {
+  font-family: 'tagsxtremeregular', sans-serif;
+  font-size: 120px;
+  font-weight: bolder;
+}
+
+h2 {
+  font-size: 37px;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+p {
+  font-weight: 700
+}
+
+ul {
+  padding-top: 1rem;
+  padding-left: 1.5rem;
+}
+
+ul>li {
+  list-style-type: none;
+  display: inline-flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin-right: 1rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--light);
+}
+
+a:hover {
+  color: var(--highlight);
+}
+
+.btn {
+  /* background: rgb(85, 12, 193); */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: .2rem;
+  margin: 1rem;
+  color: var(--light);
+  border-radius: .5rem;
+  /* looks tacky */
+  /* box-shadow: var(--btn-shadow); */
+}
+
+.btn-warning {
+  background-color: var(--warning);
+  border: none;
+}
+
+.btn:hover {
+  background: #fff !important;
+  color: black !important;
+}
+
+.ticket-button {
+  background-color: #07d159;
+  width: 12rem;
+}
+
+.home-button {
+  background: rgb(85, 12, 193);
+  margin-left: 3rem;
+}
+
+input[type=text] {
+  text-transform: capitalize; 
+  padding-left: .7rem;
+  border-radius: .5rem;
+  border: none;
+  width: 12rem;
+  height: 2rem;
+}
+
+hr {
+  border: 2px solid var(--dark);
+  width: 75%;
+  margin: 0 auto;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+/* header */
+
+.header {
+  background-color: var(--darkest);
+  padding: 2rem;
+  margin-bottom: 0;
+  /* border: 1px solid red; */
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.header-image img {
+  width: 200px;
+}
+
+.header-title {
+  padding-top: -2rem;
+}
+
+.custom-nav {
+  z-index: 99;
+  background: var(--darker);
+  margin: 0;
+  height: 6rem;
+}
+
+
+.custom-nav .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  /* border: 1px solid red; */
+
+}
+
+.ticket-search {
+  margin-left: -4.5rem;
+}
+
+.search-title {
+  margin-top: 1rem;
+}
+
+.cover-image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.cover-image img {
+  content: '';
+  position:sticky;
+  width: 100vw;
+  height: 100vh;
+  margin: 0 auto;
+  background-image: var(--gradient),
+    url("../images/concert_image.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+}
+
+.footer {
+  letter-spacing: .3rem;
+}
+
+.footer .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid red; */
+}
+
+.footer img {
+  width: 30px;
+  height: 30px;
+  margin: 0 1rem;
+}
