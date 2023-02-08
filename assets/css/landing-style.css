@@ -1,29 +1,76 @@
-* {
+body, html {
+  height: 100%;
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  /* border: 1px solid red; */
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
-  width: 100vw;
-  height: 100vh;
+h1{
+  font-family: 'tagsxtremeregular', sans-serif;
+  font-size: 120px;
+  font-weight: bolder;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  margin-top: -6rem;
-  background-image: var(--gradient),
-    url("../images/concert_image.png");
-  background-size: cover;
-  background-repeat: no-repeat;
+h2{
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+
+
+/* *:focus {
+  outline: none;
+} */
+
+
+.main{
+  background-color: #000;
+  background-image: url(../images/music-img7.png);
   background-position: center;
-  z-index: -1;
+  background-size: cover;
+  display: table;
+  height: 100%;
+  width: 100%;
 }
 
-h1 {
-  font-size: 200px;
+.flex-container {
+  position: relative;
+  top: 45%;
+  margin-left: 100px;
+  padding-left: 50px;
+  
+
+}
+.flex-container ul li {
+
+  list-style: none;
+  font-size: 30px;
+}
+
+.info {
+  margin-top: 90px;
+  line-height: 3;
+}
+
+.btn {
+  background-color: transparent;
+  border: 2px solid rgb(253, 253, 253);
+  border-radius: 90px;
+  color: #fff;
+  display: block;
+  font-size: 18px;
+  letter-spacing: 1px;
+  margin: 20px auto;
+  height: 41px;
+  width: 15%;
+  float: left;
+  
+}
+
+#button{
+
+   position: fixed;
+   bottom: 8px;
+   right: 50px;
+        
 }
