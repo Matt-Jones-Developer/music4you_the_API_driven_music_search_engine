@@ -1,7 +1,7 @@
 
 let artistName = "KatyPerry"
-let apiKey = "&apikey=GbIS7ZHqNdNaR8p53t0s3R87G5IbJWSB"
-let attractionFullUrl = "https://app.ticketmaster.com/discovery/v2/attractions.json?&keyword=" + artistName + apiKey
+let ticketMasterAPIKey = "&apikey=GbIS7ZHqNdNaR8p53t0s3R87G5IbJWSB"
+let attractionFullUrl = "https://app.ticketmaster.com/discovery/v2/attractions.json?&keyword=" + artistName + ticketMasterAPIKey
 
 
 fetch(attractionFullUrl)
@@ -14,21 +14,26 @@ fetch(attractionFullUrl)
             console.log(tmURL)
             let artistID = data._embedded.attractions[0].id
 
-            let eventsFullUrl = "https://app.ticketmaster.com/discovery/v2/events.json?&attractionId=" + artistID + apiKey
+            let eventsFullUrl = "https://app.ticketmaster.com/discovery/v2/events.json?&attractionId=" + artistID + ticketMasterAPIKey
 
             fetch(eventsFullUrl)
                 .then(res => res.json())
                 .then(data => {
-                    let eventListings = data._embedded.events
-                    
 
-                    for (let i = 0; i < data._embedded.events.length; i++) {
-                        let element = data._embedded.events[i];
-                        console.log("ArtistName:", data._embedded.events[i].name)
-                        console.log("StartTime", data._embedded.events[i].dates.start)
-                        console.log("get tickets", data._embedded.events[i].url)
-                        console.log("venue", data._embedded.events[i]._embedded.venues[0].name)
-                        console.log("venue", data._embedded.events[i]._embedded.venues[0].address, data._embedded.events[0]._embedded.venues[0].city, data._embedded.events[0]._embedded.venues[0].state, data._embedded.events[0]._embedded.venues[0].country, data._embedded.events[0]._embedded.venues[0].postalCode)
+                    let eventListings = data._embedded.events;
+                    
+                    for (let i = 0; i < eventListings.length; i++) {
+                        let element = eventListings[i];
+                        console.log("ArtistName:", eventListings[i].name)
+                        console.log("StartTime", eventListings[i].dates.start)
+                        console.log("get tickets", eventListings[i].url)
+                        console.log("venue", eventListings[i]._embedded.venues[0].name)
+                        console.log("venue", 
+                        eventListings[i]._embedded.venues[0].address, 
+                        eventListings[0]._embedded.venues[0].city, 
+                        eventListings[0]._embedded.venues[0].state, 
+                        eventListings[0]._embedded.venues[0].country, 
+                        eventListings[0]._embedded.venues[0].postalCode)
 
                     }
 
@@ -36,12 +41,6 @@ fetch(attractionFullUrl)
 
         }
         else { console.log("No Upcoming Events") }
-
-
-
-
-
-
 
 
     })

@@ -4,8 +4,10 @@
   --darkest: #303030;
   --darker: #333333;
   --dark: #555555;
+  --shade: #3E3E3E;
   --light: #fff;
   --purps: rgb(85, 12, 193);
+  --green: #07d159;
   --warning: #D65745;
   --light-purps: rgb(132, 89, 197);
   --hover-span: rgb(0, 255, 30);
@@ -18,6 +20,7 @@
       rgba(255, 255, 255, 0.7) 100%);
   --btn-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2),
     0 7px 10px 0 rgba(0, 0, 0, 0.1);
+
 }
 
 * {
@@ -35,12 +38,13 @@ body {
   line-height: 1.5;
   padding: 0;
   margin: 0;
+  height: 200vh;
 
 }
 
 h1 {
   font-family: 'tagsxtremeregular', sans-serif;
-  font-size: 120px;
+  font-size: 110px;
   font-weight: bolder;
 }
 
@@ -85,7 +89,7 @@ input[type=text] {
   padding-left: .7rem;
   border-radius: .5rem;
   border: none;
-  width: 12rem;
+  width: 12.5rem;
   height: 2rem;
 }
 
@@ -103,6 +107,7 @@ hr {
   letter-spacing: .2rem;
   margin: 1rem;
   color: var(--light);
+  border-radius: 2rem;
   /* looks tacky */
   /* box-shadow: var(--btn-shadow); */
 }
@@ -117,10 +122,35 @@ hr {
   color: black !important;
 }
 
+.start-button {
+  border-radius: 2rem;
+  padding: 1rem 2rem;
+  width: 25%;
+  font-size: 22px;
+}
+
+.event-btn-block {
+  display: block;
+  background-color: var(--darker);
+  margin-top: -3rem;
+}
+
+.event-btn-block .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.events-button {
+  background-color: var(--green);
+}
+
 /* HOME PAGE - LIBRARY */
 
 .search-button {
-  width: 12rem;
+  width: 12.5rem;
 }
 
 /* flex container */
@@ -129,11 +159,26 @@ hr {
   margin: 0 auto;
 }
 
+/* landing */
+
+.landing {
+  margin: 6rem;
+}
+
+.landing .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+
 /* header */
 
 .header {
   background-color: var(--darkest);
   padding: 2rem;
+  padding-top: 1rem;
   margin-bottom: 0;
   /* border: 1px solid red; */
 }
@@ -161,6 +206,8 @@ hr {
   margin: 0;
   margin-bottom: 2rem;
   margin-top: -1rem;
+  height: 5rem;
+  border-bottom: 9px solid var(--shade);
 }
 
 
@@ -188,6 +235,7 @@ hr {
   /* margin: 0 auto; */
   padding: 1rem;
   padding-top: 0;
+  margin-top: -1rem;
   max-width: 2400px;
   height: 100vh;
   /* border: 1px solid red; */
@@ -210,6 +258,7 @@ hr {
   align-items: center;
   margin: 0;
   margin-top: 0;
+  padding-bottom: 8rem;
   /* border: 1px solid red; */
 }
 
@@ -228,6 +277,12 @@ hr {
 }
 
 /* card section */
+
+.wrapper {
+  top: 4rem;
+  position: relative;
+  padding-bottom: 2rem;
+}
 
 .card-section {
   padding: 1rem;
@@ -290,20 +345,61 @@ hr {
 /* footer container */
 
 /* .footer {
-  margin: 2rem auto;
-  padding-top: 2rem;
-  height: 7rem;
-  padding: 2rem;
-  background-color: var(--darkest);
+  letter-spacing: .3rem;
+  bottom: 0;
+  margin: 2rem 0 auto;
+  padding-top: -4rem;
+  height: 4rem;
+  position: fixed;
+  width: 100vw;
+  background-color: var(--dark);
+  border-top: 9px solid var(--shade);
+} */
 
+.footer {
+  letter-spacing: .3rem;
+  /* bottom: 0; */
+  top: calc(100vh - 6.5rem);
+  margin: 1rem 0 auto;
+  min-height: 4rem;
+  position: fixed;
+  width: 100vw;
+  background-color: var(--dark);
+  border-top: 9px solid var(--shade);
 }
+
 
 .footer .container {
   display: flex;
   justify-content: center;
   align-items: center;
+  /* border: 1px solid red; */
+}
 
-} */
+.footer img {
+  width: 30px;
+  height: 30px;
+  margin: 0 1rem;
+}
+
+.footer-tags {
+  margin-top: -1.5rem;
+}
+
+.footer p {
+  font-size: 14px;
+}
+
+.ticket-button {
+  background-color: var(--green);
+  width: 14rem;
+}
+
+.tour-button {
+  background-color: var(--purps);
+  width: 14rem;
+}
+
 
 /* ARTIST PAGE - BIO and MORE */
 
