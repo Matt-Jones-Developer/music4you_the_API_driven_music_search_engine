@@ -242,7 +242,7 @@ function getArtist(data) {
   //   errorModal()
   // }
 
-  // genre
+  // genre [TODO] BUG FIXING - if enter Dougie Fresh or eqv.  - no error catch
   let genre = genreArray.name;
   console.log('genre:', genre)
 
