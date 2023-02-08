@@ -11,16 +11,12 @@ const errorModalEl = document.querySelector('#errorModalEl')
 // render elements
 const gridContainer = document.querySelector("#grid-container")
 
-// force global as to access it on refresh
-// let searchRequest;
-
 // array to store history
 let searchHistory = []
 console.log("history array is empty:", searchHistory)
 
 // genreList - exclude 'funk' to allow for Funkadelic, 
-// 'blues' for The Blues Brothers 
-// punk for daft punk
+// punk for daft punk etc
 const genreList = [
   'pop', 'rock', 'country', 'reggae', 'house', 'dubstep', 'disco', 'classical',
   'folk', 'ska', 'dance', 'dub', 'trip hop', 'hip hop', 'hiphop', 'rap',
@@ -43,11 +39,9 @@ window.onload = function () {
 searchBtn.addEventListener("click", function (event) {
   event.preventDefault()
 
-  // define the request
-  // this should be const (no need for the global above?)
+  // define the search request
   const searchRequest = userSearch.value
   console.log("user searched for:", searchRequest)
-
 
   // if user clicks button without entering an artist
   // if this was put within the fetchData section - you could catch the console error as before!
@@ -70,36 +64,23 @@ searchBtn.addEventListener("click", function (event) {
   }
 
   // check if value is in the array
-
   if (searchHistory.includes(searchRequest)) {
     console.log('value already in the array')
     // call dupeModal
     dupeModal()
     return;
 
-    // if (!data[1] && data[1].hasOwnProperty("artist")) {
-    //   console.log('artist not found or was a typo')
-    // }
-
-
   } else {
 
     // push item to array - it's not in the array, so add it 
-    // this is fine, however, if user enters garbage - it will add it!
-    // we need to make this if else part of the garbage collector...
-
     searchHistory.push(searchRequest)
     console.log("new search item added to array: ", searchHistory)
     // save to local 
     localStorage.setItem('savedArtists', JSON.stringify(searchHistory));
 
-    // // try catch here to handle site errors
-    // try {
-    // only call getArtist IF user hasn't entered that artist yet
     // fetch request (to await and then call app functions)
     fetchData(searchRequest).then(data => {
       // console log the data
-      // garbage collector HERE instead
       console.log("fetchData call: ", data) // now defined!
 
       // if data returns error:6 -> call unknownModal?
@@ -112,17 +93,13 @@ searchBtn.addEventListener("click", function (event) {
       getArtist(data, searchRequest)
 
     })
-    //   // fail - remove 
-    // } catch (error) {
-    //   unknownModal()
-    // }
   }
 })
 
 // try this for discogs discography? or other...
 // /database/search?q={query}&{?type,title,release_title,credit,artist,anv,label,genre,style,country,year,format,catno,barcode,track,submitter,contributor} 
 
-// my clear, concise async await promise all fetchdata function!
+// async await promise all fetch data function
 
 async function fetchData(searchRequest) {
   // ... fetch logic
@@ -140,12 +117,12 @@ async function fetchData(searchRequest) {
   ])
   // map each promise to response 
   const data = await Promise.all(responses.map(function (response) {
-
     // return the response 
     return response.json()
   }))
-  // Log the data to the console - still defined!
-  console.log("fetchData function const 'data':", data); // logs an object array of both API data OK
+  // Log the data to the console
+  // logs an object array of both API data OK
+  console.log("fetchData function const 'data':", data);
 
   // catch user type error
   // Check if the data exists and is defined
@@ -154,7 +131,7 @@ async function fetchData(searchRequest) {
     return data;
 
   } else {
-    // pop it off the array 
+    // bad entry - pop it off the array 
     searchHistory.pop(searchRequest)
     console.log('bad entry popped!', searchHistory)
 
@@ -172,9 +149,6 @@ function getArtist(data) {
 
   // grabbing from API 1 (results array)
 
-  // are these let or const?? I think we want them to change
-
-  // access bio pic (if none available art below)
   // access cogsData array items
   let cogBioData = data[0].results[0];
   console.log("cogsBioData[0]", cogBioData)
@@ -189,7 +163,7 @@ function getArtist(data) {
 
   // access the artist name only
   let nameCogs = cogData.title;
-  console.log("cogsData artist name: ", nameCogs) // logs Nirvana!
+  console.log("cogsData artist name: ", nameCogs)
 
   // access artwork [0] bio pic
   let artworkBio = cogBioData.cover_image;
@@ -208,14 +182,6 @@ function getArtist(data) {
   let artwork = cogData.cover_image;
   console.log("cogsData artwork: ", artwork)
 
-  // alt image [5] alt image (others may be "spacer.gif")
-  // let artworkAlt = cogDataAlt.cover_image;
-  // console.log("cogsDataAlt artwork: ", artworkAlt) // dj scotchegg cover error fix
-
-  // unreliable genre from discogs 
-  // let cogGenre = cogData.genre
-  // console.log("cogsGenre:", cogGenre)
-
   // grabbing from API 2: lastfm artists array data[1].artist.name
 
   // access entire lastData array
@@ -225,7 +191,7 @@ function getArtist(data) {
   let artistArray = lastData.artist;
   console.log("Access artist array: ", artistArray)
 
-  // catch a bad name entry
+  // catch a bad name entry - refers to 'genre name'
   let artistName = '';
 
   if (!lastData.artist || !lastData.artist.name) {
@@ -233,22 +199,19 @@ function getArtist(data) {
     console.log('bad entry popped!', searchHistory);
     unknownModal();
 
-
   } else {
     artistName = lastData.artist.name;
   }
   console.log("Access artist name: ", artistName)
 
-
   // these are causing the 'name' undefined issues ... !! 'talib kwali' etc
 
   // add ALL the other vars we"ll want to display here [TODO]
-  // much better genre options here
   let genreTags = artistArray.tags.tag; // all available genres
   console.log(genreTags)
 
   let genreArray = genreTags[0];
-  console.log(genreArray) // name and a link to other grunge artists!! sweet
+  console.log(genreArray)
 
   // another random API name error catch - not even genre related haha
   // the genre, and the genre playlist URL
@@ -284,7 +247,7 @@ function getArtist(data) {
   console.log('genre:', genre)
 
 
-  // genre playlist - odd 'name' abbrev. error - fixed 
+  // genre playlist - odd 'name' abbrev. error - fixed?
   let genrePlaylist = "";
   // catch bad url for genre
   if (typeof genreArray !== 'undefined' && typeof genreArray.url !== 'undefined') {
@@ -295,7 +258,7 @@ function getArtist(data) {
     // originally this caught the error? now it does not run and error displays:
     // Uncaught (in promise) TypeError: Cannot read properties of undefined (reading 'name')
     console.log('genreArray or genreArray.url is undefined');
-    // remove it from local?
+    // remove it from local
     localStorage.savedArtists = JSON.stringify(JSON.parse(localStorage.savedArtists ?? "[]").slice(0, -1))
     console.log('bad value was removed from array and local:', searchHistory, localStorage)
   }
@@ -305,28 +268,34 @@ function getArtist(data) {
   console.log('artists URL page for lastfm: ', artistPage)
 
   // correct call from WITHIN the function we want to add the args to!
+  // probably a cleaner way of gathering these into an array and passing that
   renderCard(
     cogData, nameCogs, artwork, artworkBio, lastData, artistArray, artistName, genre, genrePlaylist, artistPage)
 
   // call the createArtistObject function to re-use and store artist data (outside of fetch)
+  // means no waiting/errors from API and all cards load instantly
   storeArtistObject(artistName, genre, artworkBio)
 
 }
 
 // Function to store artist data in local storage
 function storeArtistObject(artistName, genre, artworkBio) {
-
+  // grab currently stored
   let storedArtistObject = localStorage.getItem("artistObject");
+  // define the parsed json
   let parsedArtistObject = storedArtistObject ? JSON.parse(storedArtistObject) : [];
+  // push new artistObject
   parsedArtistObject.push({ artistName, genre, artworkBio });
+  // set to local
   localStorage.setItem("artistObject", JSON.stringify(parsedArtistObject));
-
+  // debug
   console.log('artistObject created:', parsedArtistObject)
 }
 
 // dynamic HTML rendering 
 
-// add a card counter to track when to scroll!
+// add a card counter to track when to scroll! [TODO: buggy]
+// possibly conflicts with the fixed footer I imagine
 let cardCounter = 0;
 let cardCount = 0;
 
@@ -335,18 +304,18 @@ function updateCardCount(add) {
   console.log('cards on screen:', cardCount)
   return cardCount;
 }
-
-
+// render the newly searched artist card (separate from the local saved)
 function renderCard(
 
   cogData, nameCogs, artwork, artworkBio, lastData, artistArray, artistName, genre, genrePlaylist, artistPage) {
 
   console.log(cogData, nameCogs, artwork, artworkBio, lastData, artistArray, artistName, genre, genrePlaylist, artistPage)
-  // ++ cardCount
+
   // cardCount++;
   updateCardCount(true);
   // success!! Learning at last!
   // console.log(cogData, lastData, nameCogs, artwork, artistArray, artistName)
+  // define the card wrapper/container
   // create a wrapper to allow a fixed footer with a space for the cards
   const wrapper = document.createElement("div")
   wrapper.classList.add("wrapper");
@@ -357,24 +326,22 @@ function renderCard(
   // add a fixed width and centered margin
   cardContainer.style = "width: 100%", "margin: 0 auto";
 
-  // when we remove card via indexing - remember to +1 to array index
-
   // create the card element
   const card = document.createElement("div");
   card.classList.add("card", "bg-dark", "m-3", "justify-content-center");
-  // also add the cols
+  // define cols
   card.classList.add("col-lg-3", "col-md-6", "col-sm-12");
 
   // set card attr and styling 
   card.setAttribute("data-name", artistName);
-  // console.log(card.getAttribute('data-name'))
+  // offsets the cards in an unhelpful way
   // card.style.boxShadow = "var(--btn-shadow)";
   card.style.paddingTop = "3rem";
   // define a card size for pixel perfect
   card.style.width = "398px";
   card.style.height = "520px";
 
-  // cardClose 
+  // cardClose (x)
   const cardClose = document.createElement("div");
   cardClose.classList.add("btn-close", "alert-dismissible", "fade", "show");
   cardClose.setAttribute("data-bs-theme", "dark");
@@ -394,11 +361,15 @@ function renderCard(
   // style here
   artistEl.style.letterSpacing = ".2rem";
 
-  // if the name is longer than 13 chars
+  // adjust title for long names
   if (artistName.length < 13) {
     artistEl.style.fontSize = "34px";
-  } else {
+  }
+  else if (artistName.length < 16) {
     artistEl.style.fontSize = "30px";
+  }
+  else {
+    artistEl.style.fontSize = "24px";
   }
 
   // add a genre label
@@ -411,28 +382,28 @@ function renderCard(
   const albumArtEl = document.createElement("img");
   // specify src
   albumArtEl.src = `${artworkBio}`;
-  // albumArtEl.src = `${randomImage}`
+  // set the class
   albumArtEl.classList.add("album-img");
-  // set the image size
+  // set the image size and style
   albumArtEl.style.width = "330px";
   albumArtEl.style.height = "310px";
   albumArtEl.style.paddingBottom = "1rem";
   albumArtEl.style.borderRadius = ".3rem";
 
-  // go to page button
+  // go to artist page button
   const artistButton = document.createElement("button");
   artistButton.classList.add("btn");
-  // must include an <a href> to the artist-page el !!
+  // must include an <a href>
   const artistButtonLink = document.createElement("a");
   artistButtonLink.href = `${artistPage}`;
-  // href=#templates/artists-page.html
+
   // get info btn style
   artistButton.style.height = "2.3rem";
   artistButton.style.color = "#fff";
   artistButton.style.margin = "1rem";
   artistButton.textContent = "Playlist";
 
-  // new feature added! remove artist!
+  // new feature added! remove artist card
   const ticketButton = document.createElement("button")
   ticketButton.classList.add("btn", "remove-new-card")
   ticketButton.style.height = "2.3rem";
@@ -442,10 +413,10 @@ function renderCard(
   ticketButton.style.margin = "1rem";
   ticketButton.textContent = "Buy Tickets";
 
-  // append all
+  // append card container
   wrapper.appendChild(cardContainer)
   cardContainer.appendChild(card);
-  // final card appends
+  // all card appends
   card.appendChild(cardClose);
   card.append(artistEl, genreEl);
   cardBody.appendChild(albumArtEl);
@@ -475,8 +446,7 @@ function renderCard(
 
   })
 
-
-  // event listener for tickets button
+  // event listener for tickets button [TODO - render data to modal]
   ticketButton.addEventListener('click', function () {
 
     // retrieve that artists ticketmaster data (if any)
@@ -492,11 +462,7 @@ function renderCard(
   })
 
   // remove button (delete card) handler
-  // finally we have a winner!!! filter and toLowerCase since some/most were being sent as mixed case!!
 
-  // however this needs to work for both 'generated' and re-generated buttons!! arg
-
-  // removeButton.addEventListener('click', function () {
   cardClose.addEventListener('click', function () {
 
     // grab the card index
@@ -507,6 +473,7 @@ function renderCard(
     searchHistory = searchHistory.filter(function (historyItem) {
       return historyItem.toLowerCase() !== indexName.toLowerCase();
     });
+    // debug
     console.log('searchHistory after filter: ', searchHistory);
 
     // remove the name item from local storage using filter
@@ -514,8 +481,8 @@ function renderCard(
     savedArtists = savedArtists.filter(function (historyItem) {
       return historyItem.toLowerCase() !== indexName.toLowerCase();
     });
+    // save it
     localStorage.setItem("savedArtists", JSON.stringify(savedArtists));
-    // remove the object array too!
 
     // remove the artist object from local 
     removeArtistObject(artistName)
@@ -527,21 +494,29 @@ function renderCard(
 
 }
 
-// function to remove the object array if remove btn clicked 
+// remove the object array if remove btn clicked 
 
 function removeArtistObject(artistName) {
+  // get the item
   let storedArtistObject = localStorage.getItem("artistObject");
+  // parse it
   let parsedArtistObject = storedArtistObject ? JSON.parse(storedArtistObject) : [];
+  // set an index === artistName
   let index = parsedArtistObject.findIndex(artist => artist.artistName === artistName);
+  // remove it
   parsedArtistObject.splice(index, 1);
+  // adjust the array
   localStorage.setItem("artistObject", JSON.stringify(parsedArtistObject));
+  // debug
   console.log('artistObject removed. new array:', parsedArtistObject)
+  // required? [TODO: BUG check?]
   // location.reload();
 }
 
 // a re-render saved artist cards function
 // bit un-DRY but it serves a purpose for now.  
-// It completely bypasses the need to fetch data for one, which was causing headaches and errors with API
+// It completely bypasses the need to fetch data for one, 
+// which was causing headaches and errors with API
 
 function renderSavedCards(artistArray) {
 
@@ -549,16 +524,17 @@ function renderSavedCards(artistArray) {
 
   // loop through the card array
   for (let i = 0; i < artistArray.length; i++) {
+    // define 'currentArtist'
     const currentArtist = artistArray[i];
     console.log(artistArray[i]);
-
+    // add to cardCount
     updateCardCount(true);
-
+    // re-render saved card
     const wrapper = document.createElement("div")
     wrapper.classList.add("wrapper");
     // for each new artist - create a new card container
     const cardContainer = document.createElement("div")
-    // set its classes
+    // set classes
     cardContainer.classList.add("col-lg-3", "col-md-6", "col-sm-12", "d-inline-flex");
     // add a fixed width and centered margin
     cardContainer.style = "width: 100%", "margin: 0 auto";
@@ -595,11 +571,15 @@ function renderSavedCards(artistArray) {
 
     // style 
     artistEl.style.letterSpacing = ".2rem";
-    // if the name is longer than 13 chars
+    // adjust title for long names
     if (currentArtist.artistName.length < 13) {
       artistEl.style.fontSize = "34px";
-    } else {
+    }
+    else if (currentArtist.artistName.length < 16) {
       artistEl.style.fontSize = "30px";
+    }
+    else {
+      artistEl.style.fontSize = "24px";
     }
 
     // add a genre label
@@ -624,7 +604,7 @@ function renderSavedCards(artistArray) {
     // go to playlist button
     const artistButton = document.createElement("button");
     artistButton.classList.add("btn");
-    // must include an <a href> to the artist-page el !!
+    // must include an <a href>
     const artistButtonLink = document.createElement("a");
     artistButtonLink.href = currentArtist.artistPage;
 
@@ -633,7 +613,7 @@ function renderSavedCards(artistArray) {
     artistButton.style.margin = "1rem";
     artistButton.textContent = "Playlist";
 
-    // new feature added! remove artist!
+    // new feature added! search for tickets API call
     const ticketsButton = document.createElement("button")
     ticketsButton.classList.add("btn", "remove-saved-card")
     ticketsButton.style.height = "2.3rem";
@@ -662,7 +642,7 @@ function renderSavedCards(artistArray) {
 
     })
 
-    // event listener for tickets button
+    // event listener for tickets button [TODO] - fetch API and render data
     ticketsButton.addEventListener('click', function () {
 
       // retrieve that artists ticketmaster data (if any)
@@ -677,7 +657,7 @@ function renderSavedCards(artistArray) {
 
     })
 
-    // remove card event 
+    // remove card event ('x' close)
 
     cardClose.addEventListener('click', function () {
 
@@ -685,6 +665,7 @@ function renderSavedCards(artistArray) {
       card.remove()
       // don't update count
       updateCardCount(false);
+
       // update the data-name local storage
       // grab the card index
       let indexName = card.getAttribute('data-name');
@@ -701,6 +682,7 @@ function renderSavedCards(artistArray) {
       savedArtists = savedArtists.filter(function (historyItem) {
         return historyItem.toLowerCase() !== indexName.toLowerCase();
       });
+      // store
       localStorage.setItem("savedArtists", JSON.stringify(savedArtists));
 
       // also remove object array on re-rendered cards
@@ -717,23 +699,19 @@ function renderSavedCards(artistArray) {
         behavior: "smooth"
       });
     }
-
   }
-
 }
 
-// error modal function
+// ticket modal function
 function ticketModal() {
   console.log('ticketmaster modal called')
   showModal()
-  // stope more being added! (remove them if exist?)
+  // stop more being added! (remove them if exist)
   const previousModal = document.querySelector(".modal-dialog");
   if (previousModal) {
     previousModal.remove();
   }
   // attached to event listener
-  // if user presses whilst value is empty: open modal
-  // somehow attach the modal to the button
   // create the modal div 
   const ticketModalDiv = document.createElement("div");
   ticketModalDiv.classList.add("modal-dialog", "modal-dialog-centered")
@@ -776,30 +754,23 @@ function ticketModal() {
   // append the modal to the DOM
   errorModalEl.appendChild(ticketModalDiv);
 
-  // if close button clicked - hide or close modal? In the same event??
-
   // if close X clicked - close the modal
   const closeButton = document.querySelector('#close-modal');
-
   closeButton.addEventListener('click', function () {
     hideModal()
   });
 }
 
 // error modal handling
-
-// error modal function
 function errorModal() {
   console.log('modal called')
   showModal()
-  // stope more being added! (remove them if exist?)
+  // stop more being added! (remove them if exist)
   const previousModal = document.querySelector(".modal-dialog");
   if (previousModal) {
     previousModal.remove();
   }
   // attached to event listener
-  // if user presses whilst value is empty: open modal
-  // somehow attach the modal to the button
   // create the modal div 
   const errorModalDiv = document.createElement("div");
   errorModalDiv.classList.add("modal-dialog", "modal-dialog-centered")
@@ -828,8 +799,6 @@ function errorModal() {
   // append the modal to the DOM
   errorModalEl.appendChild(errorModalDiv);
 
-  // if close button clicked - hide or close modal? In the same event??
-
   // if close X clicked - close the modal
   const closeButton = document.querySelector('#close-modal');
 
@@ -839,20 +808,17 @@ function errorModal() {
 }
 
 // modal for a duplicate artist search
-// TODO
-// add if search.length > 15 chars - reduce font size!
 
 function dupeModal() {
   console.log('modal called')
   showModal()
-  // stope more being added! (remove them if exist?)
+  // stope more being added! (remove them if exist)
   const previousModal = document.querySelector(".modal-dialog");
   if (previousModal) {
     previousModal.remove();
   }
+
   // attached to event listener
-  // if user presses whilst value is empty: open modal
-  // somehow attach the modal to the button
   // create the modal div 
   const dupeModalDiv = document.createElement("div");
   dupeModalDiv.classList.add("modal-dialog", "modal-dialog-centered")
@@ -881,8 +847,6 @@ function dupeModal() {
   // append the modal to the DOM
   errorModalEl.appendChild(dupeModalDiv);
 
-  // if close button clicked - hide or close modal? In the same event??
-
   // if close X clicked - close the modal
   const closeButton = document.querySelector('#close-modal');
 
@@ -895,14 +859,12 @@ function dupeModal() {
 function unknownModal() {
   console.log('modal called')
   showModal()
-  // stope more being added! (remove them if exist?)
+  // stop more being added! (remove them if exist?)
   const previousModal = document.querySelector(".modal-dialog");
   if (previousModal) {
     previousModal.remove();
   }
   // attached to event listener
-  // if user presses whilst value is empty: open modal
-  // somehow attach the modal to the button
   // create the modal div 
   const unknownModalDiv = document.createElement("div");
   unknownModalDiv.classList.add("modal-dialog", "modal-dialog-centered")
@@ -931,8 +893,6 @@ function unknownModal() {
   // append the modal to the DOM
   errorModalEl.appendChild(unknownModalDiv);
 
-  // if close button clicked - hide or close modal? In the same event??
-
   // if close X clicked - close the modal
   const closeButton = document.querySelector('#close-modal');
 
@@ -941,18 +901,16 @@ function unknownModal() {
   });
 }
 
-// unknown/mis-spelt function
+// genre error modal
 function genreModal() {
   console.log('genre modal called')
   showModal()
-  // stope more being added! (remove them if exist?)
+  // stop more being added! (remove them if exist)
   const previousModal = document.querySelector(".modal-dialog");
   if (previousModal) {
     previousModal.remove();
   }
   // attached to event listener
-  // if user presses whilst value is empty: open modal
-  // somehow attach the modal to the button
   // create the modal div 
   const unknownModalDiv = document.createElement("div");
   unknownModalDiv.classList.add("modal-dialog", "modal-dialog-centered")
@@ -981,8 +939,6 @@ function genreModal() {
   // append the modal to the DOM
   errorModalEl.appendChild(unknownModalDiv);
 
-  // if close button clicked - hide or close modal? In the same event??
-
   // if close X clicked - close the modal
   const closeButton = document.querySelector('#close-modal');
 
@@ -1002,39 +958,3 @@ function hideModal() {
   errorModalEl.style.display = 'none';
 }
 
-// on-load render saved cards
-
-// on-load handler - grab items and grid cards from local
-// window.onload = function () {
-//   // if local has save history 
-//   if (localStorage.getItem("savedArtists")) {
-//     // grab it
-//     searchHistory = JSON.parse(localStorage.getItem("savedArtists"));
-//     console.log('saved locations found:', searchHistory) // ok
-
-//     // loop through each saved artist in searchHistory
-//     searchHistory.forEach(artist => {
-//       // set artistName to current artist
-//       artistName = artist;
-//       // fetch data for each saved artist
-//       fetchData(searchHistory)
-//       // generate the card(s) for the saved artist
-//       renderCard()
-//     });
-//   }
-// }
-
-// on-load handler - grab items and grid cards from local array
-
-// window.onload = function () {
-
-//   // Get any stored objects
-//   let storedArtistObject = localStorage.getItem('artistObject');
-//   // parse them 
-//   let parsedArtistObject = storedArtistObject ? JSON.parse(storedArtistObject) : null;
-//   // debug string and object
-//   console.log('storedArtistObject found: ', storedArtistObject)
-//   console.log('parsedArtistObject found: ', parsedArtistObject)
-//   // re-render to the card(s)
-//   renderSavedCards(artistData)
-// }
