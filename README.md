@@ -18,7 +18,7 @@
 <!-- Readme Header -->
 
 <div align="center">
-  <img src="assets/images/screenshots/header.png" alt="header-image" width="800" height="200">
+  <img src="assets/images/screenshots/header.png" alt="header-image" width="800" height="400">
 </div>
 
 
