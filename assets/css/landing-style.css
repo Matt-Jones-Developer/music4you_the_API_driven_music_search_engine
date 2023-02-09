@@ -36,30 +36,6 @@ a:hover {
   color: black;
 }
 
-/* logo option 1 */
-
-/* .logo{
-  position: absolute;
-  padding: 2rem;
-  top: 88%;
-  left: 80%;
-  width: 300px;
-
-}
-
-.header-landing {
-  padding: 1rem;
-  position: fixed;
-  left: 30%;
-}
-
-.header-landing img {
-  width: 40rem;
-  height: 5rem;
-} */
-
-/* logo option 2 */
-
 .logo{
   position: absolute;
   padding: 2rem;
@@ -82,7 +58,7 @@ a:hover {
 
 .main {
   background-color: #333;
-  background-image: url(../images/landing_page_bg.png);
+  background-image: url(../images/png/landing_page_bg.png);
   background-position: center;
   background-size: cover;
   display: table;
@@ -105,7 +81,6 @@ a:hover {
   margin-left:75px;
   padding-left: 30px;
   
-
 }
 
 .flex-container ul li {
@@ -131,7 +106,7 @@ a:hover {
 .btn-custom {
   background-color: rgb(85, 12, 193);
   font-family: 'Poppins', sans-serif;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: bolder;
   border: none;
   border-radius: 2rem;
@@ -147,17 +122,6 @@ a:hover {
   z-index: 99;
 
 }
-
-/* .btn {
-  background: var(--purps);
-  font-family: 'Poppins', sans-serif;
-  font-weight: 900;
-  font-size: 16px;
-  letter-spacing: .2rem;
-  margin: 1rem;
-  color: var(--light);
-  border-radius: 2rem;
-} */
 
 .btn-custom:hover {
   background:#fff !important;
