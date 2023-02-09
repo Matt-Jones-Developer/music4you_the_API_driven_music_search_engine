@@ -416,7 +416,12 @@ hr {
 }
 
 .artist-event-count {
-  padding-bottom: 0
+  padding-bottom: 0;
+}
+
+.buy-button {
+  margin-top: 2rem;
+  padding-top: 0;
 }
 
 /* .has-events {
