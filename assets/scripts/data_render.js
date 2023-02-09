@@ -455,8 +455,8 @@ function renderCard(
     // fetch TM data
     fetchTM(artistName)
 
-    // call the modal to display the data
-    ticketModal(artistName, eventsTotal, ticketmasterSiteLogin)
+    // // call the modal to display the data
+    // ticketModal(artistName, eventsTotal, ticketmasterSiteLogin)
     // if its a pre-saved artist stored its - currentArtist.artistName
     // if its newly added its artistName to access the artists name to search TM
 
