@@ -274,18 +274,18 @@ function getArtist(data) {
 
   // call the createArtistObject function to re-use and store artist data (outside of fetch)
   // means no waiting/errors from API and all cards load instantly
-  storeArtistObject(artistName, genre, artworkBio)
+  storeArtistObject(artistName, genre, artworkBio, artistPage)
 
 }
 
 // Function to store artist data in local storage
-function storeArtistObject(artistName, genre, artworkBio) {
+function storeArtistObject(artistName, genre, artworkBio, artistPage) {
   // grab currently stored
   let storedArtistObject = localStorage.getItem("artistObject");
   // define the parsed json
   let parsedArtistObject = storedArtistObject ? JSON.parse(storedArtistObject) : [];
   // push new artistObject
-  parsedArtistObject.push({ artistName, genre, artworkBio });
+  parsedArtistObject.push({ artistName, genre, artworkBio, artistPage });
   // set to local
   localStorage.setItem("artistObject", JSON.stringify(parsedArtistObject));
   // debug
@@ -408,7 +408,7 @@ function renderCard(
   ticketButton.classList.add("btn", "remove-new-card")
   ticketButton.style.height = "2.3rem";
   ticketButton.style.fontSize = '14px';
-  ticketButton.style.backgroundColor = "#07d159";
+  ticketButton.style.backgroundColor = "#E559A3";
   ticketButton.style.color = "#fff";
   ticketButton.style.margin = "1rem";
   ticketButton.textContent = "Buy Tickets";
@@ -451,11 +451,16 @@ function renderCard(
 
     // retrieve that artists ticketmaster data (if any)
     console.log("How do I access you??")
-    ticketModal()
-    // if saved artist its - currentArtist.artistName
-    // if newly added its artistName to access the artists name to search TM
 
-    // generate a modal to display the info
+    // fetch TM data
+    fetchTM(artistName)
+
+    // call the modal to display the data
+    ticketModal()
+    // if its a pre-saved artist stored its - currentArtist.artistName
+    // if its newly added its artistName to access the artists name to search TM
+
+
     // could offer more buttons within it to search site, check touring dates etc
     // if not touring - generate 'generic no tours found' message
 
@@ -607,8 +612,10 @@ function renderSavedCards(artistArray) {
     // must include an <a href>
     const artistButtonLink = document.createElement("a");
     artistButtonLink.href = currentArtist.artistPage;
+    console.log(currentArtist.artistPage)
 
     artistButton.style.height = "2.3rem";
+    // artistButton.style.backgroundColor = "#E34EB3";
     artistButton.style.color = "#fff";
     artistButton.style.margin = "1rem";
     artistButton.textContent = "Playlist";
@@ -646,8 +653,14 @@ function renderSavedCards(artistArray) {
     ticketsButton.addEventListener('click', function () {
 
       // retrieve that artists ticketmaster data (if any)
-      console.log("How do I access you??")
-      ticketModal()
+      console.log("ticketmaster called")
+      // call the fetchTM function
+      // redefine artistName
+      let artistName = currentArtist.artistName;
+      // call fetch TM data 
+      fetchTM(artistName)
+      // // modal ticket - this is called within ticketmaster js
+      // ticketModal(artistName)
       // if saved artist its - currentArtist.artistName
       // if newly added its artistName to access the artists name to search TM
 
@@ -703,7 +716,7 @@ function renderSavedCards(artistArray) {
 }
 
 // ticket modal function
-function ticketModal() {
+function ticketModal(artistName, eventsTotal, tmURL) {
   console.log('ticketmaster modal called')
   showModal()
   // stop more being added! (remove them if exist)
@@ -714,36 +727,160 @@ function ticketModal() {
   // attached to event listener
   // create the modal div 
   const ticketModalDiv = document.createElement("div");
-  ticketModalDiv.classList.add("modal-dialog", "modal-dialog-centered")
+  ticketModalDiv.classList.add("ticket-modal",
+    "modal-dialog", "modal-dialog-centered", "modal-dialog-scrollable")
   ticketModalDiv.innerHTML = '';
   ticketModalDiv.innerHTML = `
       <div class="modal-content">
-        <div class="modal-header justify-content-center">
-        <h2 class="modalTitle">!! TICKETMASTER INFO !!</h2>
+        <div class="modal-header custom-header justify-content-center">
+        <h2 class="modalTitle"><i class="fa-solid fa-ticket"></i> TICKETMASTER INFO <i class="fa-solid fa-ticket"></i></h2>
+        <h1>${artistName}</h1>
         </div>
-        <div class="modal-body justify-content-left">
-          <!-- app helper -->
+        <div class="modal-body justify-content-center">
+          <!-- ticket master info pulled -->
           <div class="row g-3 align-items-left app-tickets-modal">
-            <div class="col-auto">
-              <span id="appInline" class="form-text">
-                We are trying to grab this data from ticketmaster for you now!
-                <br>
-                When we're ready, you'll be able to:
+            <div class="col-auto justify-content-center modal-data-helper">
+              <span id="helperInline" class="form-text">
+                We are grabbing all ticketmaster info for you now!
               </span>
-              <ul class="list-group list-group-flush" style="list-style-type: circle; text-align:left">
-                <li class="list-group-item active ">
-                Find out if the artist is touring currently
+              <ul class="list-group list-group-flush info-list">
+                <li class="list-group-item active artist-event-count has-events">
+                <h2>${artistName} has </h2><h1><b>${eventsTotal}</b></h1> <h3>upcoming events!</h3>
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
-                Get access to venue information including addresses, cities, postcodes!
-                </li>
-                <li class="list-group-item d-flex justify-content-between">
-                Buy available tickets for upcoming shows via TicketMaster with one click!
-                </li>
-                <li class="list-group-item d-flex justify-content-between">
-                Detailed information including gig start times, venue opening/closing hours and more!
+                <br>
+                Get access to tickets and venue information including addresses, cities, postcodes below!
                 </li>
               </ul>
+              <div class="card bg-dark eventLabel">
+              </div>
+              <div class="buy-button">
+                <p>
+                Buy available tickets for upcoming shows via TicketMaster with one click!
+                </p>
+              </div>
+              <button class="btn" type="button"><a href="${ticketmasterSiteLogin}">Buy Tickets</a></button>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="close-modal" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>`
+// function ticketModal(artistName, eventsTotal, eventDates) {
+//   console.log('ticketmaster modal called')
+//   showModal()
+//   // stop more being added! (remove them if exist)
+//   const previousModal = document.querySelector(".modal-dialog");
+//   if (previousModal) {
+//     previousModal.remove();
+//   }
+//   // attached to event listener
+//   // create the modal div 
+//   const ticketModalDiv = document.createElement("div");
+//   ticketModalDiv.classList.add("ticket-modal",
+//     "modal-dialog", "modal-dialog-center", "modal-dialog-scrollable")
+//   ticketModalDiv.innerHTML = '';
+//   ticketModalDiv.innerHTML = `
+//       <div class="modal-content">
+//         <div class="modal-header custom-header justify-content-center">
+//         <h2 class="modalTitle"><i class="fa-solid fa-ticket"></i> TICKETMASTER INFO <i class="fa-solid fa-ticket"></i></h2>
+//         <h1>${artistName}</h1>
+//         </div>
+//         <div class="modal-body justify-content-center">
+//           <!-- ticket master info pulled -->
+//           <div class="row g-3 align-items-left app-tickets-modal">
+//             <div class="col-auto justify-content-center modal-data-helper">
+//               <span id="helperInline" class="form-text">
+//                 We are grabbing all ticketmaster info for you now!
+//               </span>
+//               <ul class="list-group list-group-flush info-list">
+//                 <li class="list-group-item active artist-event-count has-events">
+//                 <h2>${artistName} has </h2><h1><b>${eventsTotal}</b></h1> <h3>upcoming events!</h3>
+//                 </li>
+//                 <li class="list-group-item d-flex justify-content-between">
+//                 <br>
+//                 Get access to tickets and venue information including addresses, cities, postcodes below!
+//                 </li>
+//               </ul>
+//               <div class="eventLabels">
+//                 ${eventDates.map(eventDate => `
+//                   <div class="card bg-dark eventLabel">
+//                     <h3>Date:${eventDate}</h3>
+//                   </div>
+//                 `).join('')}
+//               </div>
+//               <div class="buy-button">
+//                 <p>
+//                 Buy available tickets for upcoming shows via TicketMaster with one click!
+//                 </p>
+//               </div>
+//               <button class="btn" type="button"><a href="">Buy Tickets</a></button>
+//             </div>
+//           </div>
+//         </div>
+//         <div class="modal-footer">
+//           <button type="button" class="btn btn-secondary" id="close-modal" data-bs-dismiss="modal">Close</button>
+//         </div>
+//       </div>`
+
+
+  // append the modal to the DOM
+  errorModalEl.appendChild(ticketModalDiv);
+
+  // if close X clicked - close the modal
+  const closeButton = document.querySelector('#close-modal');
+  closeButton.addEventListener('click', function () {
+    hideModal()
+  });
+}
+
+// MODALS [TODO] - add as a separate js file
+
+// noTour modal
+function noTourModal(artistName) {
+  console.log('no tour modal called')
+  showModal()
+  // stop more being added! (remove them if exist)
+  const previousModal = document.querySelector(".modal-dialog");
+  if (previousModal) {
+    previousModal.remove();
+  }
+  // attached to event listener
+  // create the modal div 
+  const noTourModalDiv = document.createElement("div");
+  noTourModalDiv.classList.add("modal-dialog", "modal-dialog-centered")
+  noTourModalDiv.innerHTML = '';
+  noTourModalDiv.innerHTML = `
+      <div class="modal-content">
+        <div class="modal-header">
+        <h4 class="modalTitle no-tour">Artist is not on tour.</h4>
+        <span id="humourInline" class="form-text">
+        <br>
+        But, all is not lost!
+        </span>
+        </div>
+        <div class="modal-body justify-content-center">
+          <!-- app helper -->
+          <div class="row g-3 align-items-center justify-content-center app-help">
+            <div class="col-auto">
+                <ul class="list-group list-group-flush info-list">
+                <li class="list-group-item active artist-no-tour">
+                <h2>${artistName} isn't touring right now.</h2>
+                <h3>Please check back soon.</h3>
+                </li>
+                <li class="list-group-item d-flex no-tour-text">
+                <br>
+                Why not visit the artist's page?<br> 
+                You'll be able to listen to their music,
+                watch their videos, find similar artists and entire playlists!
+                </li>
+                <li class="list-group-item d-flex justify-content-center no-tour-text">
+                <br>
+                Just click the playlist button within the artist card.
+                </li>
+                </ul>
+              
             </div>
           </div>
         </div>
@@ -752,10 +889,11 @@ function ticketModal() {
         </div>
       </div>`
   // append the modal to the DOM
-  errorModalEl.appendChild(ticketModalDiv);
+  errorModalEl.appendChild(noTourModalDiv);
 
   // if close X clicked - close the modal
   const closeButton = document.querySelector('#close-modal');
+
   closeButton.addEventListener('click', function () {
     hideModal()
   });

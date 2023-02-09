@@ -30,7 +30,7 @@
   </a> -->
 
 #
-<h2 align="center">"Music 4 You: The ultimate music artist and ticket sourcing search engine and music library!</h2>
+<h2 align="center">"Music 4 You: The ultimate music artist library and ticket sourcing search engine!</h2>
 
   <p align="center">
     A sleek, useful music library creation app with the ability to search for artists, add them to a 'artist library'; then choose to either listen to artists playlists, watch their music videos, read about the artist and even search for tour dates and buy tickets!  This app is very enjoyable and simple to use and looks great.
@@ -291,6 +291,15 @@ Screenshot of the web apps UI design stage:
 
 First group project featured these fine coders and designers:
 
+<div align="center">
+
+  <p align="left"><a href="https://github.com/Matt-Jones-Developer">Matt Jones</a></p>
+  <p align="left"><a href="https://github.com/MRMODonnell">Micheal O'Donnell</a></p>
+  <p align="left"><a href="https://github.com/DeveloperK7E">Kelvin Enaro </a></p>
+  <p align="left"><a href="https://github.com/AliSuleym">Ali Suleym</a></p>
+
+</div>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 #
@@ -298,7 +307,7 @@ First group project featured these fine coders and designers:
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See `LICENSE` file for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -326,12 +335,6 @@ Deployed Project Link: [https://matt-jones-developer.github.io/music4you_the_API
 ## Acknowledgments
 
 * [Developed from this original README Template](https://github.com/othneildrew/Best-README-Template)
-
-<p align="right">(<a href="https://github.com/Matt-Jones-Developer">Matt Jones</a>)</p>
-<p align="right">(<a href="https://github.com/MRMODonnell">Micheal O'Donnell</a>)</p>
-<p align="right">(<a href="https://github.com/DeveloperK7E">Kelvin Enaro </a>)</p>
-<p align="right">(<a href="https://github.com/AliSuleym">Ali Suleym</a>)</p>
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
