@@ -523,6 +523,10 @@ span {
 /* ipad 12.9 */
 @media (max-width: 1024px) {
 
+  .container {
+    margin: 0;
+  }
+
   .header-title h1 {
     font-size: 5rem;
   }
@@ -554,22 +558,25 @@ span {
 @media (max-width: 834px) {
 
   .custom-nav {
+    /* display: block; */
     height: 4rem;
-    margin: 0 auto;
-    /* border: 1px solid red; */
-  }
-
-  .custom-nav p {
+    margin: 0;
     font-size: 8px;
+    border: 1px solid red;
   }
 
-  .container-2 {
+  .custom-nav .container {
+    margin: 0;
+
+  }
+
+  /* .container-2 {
     margin-top: -7.3rem;
     padding-top: -5rem;
     padding-left: 1.3rem;
     margin: 0;
-    /* border: 1px solid lightgreen; */
-  }
+    border: 1px solid lightgreen;
+  } */
 
   .search-button {
     width: 7rem;
@@ -581,7 +588,6 @@ span {
   }
   
   .search-title {
-    /* border: 1px solid red; */
     height: 1.7rem;
   }
 
