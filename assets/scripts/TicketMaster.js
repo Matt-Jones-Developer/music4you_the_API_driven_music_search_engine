@@ -93,7 +93,7 @@ function fetchTM(artistName) {
 
             }
             // modal ticket - add all the args that the modal needs 
-            ticketModal(artistName, eventsTotal, tmURL)
+            ticketModal(artistName, eventsTotal, ticketmasterSiteLogin)
           })
 
           // // Pass the variables to the ticketModal function using closure

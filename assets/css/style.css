@@ -167,6 +167,7 @@ hr {
 
 .container {
   margin: 0 auto;
+  /* border: 1px solid red; */
 }
 
 /* landing */
@@ -228,7 +229,6 @@ hr {
   padding: 1rem;
   width: 100vw;
   /* border: 1px solid red; */
-
 }
 
 .search-bar {
@@ -572,6 +572,7 @@ hr {
 
 /* ipad 12.9 */
 @media (max-width: 1024px) {
+
   .header-title h1 {
     font-size: 5rem;
   }
@@ -579,21 +580,90 @@ hr {
   .header-image img {
     width: 100px;
   }
-}
 
-@media (max-width: 980px) {
-  .header-title h1 {
-    font-size: 4rem;
+  .custom-nav p {
+    /* ipad pro */
+    font-size: 12px;
+  }
+
+  .search-button {
+    width: 8rem;
+  }
+
+  input[type=text] {
+    width: 8rem;
+  }
+
+  .main .container-2 {
+    margin-left: 4.9rem;
   }
 }
 
-@media (max-width: 810px) {
-  .header-welcome h1 {
-    font-size: 4.5rem;
+@media (max-width: 834px) {
+
+  .custom-nav {
+    /* ipad pro */
+    height: 4rem;
+    margin: 0 auto;
+    border: 1px solid red;
   }
+
+  .custom-nav p {
+    font-size: 8px;
+  }
+
+  .container-2 {
+    margin-top: -7.3rem;
+    padding-top: -5rem;
+    padding-left: 1.3rem;
+    margin: 0;
+    border: 1px solid lightgreen;
+  }
+
+  .search-button {
+    width: 7rem;
+  }
+
+  input[type=text] {
+    width: 7rem;
+    font-size: 10px;
+  }
+  
+  .search-title {
+    /* border: 1px solid red; */
+    height: 1.7rem;
+  }
+
+  .main {
+    width: 100vw;
+    /* border: 1px solid red; */
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  .main .container-2 {
+    width: 100vw;
+    /* padding: 1rem; */
+    margin: 1rem auto;
+    /* border: 1px solid red; */
+  }
+
   .card {
-    margin-left: 2rem;
-    margin-right: 2rem;
+    width: 375px !important;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .main .container-2 {
+    width: 100vw;
+    /* padding: 1rem; */
+    margin: 0 auto;
+    /* border: 1px solid red; */
+  }
+
+  .card {
+    width: 350px !important;
   }
 }
 
