@@ -157,6 +157,7 @@ Product screenshot:
 [![Product Name Screen Shot][product-screenshot-2]](https://github.com/Matt-Jones-Developer/music4you_the_API_driven_music_search_engine)
 
 [![Product Name Screen Shot][product-screenshot-3]](https://github.com/Matt-Jones-Developer/music4you_the_API_driven_music_search_engine)
+[![Product Name Screen Shot][product-screenshot-4]](https://github.com/Matt-Jones-Developer/music4you_the_API_driven_music_search_engine)
 
 ## Criteria
 
@@ -189,7 +190,7 @@ Have a quality README (with unique name, description, technologies used, screens
 
 <!-- languages logos -->
 
-![js-logo]::: [![JavaScript]][javascript-url] ![html5-logo]::: [![HTML5]][html5-url] ![css-logo]::: [![CSS]][css-url] ![heart-logo]::: [![coding]][coders-url]
+![js-logo]::: [![JavaScript]][javascript-url] ![html5-logo]::: [![HTML5]][html5-url] ![css-logo]::: [![CSS]][css-url] ![heart-logo]::: ![coding]
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -249,14 +250,15 @@ fully responsive design:
 Console log:
 
 ![console-output-screenshot]
+![console-output-proof-of-API2]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 Early Ideas/Other unused pages:
 
-[![Product Name Screen Shot][product-screenshot-4]](https://github.com/Matt-Jones-Developer/music4you_the_API_driven_music_search_engine)
-
 [![Product Name Screen Shot][product-screenshot-5]](https://github.com/Matt-Jones-Developer/music4you_the_API_driven_music_search_engine)
+
+[![Product Name Screen Shot][product-screenshot-6]](https://github.com/Matt-Jones-Developer/music4you_the_API_driven_music_search_engine)
 
 
 ----------------------------------
@@ -296,7 +298,6 @@ First group project featured these fine coders and designers:
   <p align="left"><a href="https://github.com/Matt-Jones-Developer">Matt Jones</a></p>
   <p align="left"><a href="https://github.com/MRMODonnell">Micheal O'Donnell</a></p>
   <p align="left"><a href="https://github.com/DeveloperK7E">Kelvin Enaro </a></p>
-  <p align="left"><a href="https://github.com/AliSuleym">Ali Suleym</a></p>
 
 </div>
 
@@ -330,7 +331,6 @@ Deployed Project Link: [https://matt-jones-developer.github.io/music4you_the_API
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
@@ -340,9 +340,9 @@ Deployed Project Link: [https://matt-jones-developer.github.io/music4you_the_API
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/matt-jones-developer/music4you_the_API_driven_music_search_engine.svg?style=for-the-badge
-[contributors-url]: https://github.com/matt-jones-developer/password_generator/graphs/contributors
+[contributors-url]: https://github.com/matt-jones-developer/music4you_the_API_driven_music_search_engine/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/matt-jones-developer/music4you_the_API_driven_music_search_engine.svg?style=for-the-badge
-[forks-url]: https://github.com/Matt-Jones-Developer/password_generator/network/members
+[forks-url]: https://github.com/Matt-Jones-Developer/music4you_the_API_driven_music_search_engine/network/members
 [stars-shield]: https://img.shields.io/github/stars/matt-jones-developer/music4you_the_API_driven_music_search_engine.svg?style=for-the-badge
 [stars-url]: https://matt-jones-developer.github.io/music4you_the_API_driven_music_search_engine/stargazer
 [issues-shield]: https://img.shields.io/github/issues/matt-jones-developer/music4you_the_API_driven_music_search_engine.svg?style=for-the-badge
@@ -356,7 +356,9 @@ Deployed Project Link: [https://matt-jones-developer.github.io/music4you_the_API
 [product-screenshot-3]: assets/images/screenshots/app_screenshot_3.png
 [product-screenshot-4]: assets/images/screenshots/app_screenshot_4.png
 [product-screenshot-5]: assets/images/screenshots/app_screenshot_5.png
+[product-screenshot-6]: assets/images/screenshots/app_screenshot_6.png
 [console-output-screenshot]: assets/images/screenshots/console_output.png
+[console-output-proof-of-API2]: assets/images/screenshots/console_output_tm_api.png
 [wireframe-screenshot]: ./assets/images/screenshots/app_wireframing.png
 [wireframe-screenshot-2]: ./assets/images/screenshots/app_wireframing_2.png
 [tablet-screenshot1]: ./assets/images/screenshots/ipad-screenshot.png
@@ -365,8 +367,8 @@ Deployed Project Link: [https://matt-jones-developer.github.io/music4you_the_API
 [javascript-url]: https://www.javascript.com
 [html5-url]: https://html5.org/
 [css-url]: https://www.w3.org/Style/CSS/Overview.en.html
+[coding-url]: https://github.com/Matt-Jones-Developer
 [js-logo]: assets/images/logos/js.svg
 [html5-logo]: assets/images/logos/html5.svg
 [css-logo]: assets/images/logos/css3.svg
 [heart-logo]: assets/images/logos/coding_love_logo.png
-

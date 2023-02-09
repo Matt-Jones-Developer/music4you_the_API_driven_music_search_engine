@@ -450,7 +450,7 @@ function renderCard(
   ticketButton.addEventListener('click', function () {
 
     // retrieve that artists ticketmaster data (if any)
-    console.log("How do I access you??")
+    console.log("Accessing fetchTM function now...")
 
     // fetch TM data
     fetchTM(artistName)
@@ -747,13 +747,7 @@ function ticketModal(artistName, eventsTotal, ticketmasterSiteLogin) {
                 <li class="list-group-item active artist-event-count has-events">
                 <h2>${artistName} has </h2><h1><b>${eventsTotal}</b></h1> <h3>upcoming events!</h3>
                 </li>
-                <li class="list-group-item d-flex justify-content-between">
-                <br>
-                Get access to tickets and venue information including addresses, cities, postcodes below!
-                </li>
               </ul>
-              <div class="card bg-dark eventLabel">
-              </div>
               <div class="buy-button">
                 <p>
                 Buy available tickets for upcoming shows via TicketMaster with one click!
