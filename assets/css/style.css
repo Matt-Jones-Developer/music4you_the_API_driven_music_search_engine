@@ -1,11 +1,15 @@
 /* music app CSS styling - todo just a basic template */
 
 :root {
+  --black: #111111;
   --darkest: #303030;
   --darker: #333333;
   --dark: #555555;
   --shade: #3E3E3E;
   --light: #fff;
+  --pink: #E34EB3;
+  --orange: #ED9464;
+  --aubergine: #73276D;
   --purps: rgb(85, 12, 193);
   --green: #07d159;
   --warning: #D65745;
@@ -23,16 +27,18 @@
 
 }
 
-* {
-  box-sizing: border-box;
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   scroll-behavior: smooth;
-  /* border: 1px dashed lightgreen; */
+  /* border: 1px solid red; */
 }
 
 body {
-  background-color: var(--dark);
+  background-color: var(--black);
   font-family: 'Poppins', sans-serif;
   color: var(--light);
   line-height: 1.5;
@@ -82,6 +88,10 @@ a {
 
 a:hover {
   color: var(--highlight);
+}
+
+i {
+  padding: 1rem;
 }
 
 input[type=text] {
@@ -344,18 +354,6 @@ hr {
 
 /* footer container */
 
-/* .footer {
-  letter-spacing: .3rem;
-  bottom: 0;
-  margin: 2rem 0 auto;
-  padding-top: -4rem;
-  height: 4rem;
-  position: fixed;
-  width: 100vw;
-  background-color: var(--dark);
-  border-top: 9px solid var(--shade);
-} */
-
 .footer {
   letter-spacing: .3rem;
   /* bottom: 0; */
@@ -398,6 +396,55 @@ hr {
 .tour-button {
   background-color: var(--purps);
   width: 14rem;
+}
+
+/* artist tickets modal */
+
+.custom-header {
+  display: block;
+  text-align: center;
+  padding: 1rem;
+  padding-top: 2rem;
+}
+
+.ticket-modal h1 {
+  font-size: 48px;
+}
+
+.modal-data-helper {
+  text-align: center;
+}
+
+.artist-event-count {
+  padding-bottom: 0
+}
+
+/* .has-events {
+
+} */
+
+.no-tour {
+  padding-left: 2rem;
+  margin-top: 1rem;
+}
+
+.no-tour-text {
+  margin-left: 1rem;
+}
+
+.artist-no-tour {
+  padding-top: 1rem;
+}
+
+#humourInline {
+  padding-right: 2.5rem;
+  color: #07d159;
+}
+
+.info-list > .active  { 
+  background-color: #a561ee ; 
+  border-radius: 1rem;
+  margin-left: 1rem;
 }
 
 
@@ -501,4 +548,294 @@ hr {
 .discog-grid img {
   width: 320px;
   height: 320px;
+}
+
+/* media queries */
+
+@media (max-width: 1400px) {
+  .header-title h1 {
+    font-size: 6rem;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .header-image img {
+    width: 150px;
+  }
+}
+
+/* ipad 12.9 */
+@media (max-width: 1024px) {
+  .header-title h1 {
+    font-size: 5rem;
+  }
+
+  .header-image img {
+    width: 100px;
+  }
+}
+
+@media (max-width: 980px) {
+  .header-title h1 {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 810px) {
+  .header-welcome h1 {
+    font-size: 4.5rem;
+  }
+  .card {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
+
+@media (max-width: 690px) {
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  h2 {
+    font-size: 34px;
+  }
+
+  h3 {
+    font-size: 30px;
+  }
+
+  h4 {
+    font-size: 22px;
+  }
+
+  .navbar a {
+    font-size: 14px;
+  }
+
+  .nav-left img {
+    width: 3rem;
+    /* chrome fix */
+    height: 3rem;
+    margin: .5rem 0;
+  }
+  
+  .nav-left a {
+    font-size: 22px;
+    margin-top: 1rem;
+    margin-left: 1rem;
+  }
+
+  .card {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  #password {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .btn-options {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 414px) {
+
+  h2 {
+    font-size: 27px;
+    margin-bottom: 0rem;
+  }
+
+  small {
+    font-size: 14px;
+    position: absolute;
+    top: 1.6rem;
+    left: 10.5rem;
+  }
+
+  .header {
+    margin-bottom: -2rem;
+  }
+
+  .get-started {
+    margin-bottom: 2rem;
+  }
+
+  .nav-left a {
+    font-size: 14px;
+  }
+
+  .nav-left img {
+    height: 2.2rem;
+  }
+
+  .navbar ul li {
+    margin-right: 1rem;
+  }
+  
+  .navbar li:last-child {
+    margin-right: -1rem;
+  }
+
+  #btn-user {
+    font-size: 14px;
+    padding: .1rem .5rem;
+  }
+
+  .footer-text {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 375px) {
+
+  .header-welcome h1 {
+    font-size: 54px;
+  }
+
+  h2 {
+    font-size: 22px;
+    margin-bottom: 0rem;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  small {
+    font-size: 12px;
+    position: absolute;
+    top: 1.6rem;
+    left: 10rem;
+  }
+
+  .header {
+    margin-bottom: -2rem;
+  }
+
+  .get-started {
+    margin-bottom: 2rem;
+  }
+
+  .btn-options {
+    font-size: 0.7rem;
+  }
+
+  .nav-left a {
+    font-size: 12px;
+  }
+
+  .nav-left img {
+    height: 2.2rem;
+  }
+
+  .nav-items a {
+    font-size: 10px;
+  }
+
+  .navbar ul li {
+    margin-right: 1rem;
+  }
+  
+  .navbar li:last-child {
+    margin-right: -1rem;
+  }
+
+  #btn-user {
+    font-size: 10px;
+    padding: .1rem .5rem;
+  }
+
+  .card {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .footer-text {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 320px) {
+
+  .header-welcome h1 {
+    font-size: 48px;
+  }
+
+  h2 {
+    font-size: 17px;
+    margin-top: -1rem;
+    margin-bottom: 0rem;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  small {
+    font-size: 10px;
+    position: absolute;
+    top: 1.6rem;
+    left: 8.5rem;
+  }
+
+  ::placeholder {
+    font-size: 12px;
+  }
+
+  .footer-text strong {
+    font-size: 9px;
+  }
+
+  .header {
+    margin-bottom: -2rem;
+  }
+
+  .nav-left a {
+    font-size: 10px;
+  }
+
+  .nav-left img {
+    height: 2.2rem;
+    margin-left: -1rem;
+  }
+
+  .nav-items a {
+    font-size: 10px;
+  }
+
+  .navbar ul li {
+    margin-right: .7rem;
+  }
+  
+  .navbar li:last-child {
+    margin-right: -2rem;
+  }
+
+  #btn-user {
+    font-size: 8px;
+    padding: .1rem .5rem;
+  }
+
+  .card {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .footer-text {
+    font-size: 8px;
+  }
 }

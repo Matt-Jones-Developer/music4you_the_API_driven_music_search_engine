@@ -1,76 +1,167 @@
 body, html {
-  height: 100%;
+  height: 100vh;
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
 
 h1{
   font-family: 'tagsxtremeregular', sans-serif;
-  font-size: 120px;
+  font-size: 110px;
   font-weight: bolder;
 }
 
 h2{
   font-family: 'Poppins', sans-serif;
-  font-weight: bold;
-  font-size: 50px;
+  font-weight: 700;
+  font-size: 45px;
+}
+
+li {
+  margin-left: -30px;
+}
+
+i {
+  margin-right: 10px;
 }
 
 
+a {
+  text-decoration: none;
+  font-size: 28px;
+  font-weight: bolder;
+  color: #fff;
+}
 
-/* *:focus {
-  outline: none;
+a:hover {
+  color: black;
+}
+
+/* logo option 1 */
+
+/* .logo{
+  position: absolute;
+  padding: 2rem;
+  top: 88%;
+  left: 80%;
+  width: 300px;
+
+}
+
+.header-landing {
+  padding: 1rem;
+  position: fixed;
+  left: 30%;
+}
+
+.header-landing img {
+  width: 40rem;
+  height: 5rem;
 } */
 
+/* logo option 2 */
 
-.main{
-  background-color: #000;
-  background-image: url(../images/music-img7.png);
+.logo{
+  position: absolute;
+  padding: 2rem;
+  top: 88%;
+  left: 80%;
+  width: 300px;
+
+}
+
+.header-landing {
+  padding: 1rem;
+  position: fixed;
+  left: 30%;
+}
+
+.header-landing img {
+  width: 40rem;
+  height: 5rem;
+}
+
+.main {
+  background-color: #333;
+  background-image: url(../images/landing_page_bg.png);
   background-position: center;
   background-size: cover;
   display: table;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  /* padding: 2rem; */
+}
+
+.main .flex-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 
 .flex-container {
   position: relative;
-  top: 45%;
-  margin-left: 100px;
-  padding-left: 50px;
+  /* top: 42%; */
+  top: 35%;
+  margin-left:75px;
+  padding-left: 30px;
   
 
 }
-.flex-container ul li {
 
+.flex-container ul li {
   list-style: none;
-  font-size: 30px;
+  font-size: 22px;
 }
 
 .info {
-  margin-top: 90px;
-  line-height: 3;
+  margin-top: 25px;
+  margin-left: 10px;
+  line-height: 2.5;
 }
 
-.btn {
-  background-color: transparent;
-  border: 2px solid rgb(253, 253, 253);
-  border-radius: 90px;
+.btn-div {
+  margin-top: -1rem;
+  /* position: fixed; */
+  /* left: 78%;
+  top: 89%; */
+  /* left: 50%;
+  top: 90%; */
+}
+
+.btn-custom {
+  background-color: rgb(85, 12, 193);
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: bolder;
+  border: none;
+  border-radius: 2rem;
   color: #fff;
   display: block;
-  font-size: 18px;
-  letter-spacing: 1px;
-  margin: 20px auto;
-  height: 41px;
+  letter-spacing: .2rem;
+  margin:1rem;
+  height: 55px;
   width: 15%;
-  float: left;
-  
+  position: fixed;
+  /* bottom: 8px; */
+  text-align: center;
+  z-index: 99;
+
 }
 
-#button{
+/* .btn {
+  background: var(--purps);
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: .2rem;
+  margin: 1rem;
+  color: var(--light);
+  border-radius: 2rem;
+} */
 
-   position: fixed;
-   bottom: 8px;
-   right: 50px;
-        
+.btn-custom:hover {
+  background:#fff !important;
+  color: black !important;
+  font-weight: bolder;
+
 }
