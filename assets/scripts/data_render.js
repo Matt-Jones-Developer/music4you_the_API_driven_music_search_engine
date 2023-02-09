@@ -456,7 +456,7 @@ function renderCard(
     fetchTM(artistName)
 
     // call the modal to display the data
-    ticketModal()
+    ticketModal(artistName, eventsTotal, ticketmasterSiteLogin)
     // if its a pre-saved artist stored its - currentArtist.artistName
     // if its newly added its artistName to access the artists name to search TM
 
@@ -716,7 +716,7 @@ function renderSavedCards(artistArray) {
 }
 
 // ticket modal function
-function ticketModal(artistName, eventsTotal, tmURL) {
+function ticketModal(artistName, eventsTotal, ticketmasterSiteLogin) {
   console.log('ticketmaster modal called')
   showModal()
   // stop more being added! (remove them if exist)
