@@ -751,8 +751,9 @@ function ticketModal(artistName, eventsTotal, tmURL) {
                 <br>
                 Get access to tickets and venue information including addresses, cities, postcodes below!
                 </li>
-              </ul>
-              <div class="card bg-dark eventLabel">
+                </ul>
+                <div class="card bg-dark eventLabel">${"//Event information Loading//"}
+                
               </div>
               <div class="buy-button">
                 <p>
