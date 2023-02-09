@@ -1,16 +1,12 @@
 
-// let artistName = "KatyPerry"
-// let ticketMasterAPIKey = "&apikey=GbIS7ZHqNdNaR8p53t0s3R87G5IbJWSB"
-// let attractionFullUrl = "https://app.ticketmaster.com/discovery/v2/attractions.json?&keyword=" + artistName + ticketMasterAPIKey
 
-// hacky
-let ticketMasterAPIKey = "&apikey=GbIS7ZHqNdNaR8p53t0s3R87G5IbJWSB";
+// force buy ticket to ticketmaster login (temp)
 let ticketmasterSiteLogin = "https://www.ticketmaster.com/member/login"
 let eventLabel = document.querySelector(".eventLabel")
 
 function fetchTM(artistName) {
 
-  // let ticketMasterAPIKey = "&apikey=GbIS7ZHqNdNaR8p53t0s3R87G5IbJWSB";
+  let ticketMasterAPIKey = "&apikey=GbIS7ZHqNdNaR8p53t0s3R87G5IbJWSB";
   let attractionFullUrl = "https://app.ticketmaster.com/discovery/v2/attractions.json?&keyword=" + artistName + ticketMasterAPIKey;
   let eventListings;
 

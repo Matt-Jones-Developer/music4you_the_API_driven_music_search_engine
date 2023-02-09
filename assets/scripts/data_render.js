@@ -612,7 +612,7 @@ function renderSavedCards(artistArray) {
     // must include an <a href>
     const artistButtonLink = document.createElement("a");
     artistButtonLink.href = currentArtist.artistPage;
-    console.log(currentArtist.artistPage)
+    // console.log(currentArtist.artistPage)
 
     artistButton.style.height = "2.3rem";
     // artistButton.style.backgroundColor = "#E34EB3";
@@ -867,7 +867,7 @@ function noTourModal(artistName) {
                 <br>
                 Why not visit the artist's page?<br> 
                 You'll be able to listen to their music,
-                watch their videos, find similar artists and entire playlists!
+                watch music videos, find similar artists and entirely new playlists!
                 </li>
                 <li class="list-group-item d-flex justify-content-center no-tour-text">
                 <br>

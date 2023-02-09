@@ -11,6 +11,7 @@
   --orange: #ED9464;
   --aubergine: #73276D;
   --purps: rgb(85, 12, 193);
+  --purps_lite: #a561ee;
   --green: #07d159;
   --warning: #D65745;
   --light-purps: rgb(132, 89, 197);
@@ -51,7 +52,7 @@ body {
 h1 {
   font-family: 'tagsxtremeregular', sans-serif;
   font-size: 110px;
-  font-weight: bolder;
+  font-weight: 900;
 }
 
 h2 {
@@ -64,7 +65,7 @@ h3 {
 }
 
 p {
-  font-weight: 700
+  font-weight: 700;
 }
 
 ul {
@@ -94,7 +95,7 @@ i {
   padding: 1rem;
 }
 
-input[type=text] {
+input {
   text-transform: capitalize; 
   padding-left: .7rem;
   border-radius: .5rem;
@@ -109,6 +110,12 @@ hr {
   margin: 0 auto;
 }
 
+span {
+  color: var(--light);
+}
+
+/* buttons */
+
 .btn {
   background: var(--purps);
   font-family: 'Poppins', sans-serif;
@@ -118,8 +125,6 @@ hr {
   margin: 1rem;
   color: var(--light);
   border-radius: 2rem;
-  /* looks tacky */
-  /* box-shadow: var(--btn-shadow); */
 }
 
 .btn-warning {
@@ -157,31 +162,17 @@ hr {
   background-color: var(--green);
 }
 
-/* HOME PAGE - LIBRARY */
-
 .search-button {
   width: 12.5rem;
 }
+
+/* HOME PAGE - LIBRARY */
 
 /* flex container */
 
 .container {
   margin: 0 auto;
   /* border: 1px solid red; */
-}
-
-/* landing */
-
-.landing {
-  margin: 6rem;
-}
-
-.landing .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  flex-direction: column;
 }
 
 /* header */
@@ -220,7 +211,6 @@ hr {
   height: 5rem;
   border-bottom: 9px solid var(--shade);
 }
-
 
 #search-area .container {
   display: flex;
@@ -272,18 +262,9 @@ hr {
   /* border: 1px solid red; */
 }
 
-/*  aside / search area */
 
 .main-title {
   padding-top: .3rem;
-  /* margin-left: 4rem; */
-}
-
-/* section container */
-
-.grid {
-  display: grid;
-  /* border: 1px solid red; */
 }
 
 /* card section */
@@ -294,19 +275,11 @@ hr {
   padding-bottom: 2rem;
 }
 
-.card-section {
-  padding: 1rem;
-  margin: 0;
-  width: 100vw;
-  border: 1px dashed yellow;
-
-}
-
 .card-container {
   width: 450px;
   padding: 1rem;
   border-radius: 1rem;
-  border: 1px dashed lightgreen;
+  /* border: 1px dashed lightgreen; */
 }
 
 
@@ -321,13 +294,7 @@ hr {
   padding: 1rem;
   justify-content: center;
   align-items: center;
-  /* tacky? need card pos sorting by a few pixels */
-  /* box-shadow: var(--box-shadow); */
 }
-
-/* .card .btn {
-  margin-top: 2rem;
-} */
 
 .artist-info {
   text-align: center;
@@ -335,16 +302,6 @@ hr {
   padding: 2rem;
 
 }
-
-.genre .style {
-  display: inline-flex;
-}
-
-/* .album-art img {
-  width: 300px;
-  height: 300px;
-
-} */
 
 .artist-info .container {
   display: flex;
@@ -358,7 +315,7 @@ hr {
   letter-spacing: .3rem;
   /* bottom: 0; */
   top: calc(100vh - 6.5rem);
-  margin: 1rem 0 auto;
+  margin: 1rem auto;
   min-height: 4rem;
   position: fixed;
   width: 100vw;
@@ -388,15 +345,7 @@ hr {
   font-size: 14px;
 }
 
-.ticket-button {
-  background-color: var(--green);
-  width: 14rem;
-}
-
-.tour-button {
-  background-color: var(--purps);
-  width: 14rem;
-}
+/* modals */
 
 /* artist tickets modal */
 
@@ -424,10 +373,6 @@ hr {
   padding-top: 0;
 }
 
-/* .has-events {
-
-} */
-
 .no-tour {
   padding-left: 2rem;
   margin-top: 1rem;
@@ -443,15 +388,15 @@ hr {
 
 #humourInline {
   padding-right: 2.5rem;
-  color: #07d159;
+  font-size: 16px;
+  color: var(--pink);
 }
 
 .info-list > .active  { 
-  background-color: #a561ee ; 
+  background-color: var(--light-purps); 
   border-radius: 1rem;
   margin-left: 1rem;
 }
-
 
 /* ARTIST PAGE - BIO and MORE */
 
@@ -524,7 +469,7 @@ hr {
   margin-bottom: 2rem;
 }
 
-/* disgography section */
+/* discography section */
 
 .discography {
   margin: 2rem auto;
@@ -595,7 +540,7 @@ hr {
     width: 8rem;
   }
 
-  input[type=text] {
+  input {
     width: 8rem;
   }
 
@@ -604,13 +549,14 @@ hr {
   }
 }
 
+/* ipad 10" */
+
 @media (max-width: 834px) {
 
   .custom-nav {
-    /* ipad pro */
     height: 4rem;
     margin: 0 auto;
-    border: 1px solid red;
+    /* border: 1px solid red; */
   }
 
   .custom-nav p {
@@ -622,14 +568,14 @@ hr {
     padding-top: -5rem;
     padding-left: 1.3rem;
     margin: 0;
-    border: 1px solid lightgreen;
+    /* border: 1px solid lightgreen; */
   }
 
   .search-button {
     width: 7rem;
   }
 
-  input[type=text] {
+  input {
     width: 7rem;
     font-size: 10px;
   }
@@ -657,6 +603,8 @@ hr {
     width: 375px !important;
   }
 }
+
+/* ipad 7-9" */
 
 @media (max-width: 768px) {
 
@@ -717,200 +665,3 @@ hr {
   }
 }
 
-@media (max-width: 500px) {
-  .btn-options {
-    font-size: 0.8rem;
-  }
-}
-
-@media (max-width: 414px) {
-
-  h2 {
-    font-size: 27px;
-    margin-bottom: 0rem;
-  }
-
-  small {
-    font-size: 14px;
-    position: absolute;
-    top: 1.6rem;
-    left: 10.5rem;
-  }
-
-  .header {
-    margin-bottom: -2rem;
-  }
-
-  .get-started {
-    margin-bottom: 2rem;
-  }
-
-  .nav-left a {
-    font-size: 14px;
-  }
-
-  .nav-left img {
-    height: 2.2rem;
-  }
-
-  .navbar ul li {
-    margin-right: 1rem;
-  }
-  
-  .navbar li:last-child {
-    margin-right: -1rem;
-  }
-
-  #btn-user {
-    font-size: 14px;
-    padding: .1rem .5rem;
-  }
-
-  .footer-text {
-    font-size: 10px;
-  }
-}
-
-@media (max-width: 375px) {
-
-  .header-welcome h1 {
-    font-size: 54px;
-  }
-
-  h2 {
-    font-size: 22px;
-    margin-bottom: 0rem;
-  }
-
-  h3 {
-    font-size: 20px;
-  }
-
-  small {
-    font-size: 12px;
-    position: absolute;
-    top: 1.6rem;
-    left: 10rem;
-  }
-
-  .header {
-    margin-bottom: -2rem;
-  }
-
-  .get-started {
-    margin-bottom: 2rem;
-  }
-
-  .btn-options {
-    font-size: 0.7rem;
-  }
-
-  .nav-left a {
-    font-size: 12px;
-  }
-
-  .nav-left img {
-    height: 2.2rem;
-  }
-
-  .nav-items a {
-    font-size: 10px;
-  }
-
-  .navbar ul li {
-    margin-right: 1rem;
-  }
-  
-  .navbar li:last-child {
-    margin-right: -1rem;
-  }
-
-  #btn-user {
-    font-size: 10px;
-    padding: .1rem .5rem;
-  }
-
-  .card {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .footer-text {
-    font-size: 10px;
-  }
-}
-
-@media (max-width: 320px) {
-
-  .header-welcome h1 {
-    font-size: 48px;
-  }
-
-  h2 {
-    font-size: 17px;
-    margin-top: -1rem;
-    margin-bottom: 0rem;
-  }
-
-  h3 {
-    font-size: 18px;
-  }
-
-  small {
-    font-size: 10px;
-    position: absolute;
-    top: 1.6rem;
-    left: 8.5rem;
-  }
-
-  ::placeholder {
-    font-size: 12px;
-  }
-
-  .footer-text strong {
-    font-size: 9px;
-  }
-
-  .header {
-    margin-bottom: -2rem;
-  }
-
-  .nav-left a {
-    font-size: 10px;
-  }
-
-  .nav-left img {
-    height: 2.2rem;
-    margin-left: -1rem;
-  }
-
-  .nav-items a {
-    font-size: 10px;
-  }
-
-  .navbar ul li {
-    margin-right: .7rem;
-  }
-  
-  .navbar li:last-child {
-    margin-right: -2rem;
-  }
-
-  #btn-user {
-    font-size: 8px;
-    padding: .1rem .5rem;
-  }
-
-  .card {
-    margin-left: 1rem;
-    margin-right: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .footer-text {
-    font-size: 8px;
-  }
-}
