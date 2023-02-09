@@ -66,12 +66,6 @@ function fetchTM(artistName) {
               // we want the state, country
               // console.log('address: ', location.name.address.line1)
               console.log('venue address:', eventListings[i]._embedded.venues[0].address)
-              // console.log('city: ', location.name.city.name) // undefined??
-              // console.log('country:',location.name.country.countryCode) // error
-              // console.log('state: ', location.name.state.name) // error
-              // console.log('lat (for map use TODO): ', location.name.location.latitude)
-              // console.log('lon (for map use TODO): ', location.name.location.longitude)
-              // console.log('zipcode:', location.name.location.postalCode)
               console.log("venue details (address, city, state, country, zip:",
                 eventListings[i]._embedded.venues[0].address,
                 eventListings[0]._embedded.venues[0].city,
@@ -79,32 +73,10 @@ function fetchTM(artistName) {
                 eventListings[0]._embedded.venues[0].country,
                 eventListings[0]._embedded.venues[0].postalCode)
 
-              // // call a function that gathers this looped data?
-              // dataPerEvent(artist, eventDate, eventStart, buyTicket, venueName)
-
-              // closure?
-              // (function (artist, eventDate, eventStart, buyTicket, venueName) {
-              //   document.querySelector(".eventLabel").innerHTML += 
-              //   `<div class="event1">
-              //     <h3>Date 1: ${eventDate}</h3>
-              //   </div>
-              //   `
-              // })
-
             }
             // modal ticket - add all the args that the modal needs 
             ticketModal(artistName, eventsTotal, ticketmasterSiteLogin)
           })
-
-          // // Pass the variables to the ticketModal function using closure
-          // (function (artistName, eventsTotal, tmURL) {
-          //   document.getElementById("events").innerHTML += `
-          //               <li onClick="ticketModal('${artistName}', '${eventsTotal}', '${tmURL}')">
-          //               ${artistName}
-          //               </li>`;
-
-          // })(artistName, eventsTotal, tmURL);
-
 
       }
       else {
@@ -114,31 +86,7 @@ function fetchTM(artistName) {
 
       }
 
-      // // call getEvents to define the data separately - K.I.S. !!
-      // getEvents(data, eventListings)
-
     })
 }
-
-// function dataPerEvent(artist, eventDate, eventStart, buyTicket, venueName) {
-//   console.log('access each event:', artist, eventDate, eventStart, buyTicket, venueName)
-// }
-
-// // define the data 
-// function getEvents(data, eventListings) {
-//   // console.log()
-//   console.log('are we receiving data?', data) // ok
-
-//   // define the data we need 
-//   // artist name
-//   let artist = eventListings[0].name
-//   console.log('artist:', artist)
-
-
-// }
-
-
-// create the modal here?
-
 
 
