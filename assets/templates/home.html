@@ -9,12 +9,14 @@
   <link rel="stylesheet" href="../css/webfontkit-tagsExtreme/stylesheet.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,800,900">
   <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/anims.css">
   <link rel="stylesheet" href="../css/style.css">
   <script defer src="https://kit.fontawesome.com/6f088b358c.js" crossorigin="anonymous"></script>
   <title>Music4You - The Artist Library & Ticket Search Engine</title>
 </head>
 
 <body>
+
   <header class="header">
     <div class="container">
       <div class="header-image">
@@ -28,9 +30,13 @@
         <img src="../images/png/vinyl-record.png" alt="vinyl-record-img">
       </div>
     </div>
+    <!-- hidden until smaller devices -->
+    <div class="search-title-hide d-flex-inline">
+      <p>Build and store a collection of favourite artists... find tickets to shows, access tour dates and more!</p>
+    </div>
   </header>
-  <!-- search bar and search artist button -->
-  <!-- sticky nav -->
+
+  <!-- nav search bar and search artist button -->
   <nav class="navbar navbar-expand sticky-top custom-nav" id="search-area">
     <div class="container">
       <div class="search-title">
@@ -47,10 +53,11 @@
         </button>
       </div>
       <div class="search-title">
-        <p>...find tickets to shows, access tour dates and more!</p>
+        <p>find tickets to shows, access tour dates and more!</p>
       </div>
     </div>
   </nav>
+  <!-- main -->
   <main class="main">
     <div class="container-2">
       <!-- 'your searches' title & grid layout -->
@@ -58,26 +65,19 @@
       <div class="row" id="grid-container"></div>
     </div>
   </main>
-  <!-- Modals required -->
+
+  <!-- Modals -->
   <div class="modal fade" id="errorModalEl" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true"></div>
-  <!-- end modal -->
+
   <!-- Footer-->
   <footer class="footer py-5 bg-dark">
     <div class="container px-4 px-lg-5 footer-tags">
       <img src="../images/png/favicon.ico" alt="icon-record">
       <p class="m-1 text-center text-white">Copyright &copy;2023 Music4You. All rights reserved. Made with love.</p>
       <img src="../images/png/favicon.ico" alt="icon-record">
-      <!-- <button type="submit" class="btn ticket-button" id="ticket-button" aria-label="submit ticket-search"
-      data-bs-toggle="modal" data-bs-target="#infoModalEl">
-      <b>Find Tickets</b>
-    </button> -->
-      <!-- <button type="submit" class="btn tour-button" id="tour-button" aria-label="submit tour-search"
-    data-bs-toggle="modal" data-bs-target="#infoModalEl">
-    <b>Tour Toggle</b>
-  </button> -->
     </div>
-
   </footer>
+
   <!-- scripts -->
   <script src="../scripts/config.js"></script>
   <script src="../scripts/data_render.js"></script>

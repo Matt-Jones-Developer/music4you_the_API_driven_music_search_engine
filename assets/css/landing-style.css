@@ -48,7 +48,7 @@ a:hover {
 .header-landing {
   padding: 1rem;
   position: fixed;
-  left: 30%;
+  left: 31%;
 }
 
 .header-landing img {
@@ -96,11 +96,6 @@ a:hover {
 
 .btn-div {
   margin-top: -1rem;
-  /* position: fixed; */
-  /* left: 78%;
-  top: 89%; */
-  /* left: 50%;
-  top: 90%; */
 }
 
 .btn-custom {
@@ -117,7 +112,6 @@ a:hover {
   height: 55px;
   width: 15%;
   position: fixed;
-  /* bottom: 8px; */
   text-align: center;
   z-index: 99;
 
@@ -170,7 +164,7 @@ a:hover {
   }
 
   .flex-container {
-    /* border: 1px solid red; */
+
     position: absolute;
     top: 40%;
     margin-left: 3.5rem;
@@ -205,7 +199,7 @@ a:hover {
   }
 
   .flex-container {
-    /* border: 1px solid red; */
+
     position: absolute;
     top: 40%;
     margin-left: 3.5rem;
@@ -246,7 +240,7 @@ a:hover {
   }
 
   .flex-container {
-    /* border: 1px solid red; */
+  
     position: absolute;
     top: 40%;
     margin-left: .1rem;
@@ -299,7 +293,6 @@ a:hover {
   }
 
   .flex-container {
-    /* border: 1px solid red; */
     position: absolute;
     top: 40%;
     margin-left: .1rem;
@@ -351,7 +344,7 @@ a:hover {
   }
 
   .flex-container {
-    /* border: 1px solid red; */
+  
     position: absolute;
     top: 43%;
     left: 1%;
@@ -381,4 +374,5 @@ a:hover {
     height: 2rem;
     
   }
+
 }

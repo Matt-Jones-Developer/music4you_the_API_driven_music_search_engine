@@ -83,12 +83,6 @@ searchBtn.addEventListener("click", function (event) {
       // console log the data
       console.log("fetchData call: ", data) // now defined!
 
-      // if data returns error:6 -> call unknownModal?
-      // fail - remove!
-      // if (data.error) {
-      //   unknownModal()
-      // }
-
       // getArtist() or similar
       getArtist(data, searchRequest)
 
@@ -205,7 +199,6 @@ function getArtist(data) {
   console.log("Access artist name: ", artistName)
 
   // these are causing the 'name' undefined issues ... !! 'talib kwali' etc
-
   // add ALL the other vars we"ll want to display here [TODO]
   let genreTags = artistArray.tags.tag; // all available genres
   console.log(genreTags)
@@ -213,39 +206,9 @@ function getArtist(data) {
   let genreArray = genreTags[0];
   console.log(genreArray)
 
-  // another random API name error catch - not even genre related haha
-  // the genre, and the genre playlist URL
-  // let genre = '';
-  // if (!lastData.artist.tags.tag[0] || !lastData.artist.tags.tag[0].name) {
-  //   // searchHistory.pop();
-  //   // console.log('bad entry popped!', searchHistory);
-  //   // unknownModal();
-  //   console.log('artist name abbreviated, error passed')
-  // } else {
-  //   let genre = genreArray.name;
-  //   console.log('genre:',genre)
-  // }
-
-  // caused genres to stop showing entirely!!
-  // but type 'fresh prince' and it will add the damn thing to the array as its undefined
-
-  // just keeps breaking the API 
-  // let genre = '';
-  // if (typeof genre !== 'undefined' && typeof genre.name !== 'undefined') {
-
-  //   // genre
-  //   let genre = genreArray.name;
-  //   console.log('genre:', genre)
-
-  // } else {
-  //   console.log('genreArray or genreArray.url is undefined');
-  //   errorModal()
-  // }
-
-  // genre [TODO] BUG FIXING - if enter Dougie Fresh or eqv.  - no error catch
+  // genre without unknown catch sadly!
   let genre = genreArray.name;
   console.log('genre:', genre)
-
 
   // genre playlist - odd 'name' abbrev. error - fixed?
   let genrePlaylist = "";
@@ -266,6 +229,12 @@ function getArtist(data) {
   // temporary feature until full artist page is built (link to artist page URL)
   let artistPage = artistArray.url;
   console.log('artists URL page for lastfm: ', artistPage)
+
+  // on-tour?
+  // returns a boolean (0/1)
+  let onTour = lastData.artist.ontour;
+  console.log(onTour)
+  console.log(typeof (Number(onTour)))
 
   // correct call from WITHIN the function we want to add the args to!
   // probably a cleaner way of gathering these into an array and passing that
@@ -362,16 +331,20 @@ function renderCard(
   artistEl.style.letterSpacing = ".2rem";
 
   // adjust title for long names
-  if (artistName.length < 13) {
-    artistEl.style.fontSize = "34px";
+  switch (true) {
+    case artistName.length < 13:
+      artistEl.style.fontSize = "34px";
+      break;
+    case artistName.length < 16:
+      artistEl.style.fontSize = "30px";
+      break;
+    case artistName.length < 20:
+      artistEl.style.fontSize = "24px";
+      break;
+    default:
+      artistEl.style.fontSize = "16px";
+      break;
   }
-  else if (artistName.length < 16) {
-    artistEl.style.fontSize = "30px";
-  }
-  else {
-    artistEl.style.fontSize = "24px";
-  }
-
   // add a genre label
   const genreEl = document.createElement("h3");
   genreEl.textContent = `${genre}`;
@@ -385,10 +358,26 @@ function renderCard(
   // set the class
   albumArtEl.classList.add("album-img");
   // set the image size and style
-  albumArtEl.style.width = "330px";
-  albumArtEl.style.height = "310px";
+  // albumArtEl.style.width = "330px";
+  // albumArtEl.style.height = "310px";
   albumArtEl.style.paddingBottom = "1rem";
-  albumArtEl.style.borderRadius = ".3rem";
+  albumArtEl.style.borderRadius = ".5rem";
+
+  // matchMedia queries
+  if (window.matchMedia("(max-width: 320px)").matches) {
+    albumArtEl.style.width = "270px";
+  } else if (window.matchMedia("(max-width: 414px)").matches) {
+    albumArtEl.style.width = "300px";
+  } else {
+    albumArtEl.style.width = "330px";
+  }
+  // set dynamic heights too
+  // albumArtEl.style.height = "310px";
+  if (window.matchMedia("(max-width: 320px)").matches) {
+    albumArtEl.style.height = "350px";
+  } else {
+    albumArtEl.style.height = "310px";
+  }
 
   // go to artist page button
   const artistButton = document.createElement("button");
@@ -408,7 +397,16 @@ function renderCard(
   ticketButton.classList.add("btn", "remove-new-card")
   ticketButton.style.height = "2.3rem";
   ticketButton.style.fontSize = '14px';
-  ticketButton.style.backgroundColor = "#E559A3";
+
+  // if artist 'onTour' = colour button differently
+  // this could be done, but events != tours (so events will show up)
+  // if (onTour === "1") {
+  //   ticketButton.style.backgroundColor = "#07d159";
+  // } else {
+  //   ticketButton.style.backgroundColor = "#555555";
+  // }
+
+  ticketButton.style.backgroundColor = "#07d159";
   ticketButton.style.color = "#fff";
   ticketButton.style.margin = "1rem";
   ticketButton.textContent = "Buy Tickets";
@@ -425,8 +423,6 @@ function renderCard(
   gridContainer.appendChild(card);
 
   // // auto scroll every 5th card
-
-  // [TODO: BUG] - so, this will only work on the 5th card created -
   cardCounter++;
   if (cardCount % 5 === 0) {
     let nextRow = cardContainer.offsetTop + (Math.floor(cardCount / 5) * card.offsetHeight);
@@ -494,6 +490,10 @@ function renderCard(
 
     // remove the card
     card.remove();
+    // don't update count?
+    updateCardCount(false);
+    cardCounter--;
+    console.log('cards on screen:', cardCounter)
 
   });
 
@@ -576,17 +576,22 @@ function renderSavedCards(artistArray) {
 
     // style 
     artistEl.style.letterSpacing = ".2rem";
-    // adjust title for long names
-    if (currentArtist.artistName.length < 13) {
-      artistEl.style.fontSize = "34px";
-    }
-    else if (currentArtist.artistName.length < 16) {
-      artistEl.style.fontSize = "30px";
-    }
-    else {
-      artistEl.style.fontSize = "24px";
-    }
 
+    // adjust title for long names
+    switch (true) {
+      case currentArtist.artistName.length < 13:
+        artistEl.style.fontSize = "34px";
+        break;
+      case currentArtist.artistName.length < 16:
+        artistEl.style.fontSize = "30px";
+        break;
+      case currentArtist.artistName.length < 20:
+        artistEl.style.fontSize = "24px";
+        break;
+      default:
+        artistEl.style.fontSize = "16px";
+        break;
+    }
     // add a genre label
     const genreEl = document.createElement("h3");
     genreEl.textContent = currentArtist.genre;
@@ -598,12 +603,28 @@ function renderSavedCards(artistArray) {
     // specify src
     albumArtEl.src = currentArtist.artworkBio;
     albumArtEl.classList.add("album-img");
+
     // set the image size
-    albumArtEl.style.width = "330px";
-    albumArtEl.style.height = "310px";
+    // image width (dynamic)
+    // albumArtEl.style.width = "330px";
+    // use matchMedia to adjust the image sizes per screen size
+    if (window.matchMedia("(max-width: 320px)").matches) {
+      albumArtEl.style.width = "270px";
+    } else if (window.matchMedia("(max-width: 414px)").matches) {
+      albumArtEl.style.width = "300px";
+    } else {
+      albumArtEl.style.width = "330px";
+    }
+    // set dynamic heights too
+    // albumArtEl.style.height = "310px";
+    if (window.matchMedia("(max-width: 320px)").matches) {
+      albumArtEl.style.height = "350px";
+    } else {
+      albumArtEl.style.height = "310px";
+    }
     // style image
     albumArtEl.style.paddingBottom = "1rem";
-    albumArtEl.style.borderRadius = ".3rem";
+    albumArtEl.style.borderRadius = ".5rem";
 
     // add the buttons
     // go to playlist button
@@ -676,8 +697,10 @@ function renderSavedCards(artistArray) {
 
       // remove card, array and local item 
       card.remove()
-      // don't update count
+      // don't update count?
       updateCardCount(false);
+      cardCounter--;
+      console.log('cards on screen:', cardCounter)
 
       // update the data-name local storage
       // grab the card index
@@ -761,63 +784,6 @@ function ticketModal(artistName, eventsTotal, ticketmasterSiteLogin) {
           <button type="button" class="btn btn-secondary" id="close-modal" data-bs-dismiss="modal">Close</button>
         </div>
       </div>`
-// function ticketModal(artistName, eventsTotal, eventDates) {
-//   console.log('ticketmaster modal called')
-//   showModal()
-//   // stop more being added! (remove them if exist)
-//   const previousModal = document.querySelector(".modal-dialog");
-//   if (previousModal) {
-//     previousModal.remove();
-//   }
-//   // attached to event listener
-//   // create the modal div 
-//   const ticketModalDiv = document.createElement("div");
-//   ticketModalDiv.classList.add("ticket-modal",
-//     "modal-dialog", "modal-dialog-center", "modal-dialog-scrollable")
-//   ticketModalDiv.innerHTML = '';
-//   ticketModalDiv.innerHTML = `
-//       <div class="modal-content">
-//         <div class="modal-header custom-header justify-content-center">
-//         <h2 class="modalTitle"><i class="fa-solid fa-ticket"></i> TICKETMASTER INFO <i class="fa-solid fa-ticket"></i></h2>
-//         <h1>${artistName}</h1>
-//         </div>
-//         <div class="modal-body justify-content-center">
-//           <!-- ticket master info pulled -->
-//           <div class="row g-3 align-items-left app-tickets-modal">
-//             <div class="col-auto justify-content-center modal-data-helper">
-//               <span id="helperInline" class="form-text">
-//                 We are grabbing all ticketmaster info for you now!
-//               </span>
-//               <ul class="list-group list-group-flush info-list">
-//                 <li class="list-group-item active artist-event-count has-events">
-//                 <h2>${artistName} has </h2><h1><b>${eventsTotal}</b></h1> <h3>upcoming events!</h3>
-//                 </li>
-//                 <li class="list-group-item d-flex justify-content-between">
-//                 <br>
-//                 Get access to tickets and venue information including addresses, cities, postcodes below!
-//                 </li>
-//               </ul>
-//               <div class="eventLabels">
-//                 ${eventDates.map(eventDate => `
-//                   <div class="card bg-dark eventLabel">
-//                     <h3>Date:${eventDate}</h3>
-//                   </div>
-//                 `).join('')}
-//               </div>
-//               <div class="buy-button">
-//                 <p>
-//                 Buy available tickets for upcoming shows via TicketMaster with one click!
-//                 </p>
-//               </div>
-//               <button class="btn" type="button"><a href="">Buy Tickets</a></button>
-//             </div>
-//           </div>
-//         </div>
-//         <div class="modal-footer">
-//           <button type="button" class="btn btn-secondary" id="close-modal" data-bs-dismiss="modal">Close</button>
-//         </div>
-//       </div>`
-
 
   // append the modal to the DOM
   errorModalEl.appendChild(ticketModalDiv);
@@ -874,7 +840,6 @@ function noTourModal(artistName) {
                 Just click the playlist button within the artist card.
                 </li>
                 </ul>
-              
             </div>
           </div>
         </div>
