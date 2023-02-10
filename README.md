@@ -152,10 +152,7 @@ Still to come:
 
 Product screenshot:
 
-[![Product Name Screen Shot][product-screenshot]](https://github.com/Matt-Jones-Developer/music4you_the_API_driven_music_search_engine)
-
-[![Product Name Screen Shot][product-screenshot-2]](https://github.com/Matt-Jones-Developer/music4you_the_API_driven_music_search_engine)
-
+[![Product Name Screen Shot][product-screenshot-7]](https://github.com/Matt-Jones-Developer/music4you_the_API_driven_music_search_engine)
 [![Product Name Screen Shot][product-screenshot-3]](https://github.com/Matt-Jones-Developer/music4you_the_API_driven_music_search_engine)
 [![Product Name Screen Shot][product-screenshot-4]](https://github.com/Matt-Jones-Developer/music4you_the_API_driven_music_search_engine)
 
@@ -240,12 +237,14 @@ You can clear your caches local storage (artist cards stored) by hitting the rem
 Screenshot of the programs output with
 fully responsive design:
 
-<!-- ![tablet-screenshot1]
+![tablet-screenshot1]
 
 <div align="center">
-  <img src="assets/images/screenshots/mobile-screenshot.png">
-  <img src="assets/images/screenshots/mobile-screenshot2.png">
-</div> -->
+  <img src="assets/images/screenshots/mobile_screenshot_1.png">
+  <img src="assets/images/screenshots/mobile_screenshot_2.png">
+</div>
+
+
 
 Console log:
 
@@ -258,7 +257,6 @@ Early Ideas/Other unused pages:
 
 [![Product Name Screen Shot][product-screenshot-5]](https://github.com/Matt-Jones-Developer/music4you_the_API_driven_music_search_engine)
 
-[![Product Name Screen Shot][product-screenshot-6]](https://github.com/Matt-Jones-Developer/music4you_the_API_driven_music_search_engine)
 
 
 ----------------------------------
@@ -357,13 +355,14 @@ Deployed Project Link: [https://matt-jones-developer.github.io/music4you_the_API
 [product-screenshot-4]: assets/images/screenshots/app_screenshot_4.png
 [product-screenshot-5]: assets/images/screenshots/app_screenshot_5.png
 [product-screenshot-6]: assets/images/screenshots/app_screenshot_6.png
+[product-screenshot-7]: assets/images/screenshots/app_screenshot_7.png
 [console-output-screenshot]: assets/images/screenshots/console_output.png
 [console-output-proof-of-API2]: assets/images/screenshots/console_output_tm_api.png
 [wireframe-screenshot]: ./assets/images/screenshots/app_wireframing.png
 [wireframe-screenshot-2]: ./assets/images/screenshots/app_wireframing_2.png
-[tablet-screenshot1]: ./assets/images/screenshots/ipad-screenshot.png
-[mobile-screenshot1]: ./assets/images/screenshots/mobile-screenshot1.png
-[mobile-screenshot2]: ./assets/images/screenshots/mobile-screenshot2.png
+[tablet-screenshot1]: ./assets/images/screenshots/ipad_screenshot.png
+[mobile-screenshot1]: ./assets/images/screenshots/mobile_screenshot_1.png
+[mobile-screenshot2]: ./assets/images/screenshots/mobile_screenshot_2.png
 [javascript-url]: https://www.javascript.com
 [html5-url]: https://html5.org/
 [css-url]: https://www.w3.org/Style/CSS/Overview.en.html
