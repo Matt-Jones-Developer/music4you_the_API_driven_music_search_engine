@@ -316,6 +316,8 @@ function renderCard(
   cardClose.setAttribute("data-bs-theme", "dark");
   cardClose.setAttribute("type", "button");
   cardClose.style.marginLeft = "auto";
+  // [TODO] - x buttons bigger clickable area
+  // cardClose.style.padding = "1rem";
   cardClose.order = "2";
 
   // create card body
@@ -358,10 +360,8 @@ function renderCard(
   // set the class
   albumArtEl.classList.add("album-img");
   // set the image size and style
-  // albumArtEl.style.width = "330px";
-  // albumArtEl.style.height = "310px";
-  albumArtEl.style.paddingBottom = "1rem";
-  albumArtEl.style.borderRadius = ".5rem";
+  albumArtEl.style.width = "330px";
+  albumArtEl.style.height = "310px";
 
   // matchMedia queries
   if (window.matchMedia("(max-width: 320px)").matches) {
@@ -372,19 +372,23 @@ function renderCard(
     albumArtEl.style.width = "330px";
   }
   // set dynamic heights too
-  // albumArtEl.style.height = "310px";
   if (window.matchMedia("(max-width: 320px)").matches) {
-    albumArtEl.style.height = "350px";
+    albumArtEl.style.height = "280px";
   } else {
     albumArtEl.style.height = "310px";
   }
+
+  albumArtEl.style.paddingBottom = "1rem";
+  albumArtEl.style.borderRadius = ".5rem";
 
   // go to artist page button
   const artistButton = document.createElement("button");
   artistButton.classList.add("btn");
   // must include an <a href>
   const artistButtonLink = document.createElement("a");
+  artistButtonLink.setAttribute("onclick", `window.open('${artistPage}', '_blank')`);
   artistButtonLink.href = `${artistPage}`;
+
 
   // get info btn style
   artistButton.style.height = "2.3rem";
@@ -437,8 +441,10 @@ function renderCard(
   // redirect to URL link (temp artist page)
   artistButton.addEventListener('click', function () {
 
-    // Redirect to the artistButtonLink's href
-    window.location.href = artistButtonLink.getAttribute("href");
+    // Redirect to the artistButtonLink's href  - same window
+    // window.location.href = artistButtonLink.getAttribute("href");
+    // new tab
+    window.open(artistButtonLink.getAttribute("href"), "_blank");
 
   })
 
@@ -562,6 +568,8 @@ function renderSavedCards(artistArray) {
     cardClose.setAttribute("data-bs-theme", "dark");
     cardClose.setAttribute("type", "button");
     cardClose.style.marginLeft = "auto";
+    // [TODO] - x buttons bigger clickable area
+    // cardClose.style.padding = "1rem";
     cardClose.order = "2";
 
     // create card body
@@ -604,7 +612,9 @@ function renderSavedCards(artistArray) {
     albumArtEl.src = currentArtist.artworkBio;
     albumArtEl.classList.add("album-img");
 
-    // set the image size
+    // set the image size and style
+    albumArtEl.style.width = "330px";
+    albumArtEl.style.height = "310px";
     // image width (dynamic)
     // albumArtEl.style.width = "330px";
     // use matchMedia to adjust the image sizes per screen size
@@ -618,7 +628,7 @@ function renderSavedCards(artistArray) {
     // set dynamic heights too
     // albumArtEl.style.height = "310px";
     if (window.matchMedia("(max-width: 320px)").matches) {
-      albumArtEl.style.height = "350px";
+      albumArtEl.style.height = "280px";
     } else {
       albumArtEl.style.height = "310px";
     }
@@ -632,8 +642,8 @@ function renderSavedCards(artistArray) {
     artistButton.classList.add("btn");
     // must include an <a href>
     const artistButtonLink = document.createElement("a");
-    artistButtonLink.href = currentArtist.artistPage;
-    // console.log(currentArtist.artistPage)
+    artistButtonLink.setAttribute("onclick", `window.open('${currentArtist.artistPage}', '_blank')`);
+    artistButtonLink.href = `${currentArtist.artistPage}`;
 
     artistButton.style.height = "2.3rem";
     // artistButton.style.backgroundColor = "#E34EB3";
@@ -665,8 +675,10 @@ function renderSavedCards(artistArray) {
     // button event handling 
     // redirect to URL link (temp artist page)
     artistButton.addEventListener('click', function () {
-      // Redirect to the artistButtonLink's href
-      window.location.href = artistButtonLink.getAttribute("href");
+      // // Redirect to the artistButtonLink's href
+      // window.location.href = artistButtonLink.getAttribute("href");
+      // new tab
+      window.open(artistButtonLink.getAttribute("href"), "_blank");
 
     })
 

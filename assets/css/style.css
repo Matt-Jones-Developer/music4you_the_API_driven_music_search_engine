@@ -186,13 +186,13 @@ span {
   padding-top: 1rem;
   margin-bottom: 0;
   animation-name: slideDown;
-  animation-duration: .7s;
+  animation-duration: .5s;
   animation-timing-function: ease-out;
   animation-iteration-count: 1;
   animation-direction: normal;
   animation-fill-mode: none;
   -webkit-animation-name: slideDown;
-  -webkit-animation-duration: .7s;
+  -webkit-animation-duration: .5s;
   -webkit-animation-timing-function: ease-out;
   -webkit-animation-iteration-count: 1;
   -webkit-animation-direction: normal;
@@ -227,7 +227,7 @@ span {
   border-bottom: 9px solid var(--shade);
   animation: fadeIn .5s normal backwards;
   animation-iteration-count: 1;
-  animation-delay: .5s;
+  animation-delay: .4s;
 
 }
 
@@ -559,8 +559,16 @@ span {
 /* ipad 12.9 */
 @media (max-width: 1024px) {
 
-  .container {
-    margin: 0 auto;
+
+  .main {
+    margin: 2rem 4.8rem;
+    /* border: 1px solid red; */
+  }
+
+  .main .container {
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
   }
 
   .header-title h1 {
@@ -584,11 +592,18 @@ span {
     width: 8rem;
   }
 
+  .card {
+    width: 40%;
+    margin: 1%;
+  }
+  
+
 }
 
 /* ipad 10" */
 
 @media (max-width: 834px) {
+
 
   .header-title h1 {
     font-size: 70px;
@@ -650,18 +665,20 @@ span {
 
   .main {
     width: 100vw;
-    padding: 0;
-    margin: 1rem 0;
+    padding: 1rem;
+    margin: 0 auto;
   }
 
-  .main .container-2 {
-    width: 100vw;
+  .main .container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     margin: 1rem auto;
   
   }
 
   .card {
-    width: 375px !important;
+    width: 380px !important;
   }
 
 
@@ -700,9 +717,9 @@ span {
     font-size: 9px;
   }
 
-  .container {
+  /* .container {
     padding: .5rem;
-  }
+  } */
 
   .music-search {
     margin-top: .7rem;
@@ -734,21 +751,11 @@ span {
     font-size: 10px;
   }
 
-  .main {
-    width: 100vw;
-    padding: 0;
-    margin: 1rem 0;
-  }
-
   .main .container-2 {
-    width: 100vw;
-    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
+  
   }
-
-  .card {
-    width: 375px !important;
-  }
-
 
   .footer {
     margin-top: -4rem;
@@ -769,7 +776,7 @@ span {
   }
 
   .card {
-    width: 350px !important;
+    width: 345px !important;
   }
 }
 
@@ -799,7 +806,6 @@ span {
 
   .container {
     margin: 0 auto;
-    min-width: 100vw;
 
   }
 
@@ -918,7 +924,8 @@ span {
 }
 
 
-@media (max-width: 320px) {
+@media only screen and (max-width: 320px) and (min-width: 300px) {
+
 
   .header-title {
     margin-top: 2rem;
@@ -974,7 +981,7 @@ span {
   }
   
   .card {
-    width: 301px !important;
+    width: 302px !important;
   }
 
   .footer  {
