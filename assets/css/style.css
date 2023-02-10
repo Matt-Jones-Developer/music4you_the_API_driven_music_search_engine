@@ -415,109 +415,6 @@ span {
   margin-left: 1rem;
 }
 
-/* ARTIST PAGE - BIO and MORE */
-
-/* header-alt */
-
-.alt-header {
-  background-color: var(--darkest);
-  padding: 2rem;
-  margin-bottom: 0;
-}
-
-.alt-header .alt-container {
-  display: flex;
-  justify-content: center;
-  /* no vertical align */
-}
-
-.back-header-block {
-  display: block;
-}
-
-.vinyl-image {
-  width: 200px;
-  height: 200px;
-}
-
-.artist-bio-image {
-  width: 200px;
-  height: 200px;
-}
-
-/* bio intro section */
-/* TODO - new feature */
-
-.artist-main {
-  margin: 0;
-}
-
-.artist-main .alt-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.bio-top {
-  margin: 2rem auto;
-
-}
-
-.bio-top .container {
-  display: flex;
-  justify-content: center;
-}
-
-.bio-section-title {
-  text-align: left;
-}
-
-.artist-large {
-  width: 600px;
-  height: 600px;
-}
-
-.bio-card {
-  width: 35vw;
-  height: 55vh;
-
-}
-
-.summary h2 {
-  margin-bottom: 2rem;
-}
-
-/* discography section */
-
-.discography {
-  margin: 2rem auto;
-  padding-top: 2rem;
-}
-
-.discography .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.cta-buttons {
-  margin-top: 2rem;
-}
-
-.link-card {
-  margin: 0 auto;
-}
-
-.disc-grid-container {
-  margin: 0;
-  float: left;
-}
-
-.discog-grid img {
-  width: 320px;
-  height: 320px;
-}
-
 /* media queries */
 
 @media (max-width: 1400px) {
@@ -556,13 +453,118 @@ span {
   }
 }
 
+@media (max-width: 1366px) {
+
+  .music-search {
+    align-items: center;
+    margin-bottom: .2rem;
+  }
+
+  #search-area .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin: 0 auto;
+  }
+
+  .search-button {
+    width: 8rem;
+    height: 1.9rem;
+  }
+
+  .btn b {
+    font-size: 14px;
+    position: relative;
+    top: -4px;
+  }
+
+  input {
+    width: 9rem;
+    height: 1.6rem;
+    font-size: 10px;
+    padding-left: .5rem;
+  }
+  
+  .search-title {
+    height: 2rem;
+  }
+
+  .search-title p {
+    font-size: 15px;
+  }
+
+  .main {
+    margin: 0 2rem;
+  }
+
+  .main .container {
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+  }
+}
+
+@media (max-width: 1112px) {
+
+  .music-search {
+    align-items: center;
+    margin-bottom: .2rem;
+  }
+
+  #search-area .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin: 0 auto;
+  }
+
+  .search-button {
+    width: 8rem;
+    height: 1.9rem;
+  }
+
+  .btn b {
+    font-size: 14px;
+    position: relative;
+    top: -4px;
+  }
+
+  input {
+    width: 7rem;
+    height: 1.6rem;
+    font-size: 10px;
+    padding-left: .5rem;
+  }
+  
+  .search-title {
+    height: 2rem;
+  }
+
+  .search-title p {
+    font-size: 12px;
+  }
+
+  .main {
+    margin: 0 auto;
+    /* watch it */
+    padding-left: 4.5rem;
+  }
+
+  .main .container {
+    display: flex;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+  }
+}
+
 /* ipad 12.9 */
 @media (max-width: 1024px) {
 
 
   .main {
-    margin: 2rem 4.8rem;
-    /* border: 1px solid red; */
+    margin: 2rem auto;
   }
 
   .main .container {
@@ -592,9 +594,12 @@ span {
     width: 8rem;
   }
 
+  .main {
+    margin: 0;
+  }
+
   .card {
-    width: 40%;
-    margin: 1%;
+    width: 420px !important;
   }
   
 
@@ -637,20 +642,19 @@ span {
   }
 
   .search-button {
-    width: 6rem;
-    height: 1.2rem;
-    padding-top: 0;
+    width: 7rem;
+    height: 1.9rem;
   }
 
   .btn b {
-    font-size: 10px;
+    font-size: 14px;
     position: relative;
     top: -4px;
   }
 
   input {
-    width: 6rem;
-    height: 1.2rem;
+    width: 7rem;
+    height: 1.6rem;
     font-size: 10px;
     padding-left: .5rem;
   }
@@ -665,7 +669,7 @@ span {
 
   .main {
     width: 100vw;
-    padding: 1rem;
+    padding: 1.5rem;
     margin: 0 auto;
   }
 
@@ -678,7 +682,7 @@ span {
   }
 
   .card {
-    width: 380px !important;
+    width: 370px !important;
   }
 
 
@@ -717,25 +721,21 @@ span {
     font-size: 9px;
   }
 
-  /* .container {
-    padding: .5rem;
-  } */
-
   .music-search {
-    margin-top: .7rem;
+    margin-top: 1rem;
   }
 
   .search-button {
-    width: 5rem;
-    height: 1.2rem;
-    padding-top: 0;
+    width: 6rem;
+    height: 1.9rem;
   }
 
   .btn b {
-    font-size: 10px;
+    font-size: 14px;
     position: relative;
     top: -4px;
   }
+
 
   input {
     width: 5rem;
@@ -777,6 +777,92 @@ span {
 
   .card {
     width: 345px !important;
+  }
+
+  .main {
+    margin: 0;
+    padding: 1.1rem;
+  }
+}
+
+@media (max-width: 504px) {
+
+  .search-title {
+    display: none;
+  }
+  .search-title-hide {
+    display: inline;
+  }
+
+  .header-title h1 {
+    font-size: 30px;
+  }
+
+  .header-title h2 {
+    font-size: 14px;
+  }
+
+  .container {
+    margin: 0 auto;
+
+  }
+
+  .header .container {
+    margin: -2rem;
+    margin-bottom: .3rem;
+    padding: 1rem;
+  }
+
+  .header-image img {
+    width: 65px;
+    height: 65px;
+  }
+
+  .search-title-hide p {
+    font-size: 10px;
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--orange);
+  }
+
+  .music-search {
+    margin: 0 auto;
+    margin-top: -.8rem;
+    padding-top: 1.5rem;
+    margin-left: 1.7rem;
+    
+  }
+
+  .search-button {
+    width: 14rem;
+    height: 2rem;
+    padding-top: 0;
+    padding-left: .63rem;
+  }
+
+  .btn b {
+    font-size: 18px;
+    position: relative;
+    top: -1px;
+  }
+
+  input {
+    width: 9rem;
+    height: 1.6rem;
+    font-size: 10px;
+  }
+  
+  .search-title {
+    height: 1rem;
+  }
+
+  .search-title p {
+    font-size: 3px;
+  }
+
+  .main {
+    margin: 0 auto;
+    padding-left: 4.5rem;
   }
 }
 
@@ -837,31 +923,32 @@ span {
   }
 
   .custom-nav .container {
-    margin: 0;
+    margin: 0 auto;
 
   }
 
   .music-search {
     margin-top: -.8rem;
     padding-top: 1.5rem;
+    margin-left: .4rem;
   }
 
   .search-button {
-    width: 8rem;
-    height: 1.2rem;
+    width: 11rem;
+    height: 1.8rem;
     padding-top: 0;
     padding-left: .63rem;
   }
 
   .btn b {
-    font-size: 10px;
+    font-size: 18px;
     position: relative;
-    top: -5px;
+    top: -1px;
   }
 
   input {
-    width: 8rem;
-    height: 1.2rem;
+    width: 9rem;
+    height: 1.6rem;
     font-size: 10px;
   }
   
@@ -914,6 +1001,32 @@ span {
 
 @media (max-width: 375px) {
 
+  .music-search {
+    margin-top: -.8rem;
+    padding-top: 1.5rem;
+    margin-left: .7rem;
+  }
+
+  .search-button {
+    width: 9rem;
+    height: 1.8rem;
+    padding-top: 0;
+    padding-left: .63rem;
+  }
+
+  .btn b {
+    font-size: 18px;
+    position: relative;
+    top: -1px;
+  }
+
+  input {
+    width: 8rem;
+    height: 1.6rem;
+    font-size: 10px;
+  }
+  
+
   .main {
     margin-left: .5rem;
   }
@@ -924,7 +1037,7 @@ span {
 }
 
 
-@media only screen and (max-width: 320px) and (min-width: 300px) {
+@media only screen and (max-width: 320px) and (min-width: 320px) {
 
 
   .header-title {
@@ -942,10 +1055,15 @@ span {
 
   .custom-nav .container {
     height: 4rem;
+    margin: 0;
   }
 
   .search-title {
     display: none;
+  }
+
+  .search-title-hide {
+    margin-top: 1.5rem;
   }
 
   .search-title-hide p {
@@ -953,27 +1071,32 @@ span {
   }
 
   .music-search {
-    margin-top: -.8rem;
-    padding-top: 1.5rem;
+
+    height: 4rem;
+    margin: 0 -.5rem .7rem 0;
+    padding: 0;
+    padding-top: .8rem;
+    /* border: 1px solid red; */
   }
 
   .search-button {
-    width: 7rem;
-    height: 1.4rem;
+    width: 9rem;
+    height: 1.8rem;
     padding-top: 0;
-    padding-left: .63rem;
+    padding-left: .3rem;
   }
 
   .btn b {
-    font-size: 9px;
+    font-size: 17px;
     position: relative;
-    top: -4px;
+    padding-left: .5rem;
+    top: 2px;
   }
 
   input {
-    width: 7rem;
-    height: 1.2rem;
-    font-size: 7px;
+    width: 6rem;
+    height: 1.6rem;
+    font-size: 10px;
   }
 
   .main {
