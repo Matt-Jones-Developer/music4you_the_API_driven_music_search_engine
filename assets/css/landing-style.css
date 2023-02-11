@@ -66,6 +66,7 @@ a:hover {
   width: 100vw;
   margin: 0;
   /* padding: 2rem; */
+  
 }
 
 .main .flex-container {
@@ -75,7 +76,7 @@ a:hover {
 }
 
 .flex-container {
-  position: relative;
+  position: absolute;
   /* top: 42%; */
   top: 35%;
   margin-left:75px;

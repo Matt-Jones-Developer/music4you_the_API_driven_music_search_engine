@@ -239,9 +239,10 @@ span {
   width: 100vw;
 }
 
-.search-bar {
+/* this is causing issue - why is it here? */
+/* .search-bar {
   margin-left: 1rem;
-}
+} */
 
 .search-title {
   margin-top: 1rem;
@@ -596,6 +597,7 @@ span {
 
   .main {
     margin: 0;
+    /* border: 1px solid red; */
   }
 
   .card {
@@ -682,7 +684,7 @@ span {
   }
 
   .card {
-    width: 370px !important;
+    width: 371px !important;
   }
 
 
@@ -697,7 +699,7 @@ span {
 
   .footer p {
     padding-top: 1rem;
-    font-size: 10px;
+    font-size: 16px;
   }
 
   .footer img {
@@ -740,7 +742,7 @@ span {
   input {
     width: 5rem;
     height: 1.2rem;
-    font-size: 10px;
+    font-size: 9px;
   }
   
   .search-title {
@@ -782,6 +784,7 @@ span {
   .main {
     margin: 0;
     padding: 1.1rem;
+    /* border: 1px solid red; */
   }
 }
 
@@ -819,7 +822,7 @@ span {
   }
 
   .search-title-hide p {
-    font-size: 10px;
+    font-size: 14px;
     text-align: center;
     margin-top: 1rem;
     color: var(--orange);
@@ -834,7 +837,7 @@ span {
   }
 
   .search-button {
-    width: 14rem;
+    width: 10rem;
     height: 2rem;
     padding-top: 0;
     padding-left: .63rem;
@@ -847,7 +850,7 @@ span {
   }
 
   input {
-    width: 9rem;
+    width: 10rem;
     height: 1.6rem;
     font-size: 10px;
   }
@@ -862,8 +865,12 @@ span {
 
   .main {
     margin: 0 auto;
-    padding-left: 4.5rem;
   }
+
+  .footer p {
+    font-size: 9px;
+  }
+
 }
 
 @media (max-width: 414px) {
@@ -873,13 +880,7 @@ span {
   }
   .search-title-hide {
     display: inline;
-  }
-
-  .search-title-hide p {
-    font-size: 10px;
-    text-align: center;
     margin-top: -1rem;
-    color: var(--orange);
   }
 
   .header-title h1 {
@@ -934,7 +935,7 @@ span {
   }
 
   .search-button {
-    width: 11rem;
+    width: 12rem;
     height: 1.8rem;
     padding-top: 0;
     padding-left: .63rem;
@@ -947,10 +948,14 @@ span {
   }
 
   input {
-    width: 9rem;
+    width: 14rem;
     height: 1.6rem;
     font-size: 10px;
   }
+
+  /* .search-bar {
+    margin-left: -1rem;
+  } */
   
   .search-title {
     height: 1rem;

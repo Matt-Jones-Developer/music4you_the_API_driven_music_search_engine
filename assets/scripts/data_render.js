@@ -347,6 +347,20 @@ function renderCard(
       artistEl.style.fontSize = "16px";
       break;
   }
+
+  // odd ipad issue 
+
+  if (window.matchMedia("(max-width: 768px)").matches) {
+    if (artistName.length < 13) {
+      artistEl.style.fontSize = "24px";
+    }
+    else if (artistName.length > 15) {
+      artistEl.style.letterSpacing = ".1rem";
+      artistEl.style.fontSize = "18px";
+    }
+
+  }
+
   // add a genre label
   const genreEl = document.createElement("h3");
   genreEl.textContent = `${genre}`;
@@ -606,6 +620,18 @@ function renderSavedCards(artistArray) {
         artistEl.style.fontSize = "16px";
         break;
     }
+
+    if (window.matchMedia("(max-width: 768px)").matches) {
+      if (currentArtist.artistName.length < 13) {
+        artistEl.style.letterSpacing = ".1rem";
+        artistEl.style.fontSize = "28px";
+      }
+      else if (currentArtist.artistName.length > 15) {
+        artistEl.style.letterSpacing = ".1rem";
+        artistEl.style.fontSize = "18px";
+      }
+    }
+
     // add a genre label
     const genreEl = document.createElement("h3");
     genreEl.textContent = currentArtist.genre;
