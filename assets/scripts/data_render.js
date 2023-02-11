@@ -230,7 +230,7 @@ function getArtist(data) {
   let artistPage = artistArray.url;
   console.log('artists URL page for lastfm: ', artistPage)
 
-  // on-tour?
+  // on-tour [TODO] - button colour grays out if not on tour
   // returns a boolean (0/1)
   let onTour = lastData.artist.ontour;
   console.log(onTour)
@@ -374,6 +374,8 @@ function renderCard(
   // set dynamic heights too
   if (window.matchMedia("(max-width: 320px)").matches) {
     albumArtEl.style.height = "280px";
+    // also change card length
+    card.style.height = "550px";
   } else {
     albumArtEl.style.height = "310px";
   }
@@ -562,6 +564,10 @@ function renderSavedCards(artistArray) {
     card.style.width = "398px";
     card.style.height = "520px";
 
+    if (window.matchMedia("(max-width: 414px)").matches) {
+      card.style.height = "580px";
+    }
+
     // cardClose 
     const cardClose = document.createElement("div");
     cardClose.classList.add("btn-close", "alert-dismissible", "fade", "show");
@@ -629,6 +635,8 @@ function renderSavedCards(artistArray) {
     // albumArtEl.style.height = "310px";
     if (window.matchMedia("(max-width: 320px)").matches) {
       albumArtEl.style.height = "280px";
+      // also change card length
+      card.style.height = "550px";
     } else {
       albumArtEl.style.height = "310px";
     }
@@ -644,7 +652,6 @@ function renderSavedCards(artistArray) {
     const artistButtonLink = document.createElement("a");
     artistButtonLink.setAttribute("onclick", `window.open('${currentArtist.artistPage}', '_blank')`);
     artistButtonLink.href = `${currentArtist.artistPage}`;
-
     artistButton.style.height = "2.3rem";
     // artistButton.style.backgroundColor = "#E34EB3";
     artistButton.style.color = "#fff";
