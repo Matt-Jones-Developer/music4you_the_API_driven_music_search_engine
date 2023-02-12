@@ -248,9 +248,11 @@ span {
 
 .main {
   /* margin: 0 auto; */
+  margin: auto;
+  width: 100%;
   padding: 1rem;
   padding-top: 0;
-  margin-top: -1rem;
+  margin-top: 0;
   max-width: 2400px;
   /* height: 100vh; */
   animation: fadeIn .5s normal backwards;
@@ -294,7 +296,7 @@ span {
 }
 
 .card-container {
-  width: 450px;
+  width: 25%;
   padding: 1rem;
   border-radius: 1rem;
   /* border: 1px dashed lightgreen; */
@@ -415,6 +417,11 @@ span {
   margin-left: 1rem;
 }
 
+@media (max-width: 1700px) {
+  .card {
+    width: calc(33.3333% - 20px);
+  }
+}
 /* media queries */
 
 @media (max-width: 1400px) {
@@ -505,6 +512,12 @@ span {
   }
 }
 
+@media (max-width: 1200px) {
+  .card {
+    width: calc(50% - 20px);
+  }
+}
+
 @media (max-width: 1112px) {
 
   .music-search {
@@ -557,7 +570,8 @@ span {
 
 
   .main {
-    margin: 2rem auto;
+    margin: auto;
+    padding: 2rem;
   }
 
   .main .container {
@@ -591,16 +605,36 @@ span {
     width: 50%;
   }
 
-  .main {
-    margin: 0;
-    padding: 2rem;
-  }
-
   .card {
     width: 458px !important;
   }
   
 }
+
+@media (min-width: 834px) and (max-width: 1020px) {
+  .card {
+    width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .card {
+    width: 25%;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .card {
+    width: 45%;
+  }
+}
+
+@media (max-width: 767px) {
+  .card {
+    width: 100%;
+  }
+}
+
 
 /* ipad 10" */
 
@@ -627,7 +661,7 @@ span {
     height: 4rem;
     margin: 0;
     font-size: 8px;
-    padding-top: .3rem;
+    padding-top: 1rem;
   }
 
   .custom-nav p {
@@ -664,12 +698,6 @@ span {
     font-size: 10px;
   }
 
-  .main {
-    width: 100vw;
-    padding: 1.5rem;
-    margin: 0 auto;
-  }
-
   .main .container {
     display: flex;
     justify-content: center;
@@ -679,7 +707,7 @@ span {
   }
 
   .card {
-    width: 371px !important;
+    width: 364px !important;
   }
 
 
@@ -711,7 +739,7 @@ span {
     height: 4rem;
     margin: 0;
     font-size: 8px;
-    padding-top: .3rem;
+    padding-top: 1rem;
   }
 
   .custom-nav p {
@@ -787,7 +815,7 @@ span {
   }
 }
 
-@media (max-width: 504px) {
+@media (max-width: 499px) {
 
   .search-title {
     display: none;
@@ -827,16 +855,8 @@ span {
     color: var(--orange);
   }
 
-  .music-search {
-    margin: 0 auto;
-    margin-top: -.8rem;
-    padding-top: 1.5rem;
-    margin-left: 1.7rem;
-    
-  }
-
   .search-button {
-    width: 10rem;
+    width: 50%;
     height: 2rem;
     padding-top: 0;
     padding-left: .63rem;
@@ -844,12 +864,11 @@ span {
 
   .btn b {
     font-size: 18px;
-    position: relative;
-    top: -1px;
+    padding-top: 2rem;
   }
 
   input {
-    width: 10rem;
+    width: 50%;
     height: 1.6rem;
     font-size: 10px;
   }
@@ -863,7 +882,7 @@ span {
   }
 
   .main {
-    margin: 0 auto;
+    margin: auto;
   }
 
   .footer p {
@@ -932,6 +951,7 @@ span {
 
   .btn b {
     font-size: 18px;
+    margin-left: .5rem;
   }
 
   input {
@@ -942,7 +962,7 @@ span {
 
   .main {
     padding: 1rem;
-    margin: 1rem 0;
+    margin: 1rem auto;
     padding-bottom: 2rem;
     margin-bottom: 2rem;
   }
@@ -991,7 +1011,7 @@ span {
   .btn b {
     font-size: 18px;
     letter-spacing: .3rem;
-    margin-left: .4rem;
+    margin-left: .5rem;
   }
 
   input {
