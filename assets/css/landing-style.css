@@ -1,19 +1,32 @@
-body, html {
-  height: 100vh;
+* {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px solid red; */
 }
 
-h1{
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  color: #fff;
+  line-height: 2.4;
+  background: #23243A;
+}
+
+h1 {
   font-family: 'tagsxtremeregular', sans-serif;
-  font-size: 110px;
+  font-size: 100px;
   font-weight: bolder;
 }
 
-h2{
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  font-size: 45px;
+h2 {
+  font-weight: 900;
+  font-size: 40px;
+
+}
+
+ul {
+  list-style-type: none;
 }
 
 li {
@@ -24,69 +37,49 @@ i {
   margin-right: 10px;
 }
 
-
-a {
-  text-decoration: none;
-  font-size: 28px;
-  font-weight: bolder;
-  color: #fff;
-}
-
-a:hover {
-  color: black;
-}
-
-.logo{
-  position: absolute;
-  padding: 2rem;
-  top: 88%;
-  left: 80%;
-  width: 300px;
-
-}
-
-.header-landing {
-  padding: 1rem;
-  position: fixed;
-  left: 31%;
-}
-
-.header-landing img {
-  width: 40rem;
-  height: 5rem;
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .main {
-  background-color: #333;
   background-image: url(../images/png/landing_page_bg.png);
   background-position: center;
   background-size: cover;
-  display: table;
   height: 100vh;
   width: 100vw;
+
+}
+
+.tagline-top {
   margin: 0;
-  /* padding: 2rem; */
-  
+  padding: 1rem 0 2rem 0;
 }
 
-.main .flex-container {
+.tagline-top .container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-landing img {
+  max-width: 100%;
+  height: 5rem;
+}
+
+.landing-main {
+  margin: 0 auto;
+  padding: 2rem;
+  height: 75%;
+}
+
+.landing-main .container {
+  display: flex;
   flex-direction: column;
-}
-
-.flex-container {
-  position: absolute;
-  /* top: 42%; */
-  top: 35%;
-  margin-left:75px;
-  padding-left: 30px;
-  
-}
-
-.flex-container ul li {
-  list-style: none;
-  font-size: 22px;
+  justify-content: flex-start;
+  height: 100%;
+  padding-top: 12rem;
 }
 
 .info {
@@ -95,33 +88,42 @@ a:hover {
   line-height: 2.5;
 }
 
-.btn-div {
-  margin-top: -1rem;
-}
-
 .btn-custom {
+  transition-duration: 0.2s;
   background-color: rgb(85, 12, 193);
-  font-family: 'Poppins', sans-serif;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: bolder;
   border: none;
   border-radius: 2rem;
-  color: #fff;
-  display: block;
   letter-spacing: .2rem;
-  margin:1rem;
-  height: 55px;
-  width: 15%;
-  position: fixed;
+  margin: 1rem;
+  height: 50px;
+  width: 12rem;
   text-align: center;
-  z-index: 99;
 
 }
 
 .btn-custom:hover {
-  background:#fff !important;
+  background: #fff !important;
   color: black !important;
-  font-weight: bolder;
+
+}
+
+.logo {
+  width: 300px;
+  padding: 1rem;
+
+}
+
+.logo-bottom {
+  margin: 0;
+  padding: 0;
+  height: 3rem;
+}
+
+.logo-bottom .container {
+  display: flex;
+  justify-content: flex-end;
 
 }
 
@@ -129,67 +131,58 @@ a:hover {
 
 @media (max-width: 1024px) {
 
-  .header-landing {
-    position: relative;
-    left: 17%;
+  h1 {
+    font-size: 100px;
   }
 
-  .flex-container {
-    /* border: 1px solid red; */
-    position: absolute;
-    top: 45%;
+  h2 {
+    font-size: 43px;
   }
 
-  .logo {
-    left: 70%;
+  .landing-main {
+    height: 80%;
   }
 
-  .btn-custom {
-    width: 12rem;
+  .landing-main .container {
+    padding-top: 22rem;
+  }
+
+  .list-div {
+    font-size: 24px;
   }
 }
 
 @media (max-width: 834px) {
 
-  .header-landing {
-    position: relative;
-    left: 10%;
-  }
 
   h1 {
     font-size: 80px;
   }
 
   h2 {
-    font-size: 33px;
+    font-size: 36px;
   }
 
-  .flex-container {
-
-    position: absolute;
-    top: 40%;
-    margin-left: 3.5rem;
+  .landing-main {
+    height: 78%;
   }
 
-  .info {
-    font-size: 16px;
+  .landing-main .container {
+    padding-top: 18rem;
+  }
+
+
+  .list-div {
+    font-size: 20px;
   }
 
   .logo {
-    left: 65%;
+    width: 220px;
   }
 
-  .btn-custom {
-    width: 12rem;
-  }
 }
 
 @media (max-width: 768px) {
-
-  .header-landing {
-    position: relative;
-    left: 6%;
-  }
 
   h1 {
     font-size: 70px;
@@ -199,40 +192,108 @@ a:hover {
     font-size: 28px;
   }
 
-  .flex-container {
-
-    position: absolute;
-    top: 40%;
-    margin-left: 3.5rem;
+  .landing-main {
+    height: 75%;
   }
 
-  .info li {
-    font-size: 12px;
+  .landing-main .container {
+    padding-top: 18rem;
+  }
+
+  .list-div {
+    font-size: 16px;
+  }
+
+}
+
+@media (max-width: 680px) {
+
+  .header-landing img {
+    max-width: 100%;
+    height: 4rem;
+    padding-top: 1rem;
+  }
+
+  h1 {
+    font-size: 70px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+}
+
+@media (max-width: 608px) {
+
+  h1 {
+    font-size: 60px;
   }
 
   .logo {
-    left: 60%;
+    width: 200px;
+
+  }
+}
+
+@media (max-width: 560px) {
+
+  h1 {
+    font-size: 60px;
   }
 
-  .btn-custom {
-    width: 12rem;
+  h2 {
+    font-size: 22px;
   }
+}
+
+
+@media (max-width: 540px) {
+
+  h1 {
+    font-size: 55px;
+  }
+
+  .landing-main {
+    height: 80%;
+  }
+
+  .landing-main .container {
+    padding-top: 14rem;
+  }
+
+  .list-div {
+    padding-top: 2rem;
+  }
+
+  .logo-bottom {
+    margin-bottom: 2rem;
+  }
+
 }
 
 @media (max-width: 414px) {
 
+  .landing-main {
+    padding: .4rem;
+  }
+
+  .container {
+    margin: 0;
+    padding: 0;
+  }
+
   .header-landing {
-    position: relative;
-    left: 5%;
+    margin: 0;
   }
 
   .header-landing img {
     width: 21rem;
-    height: 3rem;
+    height: 4rem;
   }
 
   h1 {
-    font-size: 40px;
+    font-size: 50px;
     margin-left: .5rem;
   }
 
@@ -240,49 +301,26 @@ a:hover {
     font-size: 20px;
   }
 
-  .flex-container {
-  
-    position: absolute;
-    top: 40%;
-    margin-left: .1rem;
-    padding-left: 1rem;
+  .landing-main {
+    height: 75%;
   }
 
-  .info ul > li {
+  .landing-main .container {
+    padding-top: 9rem;
+  }
+
+  .list-div {
+    padding-top: 1rem;
+  }
+
+  .info ul>li {
     font-size: 12px;
   }
 
-  .logo {
-    left: 55%;
-    width: 200px;
-    height: 100px;
-    
-  }
-
-  .btn {
-    font-size: 16px;
-
-  }
-
-  .btn-custom {
-    width: 10rem;
-    height: 2rem;
-    
-  }
 }
 
 
 @media (max-width: 375px) {
-
-  .header-landing {
-    position: relative;
-    left: 1%;
-  }
-
-  .header-landing img {
-    width: 21rem;
-    height: 3rem;
-  }
 
   h1 {
     font-size: 40px;
@@ -291,48 +329,72 @@ a:hover {
 
   h2 {
     font-size: 18px;
+    padding-top: 0;
+    margin: 0 .5rem;
   }
 
-  .flex-container {
-    position: absolute;
-    top: 40%;
-    margin-left: .1rem;
-    padding-left: 1rem;
+  .landing-main {
+    padding: 1rem .5rem;
+    height: 73%;
   }
 
-  .info ul > li {
+  .landing-main .container {
+    padding-top: 9rem;
+  }
+
+  .info {
+    margin: 0;
+  }
+
+  .list-div {
+    margin: .3rem;
+  }
+
+  .info ul>li {
     font-size: 10px;
   }
 
   .logo {
-    left: 55%;
-    width: 180px;
-    height: 90px;
-    
+    width:150px;
+
   }
 
   .btn {
-    font-size: 16px;
+    font-size: 20px;
 
   }
 
   .btn-custom {
     width: 10rem;
-    height: 2rem;
-    
+    height: 3rem;
+
   }
 }
 
 @media (max-width: 320px) {
 
-  .header-landing {
-    position: relative;
-    left: 0;
+  .container {
+    margin: .1rem;
+    padding: 0;
   }
 
-  .header-landing img {
-    width: 18rem;
+  .header-landing {
+    width: 90%;
     height: 2rem;
+  }
+
+  .landing-main {
+    padding: 1rem .1rem;
+    height: 78%;
+  }
+
+  .landing-main .container {
+    padding-top: 8rem;
+  }
+
+  .tagline-top {
+    margin: 0;
+    padding: 0;
   }
 
   h1 {
@@ -344,25 +406,13 @@ a:hover {
     font-size: 16px;
   }
 
-  .flex-container {
-  
-    position: absolute;
-    top: 43%;
-    left: 1%;
-    margin-left: 0;
-    padding-left: .3rem;
-  }
-
-  .info ul > li {
-    font-size: 10px;
+  .info ul>li {
+    font-size: 9px;
+    line-height: 3.5;
   }
 
   .logo {
-    left: 50%;
-    bottom: 30px;
-    width: 180px;
-    height: 90px;
-    
+    width: 120px;
   }
 
   .btn {
@@ -372,8 +422,8 @@ a:hover {
 
   .btn-custom {
     width: 8rem;
-    height: 2rem;
-    
+    height: 2.2rem;
+
   }
 
 }

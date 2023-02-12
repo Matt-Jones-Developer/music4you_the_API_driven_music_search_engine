@@ -310,6 +310,10 @@ function renderCard(
   card.style.width = "398px";
   card.style.height = "520px";
 
+  if (window.matchMedia("(max-width: 414px)").matches) {
+    card.style.height = "580px";
+  }
+
   // cardClose (x)
   const cardClose = document.createElement("div");
   cardClose.classList.add("btn-close", "alert-dismissible", "fade", "show");
