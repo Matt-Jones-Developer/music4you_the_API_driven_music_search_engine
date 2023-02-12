@@ -548,7 +548,6 @@ span {
 
   .main {
     margin: 0 auto;
-    /* watch it */
   }
 
 }
@@ -577,7 +576,6 @@ span {
 
   #search-area .container {
     width: 50vw;
-    /* border: 1px solid lightgreen; */
   }
 
   .custom-nav p {
@@ -596,7 +594,6 @@ span {
   .main {
     margin: 0;
     padding: 2rem;
-    /* border: 1px solid red; */
   }
 
   .card {
@@ -787,7 +784,6 @@ span {
   .main {
     margin: 0;
     padding: 1.1rem;
-    /* border: 1px solid red; */
   }
 }
 
@@ -945,7 +941,6 @@ span {
   }
 
   .main {
-    border: 1px solid red;
     padding: 1rem;
     margin: 1rem 0;
     padding-bottom: 2rem;
