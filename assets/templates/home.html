@@ -30,31 +30,24 @@
         <img src="../images/png/vinyl-record.png" alt="vinyl-record-img">
       </div>
     </div>
-    <!-- hidden until smaller devices -->
-    <div class="search-title-hide d-flex-inline">
+    <!-- available on all devices sizes now -->
+    <div class="header-tagline d-flex-inline">
       <p>Build and store a collection of favourite artists... find tickets to shows, access tour dates and more!</p>
     </div>
+    <hr>
   </header>
 
   <!-- nav search bar and search artist button -->
   <nav class="navbar navbar-expand sticky-top custom-nav" id="search-area">
     <div class="container">
-      <div class="search-title">
-        <p>Build and store a collection of favourite artists...</p>
-      </div>
-      <div class="music-search">
         <!-- input label -->
-        <input class="form-input search-bar" type="text" id="search-input" placeholder="search artist"
+        <input class="form-input search-bar" id="search-input" type="text" placeholder="search artist"
           aria-labelledby="music-search" aria-controls="music-search" onfocus="this.value=''">
         <!-- search button -->
-        <button type="submit" class="btn search-button" id="search-button" aria-label="submit search"
+        <button type="submit" class="btn search-button" aria-label="submit search"
           data-bs-toggle="modal" data-bs-target="#errorModalEl">
           <b>Search</b>
         </button>
-      </div>
-      <div class="search-title">
-        <p>find tickets to shows, access tour dates and more!</p>
-      </div>
     </div>
   </nav>
   <!-- main -->
