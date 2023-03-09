@@ -30,12 +30,15 @@
   </a> -->
 
 #
+<!-- Project Title/Tagline & Summary -->
+
 <h2 align="center">"Music 4 You: The ultimate music artist library and ticket sourcing search engine!</h2>
 
   <p align="center">
     A sleek, useful music library creation app with the ability to search for artists, add them to a 'artist library'; then choose to either listen to artists playlists, watch their music videos, read about the artist and even search for tour dates and buy tickets!  This app is very enjoyable and simple to use and looks great.
     Coded in vanilla JavaScript with dynamically rendered HTML, and an HTML and CSS interactive GUI.
     <br />
+    <!-- anchor tags link to sections -->
     <a href="https://github.com/Matt-Jones-Developer/music4you_the_API_driven_music_search_engine/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
@@ -156,29 +159,7 @@ Product screenshot:
 [![Product Name Screen Shot][product-screenshot-3]](https://github.com/Matt-Jones-Developer/music4you_the_API_driven_music_search_engine)
 [![Product Name Screen Shot][product-screenshot-4]](https://github.com/Matt-Jones-Developer/music4you_the_API_driven_music_search_engine)
 
-## Criteria
 
-Use Bootstrap or some other CSS framework.
-
-Be deployed to GitHub Pages.
-
-Be interactive (i.e., accept and respond to user input).
-
-Use at least two server-side APIs.
-
-Does not use alerts, confirms, or prompts (use modals).
-
-Use client-side storage to store persistent data.
-
-Be responsive.
-
-Have a polished UI.
-
-Have a clean repository that meets quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, etc.).
-
-Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
-
-#
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -337,6 +318,12 @@ Deployed Project Link: [https://matt-jones-developer.github.io/music4you_the_API
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+<!-- add a validator shields (HTML and CSS) -->
+[html-shield]: https://img.shields.io/w3c-validation/html?targetUrl=https%3A%2F%2Fvalidator.nu%2F
+[new-html-shield]: https://img.shields.io/badge/HTML-w3c--validated-brightgreen
+[html-shield-url]: https://matt-jones-developer.github.io/music4you_the_API_driven_music_search_engine/validators
+[css-shield]: https://img.shields.io/badge/CSS-w3c--validated-orange
+[css-shield-url]: https://matt-jones-developer.github.io/music4you_the_API_driven_music_search_engine/validators
 [contributors-shield]: https://img.shields.io/github/contributors/matt-jones-developer/music4you_the_API_driven_music_search_engine.svg?style=for-the-badge
 [contributors-url]: https://github.com/matt-jones-developer/music4you_the_API_driven_music_search_engine/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/matt-jones-developer/music4you_the_API_driven_music_search_engine.svg?style=for-the-badge

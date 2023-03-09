@@ -418,7 +418,7 @@ function renderCard(
 
   // new feature added! remove artist card
   const ticketButton = document.createElement("button")
-  ticketButton.classList.add("btn", "remove-new-card")
+  ticketButton.classList.add("btn", "tickets-new-card")
   ticketButton.style.height = "2.3rem";
   ticketButton.style.fontSize = '14px';
 
@@ -476,6 +476,9 @@ function renderCard(
 
     // fetch TM data
     fetchTM(artistName)
+
+    // instead - call the new ticketmaster modal?
+
 
     // // call the modal to display the data
     // ticketModal(artistName, eventsTotal, ticketmasterSiteLogin)
@@ -690,7 +693,7 @@ function renderSavedCards(artistArray) {
 
     // new feature added! search for tickets API call
     const ticketsButton = document.createElement("button")
-    ticketsButton.classList.add("btn", "remove-saved-card")
+    ticketsButton.classList.add("btn", "tickets-saved-card")
     ticketsButton.style.height = "2.3rem";
     ticketsButton.style.fontSize = '14px';
     ticketsButton.style.backgroundColor = "#07d159";
@@ -820,6 +823,10 @@ function ticketModal(artistName, eventsTotal, ticketmasterSiteLogin) {
                 <h2>${artistName} has </h2><h1><b>${eventsTotal}</b></h1> <h3>upcoming events!</h3>
                 </li>
               </ul>
+              <div class="event-card">
+                <p> add all cards here with detailed data info oer event?</p>
+                <div class="eventLabel"></div>
+              </div>
               <div class="buy-button">
                 <p>
                 Buy available tickets for upcoming shows via TicketMaster with one click!
