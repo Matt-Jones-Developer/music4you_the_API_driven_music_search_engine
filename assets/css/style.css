@@ -34,8 +34,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  scroll-behavior: smooth;
   /* border: 1px solid red; */
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -156,12 +160,13 @@ span {
 
 .search-button {
   width: 50%;
-  margin-right: 0;
+  font-size: 20px;
+  margin-left: 1.8rem;
 }
 
 .search-bar {
   width: 50%;
-  margin-right: 1rem;
+  margin-left: 1rem;
 }
 
 /* HOME PAGE - LIBRARY */
@@ -296,7 +301,7 @@ span {
 }
 
 .card-container {
-  width: 25%;
+  width: 460px;
   padding: 1rem;
   border-radius: 1rem;
   /* border: 1px dashed lightgreen; */
@@ -417,11 +422,11 @@ span {
   margin-left: 1rem;
 }
 
-@media (max-width: 1700px) {
+/* @media (max-width: 1700px) {
   .card {
     width: calc(33.3333% - 20px);
   }
-}
+} */
 /* media queries */
 
 @media (max-width: 1400px) {
@@ -476,29 +481,27 @@ span {
   }
 
   .search-button {
-    width: 8rem;
-    height: 1.9rem;
+    width: 50%;
+    height: 3rem;
   }
 
   .btn b {
-    font-size: 14px;
-    position: relative;
-    top: -4px;
+    font-size: 18px;
   }
 
   input {
-    width: 9rem;
-    height: 1.6rem;
-    font-size: 10px;
+    width: 50%;
+    height: 2.4rem;
+    font-size: 16px;
     padding-left: .5rem;
   }
   
   .search-title {
-    height: 2rem;
+    height: 4rem;
   }
 
   .search-title p {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .main {
@@ -534,20 +537,20 @@ span {
   }
 
   .search-button {
-    width: 8rem;
-    height: 1.9rem;
+    width: 50%;
+    height: 2.4rem;
   }
 
   .btn b {
-    font-size: 14px;
+    font-size: 16px;
     position: relative;
     top: -4px;
   }
 
   input {
-    width: 7rem;
-    height: 1.6rem;
-    font-size: 10px;
+    width: 50%;
+    height: 2.2rem;
+    font-size: 14px;
     padding-left: .5rem;
   }
   
@@ -570,8 +573,9 @@ span {
 
 
   .main {
-    margin: auto;
+    margin: 0 auto;
     padding: 2rem;
+    /* border: 1px solid red; */
   }
 
   .main .container {
@@ -593,7 +597,6 @@ span {
   }
 
   .custom-nav p {
-
     font-size: 12px;
   }
 
@@ -606,12 +609,12 @@ span {
   }
 
   .card {
-    width: 458px !important;
+    width: 460px !important;
   }
   
 }
 
-@media (min-width: 834px) and (max-width: 1020px) {
+@media (min-width: 834px) and (max-width: 1024px) {
   .card {
     width: 50%;
   }
@@ -625,7 +628,7 @@ span {
 
 @media (min-width: 768px) and (max-width: 991px) {
   .card {
-    width: 45%;
+    width: 50%;
   }
 }
 
@@ -673,20 +676,20 @@ span {
   }
 
   .search-button {
-    width: 12rem;
-    height: 1.9rem;
+    width: 50%;
+    height: 2.2rem;
   }
 
   .btn b {
-    font-size: 14px;
+    font-size: 16px;
     position: relative;
     top: -4px;
   }
 
   input {
-    width: 7rem;
-    height: 1.6rem;
-    font-size: 10px;
+    width: 50%;
+    height: 2rem;
+    font-size: 16px;
     padding-left: .5rem;
   }
   
@@ -734,6 +737,10 @@ span {
 
 @media (max-width: 768px) {
 
+  .header-title h1 {
+    font-size: 60px;
+  }
+
   .custom-nav {
 
     height: 4rem;
@@ -751,17 +758,12 @@ span {
   }
 
   .search-button {
-    width: 6rem;
-    height: 1.9rem;
-  }
-
-  .search-button {
-    width: 12rem;
-    height: 1.9rem;
+    width: 50%;
+    height: 2.4rem;
   }
 
   .btn b {
-    font-size: 14px;
+    font-size: 16px;
     position: relative;
     top: -4px;
   }
@@ -769,8 +771,8 @@ span {
 
   input {
     width: 5rem;
-    height: 1.2rem;
-    font-size: 9px;
+    height: 2rem;
+    font-size: 16px;
   }
   
   .search-title {
@@ -778,7 +780,7 @@ span {
   }
 
   .search-title p {
-    font-size: 10px;
+    font-size: 16px;
   }
 
   .main .container-2 {
@@ -815,7 +817,7 @@ span {
   }
 }
 
-@media (max-width: 499px) {
+@media (max-width: 500px) {
 
   .search-title {
     display: none;
@@ -825,7 +827,7 @@ span {
   }
 
   .header-title h1 {
-    font-size: 30px;
+    font-size: 48px;
   }
 
   .header-title h2 {
@@ -857,7 +859,7 @@ span {
 
   .search-button {
     width: 50%;
-    height: 2rem;
+    height: 1.8rem;
     padding-top: 0;
     padding-left: .63rem;
   }
@@ -869,8 +871,8 @@ span {
 
   input {
     width: 50%;
-    height: 1.6rem;
-    font-size: 10px;
+    height: 1.8rem;
+    font-size: 14px;
   }
   
   .search-title {
@@ -1049,26 +1051,29 @@ span {
   .custom-nav .container {
     height: 4rem;
     margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    margin: 0;
+    padding: 0;
   }
 
   .search-button {
-    width: 9rem;
+    width: 50%;
     height: 1.8rem;
     padding-top: 0;
-    padding-left: .3rem;
+    padding-left: .5rem;
   }
 
   .btn b {
-    font-size: 17px;
-    position: relative;
-    padding-left: .5rem;
-    top: 2px;
+    font-size: 15px;
   }
 
   input {
-    width: 6rem;
+    width: 50%;
     height: 1.6rem;
-    font-size: 10px;
+    font-size: 14px;
   }
 
 

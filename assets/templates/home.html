@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- prevent mobile zooming (user-scalable 0) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
   <link rel="icon" type="image/x-icon" href="../images/png/favicon.ico">
   <link rel="stylesheet" href="../css/webfontkit-tagsExtreme/stylesheet.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,800,900">
@@ -40,14 +41,14 @@
   <!-- nav search bar and search artist button -->
   <nav class="navbar navbar-expand sticky-top custom-nav" id="search-area">
     <div class="container">
-        <!-- input label -->
-        <input class="form-input search-bar" id="search-input" type="text" placeholder="search artist"
-          aria-labelledby="music-search" aria-controls="music-search" onfocus="this.value=''">
-        <!-- search button -->
-        <button type="submit" class="btn search-button" aria-label="submit search"
-          data-bs-toggle="modal" data-bs-target="#errorModalEl">
-          <b>Search</b>
-        </button>
+      <!-- input label -->
+      <input class="form-input search-bar" id="search-input" type="text" placeholder="search artist"
+        aria-labelledby="music-search" aria-controls="music-search" onfocus="this.value=''">
+      <!-- search button -->
+      <button type="submit" class="btn search-button" aria-label="submit search" data-bs-toggle="modal"
+        data-bs-target="#errorModalEl">
+        <b>Search</b>
+      </button>
     </div>
   </nav>
   <!-- main -->
@@ -74,7 +75,8 @@
   <!-- scripts -->
   <script src="../scripts/config.js"></script>
   <script src="../scripts/data_render.js"></script>
-  <script src="../scripts/ticketmaster.js"></script>
+  <!-- <script src="../scripts/ticketmaster.js"></script> -->
+  <script src="../scripts/ticketmaster_testing.js"></script>
   <!-- testing -->
   <!-- <script src="./assets/scripts/testing/api_drafting.js"></script> -->
   <!-- <script src="./assets/scripts/testing/discogs_images.js"></script> -->
